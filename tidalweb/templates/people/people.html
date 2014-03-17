@@ -40,10 +40,11 @@
           {% for people in faculty %}             
 
           <!-- item 1 -->
+          <a href = "{{people.get_absolute_url}}">
           <li class="four columns" >
             <img src="{% cropped_thumbnail people "cropping" scale=1.0 %}" alt="" />
             <h3>
-              <a href = "{{people.get_absolute_url}}">{{people.name}}</a>
+              {{people.name}}</a>
             </h3>
             <p>
               {{people.status}}
@@ -58,9 +59,10 @@
 
           <!-- item 1 -->
           <li class="four columns" >
+            <a href = "{{people.get_absolute_url}}">
             <img src="{% cropped_thumbnail people "cropping" scale=1.0 %}" alt="" />
             <h3>
-              <a href = "{{people.get_absolute_url}}">{{people.name}}</a>
+              {{people.name}}</a>
             </h3>
             <p>
               {{people.status}}
@@ -74,9 +76,10 @@
 
           <!-- item 1 -->
           <li class="four columns" >
+            <a href = "{{people.get_absolute_url}}">
             <img src="{% cropped_thumbnail people "cropping" scale=1.0 %}" alt="" />
             <h3>
-              <a href = "{{people.get_absolute_url}}">{{people.name}}</a>
+              {{people.name}}</a>
             </h3>
             <p>
               {{people.status}}
@@ -90,9 +93,10 @@
 
           <!-- item 1 -->
           <li class="four columns" >
+             <a href = "{{people.get_absolute_url}}">
             <img src="{% cropped_thumbnail people "cropping" scale=1.0 %}" alt="" />
             <h3>
-              <a href = "{{people.get_absolute_url}}">{{people.name}}</a>
+             {{people.name}}</a>
             </h3>
             <p>
               {{people.status}}
@@ -105,30 +109,6 @@
         
     </div><!-- End meet team -->
 
-
-    <div class="clearfix"></div>
-        
-      <ul class="team">
-
-          {% for people in undergrad %}             
-
-          <!-- item 1 -->
-          <li class="one-third column" >
-            <img src="{% cropped_thumbnail people "cropping" scale=1.0 %}" alt="" />
-            <h3>
-              <a href = "{{people.get_absolute_url}}">{{people.name}}</a>
-            </h3>
-            <p>
-              {{people.status}}
-            </p>
-          </li>
-          <!-- End -->
-
-          {% endfor %} 
-
-      </ul><!-- End team -->
-
-    </div><!-- End meet team -->
   <div class = "container">
     <div class = "sixteen columns">
       <h2 class = "title">Affiliated</h2>
