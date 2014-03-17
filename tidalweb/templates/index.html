@@ -68,7 +68,7 @@
       <div class="one-third column item element-3 {% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" data-categories="{% for tag in project.tags.all %} {{tag.slug}} {% endfor %}">
           <div class="caption">
           <a href="{{project.thumb.url}}" rel="prettyPhoto[gallery1]">
-          <img src="{{project.thumb.url}}"  class="pic" />
+          <img src="{% cropped_thumbnail project "cropping" scale=1.0 %}"  class="pic" />
           <span class="hover-effect zoom"></span></a>
           </div><!-- hover effect -->
           <h4><a href="{{project.get_absolute_url}}">{{project.name}}</a></h4>
