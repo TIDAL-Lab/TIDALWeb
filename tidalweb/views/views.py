@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response
 from tidalweb.models import Project
 from tidalweb.models import Post
 from tidalweb.models import Partner
-from tidalweb.models import FrontImage
+from tidalweb.models import FrontImage, FrontPageBlurb
 
 def index(request):
 	projects = Project.objects.filter(viewable=True, active = True)
@@ -13,7 +13,8 @@ def index(request):
 	oustideLabs = Partner.objects.filter(affiliation = 'oustideLabs')
 	orgs = Partner.objects.filter(affiliation ='orgs')
 	frontimages = FrontImage.objects.filter(published = True)
-	return render_to_response('index.html', {'projects': projects, 'posts':posts,'labs': labs, 'depts': depts, 'oustideLabs': oustideLabs, 'orgs': orgs,'frontimages': frontimages})
+	frontPageBlurb = FrontPageBlurb.objects.all
+	return render_to_response('index.html', {'projects': projects, 'posts':posts,'labs': labs, 'depts': depts, 'oustideLabs': oustideLabs, 'orgs': orgs,'frontimages': frontimages, 'frontPageBlurb':frontPageBlurb})
 
 # def publications(request):
 #     return render_to_response('publications.html')
