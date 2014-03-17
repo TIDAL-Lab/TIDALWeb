@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% block primary %}
+
+  {% load static %}
+  {% load staticfiles %} 
+
+  <div class="container clearfix">
+  
+   <div class="sixteen columns"> <h1 class="page-title">{{person.name}}<span class="line"></span></h1>
+   </div><!-- Page Title -->
+   
+   
+   <!-- Start Single Post -->
+   <div class="eleven columns top">
+   
+     <!-- ==================== Single Post ==================== -->
+     <div class="post gallery bottom">
+     <div class="post">
+        <h2 class="title top-2 bottom-2">About Me<span class="line"></span></h2>
+        <!-- Title Post -->
+      <div class="post-content top">
+
+      <!-- <div class="post-content bottom"> -->
+     <div class="one-third column">
+        <img src="{{person.photo.url}}" alt="" class="pic-3" />
+     </div>
+        <p>
+        {{person.biography|safe }}
+        </p>
+    </div>
+  </div>
+  <hr class="bottom-1" />
+
+    <div class="post-content bottom">
+        <div class="slidewrap" >
+        <h2 class="title top-1 bottom-1">My Lab Projects<span class="line"></span></h2>
+        
+      
+      <ul class="slidecontrols">
+      <li><a href="#sliderName" class="next">Next</a></li><li><a href="#sliderName" class="prev">Prev</a></li>
+    </ul> 
+      
+      <ul class="slider" id="sliderName">
+       <!-- <li class="slide">  -->
+       {% for project in person.projects.all %}
+       {% if forloop.counter0|divisibleby:3 = 1 %}
+       <li class="slide"> 
+        {% endif %}
+      
+      <div class="four columns item">
+          <div class="caption">
+             {% for photo in project.photoThumb %}
+          <a href="{{project.get_absolute_url}}"><img src="{{photo.image.url}}" alt="" class="pic" />
+          {% endfor %} 
+          <span class="hover-effect link"></span></a>
+          </div><!-- hover effect -->
+          <h4><a href="{{project.get_absolute_url}}">{{project.name}}</a></h4>
+      </div>
+      
+      
+       {% if forloop.counter0|divisibleby:3 = 2 %}
+       </li>
+       {% endif %}
+              
+      {% endfor %}
+      </ul>
+      
+      </div><!-- End slidewrap -->
+
+    </div>
+    <hr class="bottom-2" />
+
+    <div class ="post-content">
+
+      <h2 class="title top-1 bottom-1">My Publications<span class="line"></span></h2>
+      {% for pubs in person.publications.all %}
+        <p>{{pubs.authors}}. ({{pubs.year}}). {{pubs.title}}. <em>{{pubs.journal}}</em>. {{pubs.pages}} </p>
+      {% endfor %}
+      </div>
+</div>      
+<hr class="bottom-2" />
+
+
+      
+     <!--  </div> -->
+     <!-- ==================== End single post  ==================== -->
+     
+     
+      
+   </div><!-- End column  --> 
+
+      <!-- Start Sidebar Widgets -->
+   <div class="five columns bottom">
+   
+     <!-- Search Widget -->
+
+     <!-- End -->
+     
+     
+     <!-- Text Widget -->
+     <h2 class="title bottom-2">Contact Me!<span class="line"></span></h2>
+     
+     <div class="about-project bottom">
+      <p>{{person.emailuser}} at {{person.emaildomain}}</p>
+     </div>
+     
+
+     <h2 class="title bottom-2">CV/Resume<span class="line"></span></h2>
+     
+     <div class="about-project bottom">
+      <a href="{{person.cv.url}}" class="button medium color">PDF</a>
+     </div>
+    
+    <h2 class="title bottom-2">Personal Website<span class="line"></span></h2>
+    <div class="search top bottom">
+
+      <a href="{{person.website}}" class="button medium color">Click Here</a>
+     </div>
+   
+   
+   </div><!-- End Sidebar Widgets -->
+
+   
+   
+   <div class="clearfix"></div>
+   
+   
+   
+       
+     
+  </div><!-- <<< End Container >>> -->
+{% endblock %}
+  
