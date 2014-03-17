@@ -2,3 +2,9 @@
 *.pot
 *.pyc
 local_settings.py
+tidalweb/tidalweb.db
+*.DS_Store
+tidalweb/public/media
+tidalweb/media
+tidalweb/migrations
+apache
