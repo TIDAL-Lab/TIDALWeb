@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block primary %}
+
+  {% load static %}
+  {% load cropping %}
+  {% load staticfiles %}
+
+
+<div class="container clearfix">
+  
+   <div class="sixteen columns"> <h1 class="page-title">Portfolio - <span class="gray2">Current and Past Projects</span><span class="line"></span></h1> </div> 
+   <!-- Page Title -->
+   
+   <div class="sixteen columns">  
+      <div class="title clearfix" id="options">
+        <ul id="filters" class="option-set clearfix" data-option-key="filter">
+        <li><a href="#filter" data-option-value="*" class="selected">All</a></li>
+        {% for tag in tags %}
+        <li><a href="#filter" data-option-value=".{{tag.slug}}">{{tag.word}}</a></li>
+        {% endfor %}
+        </ul>
+      </div>
+    </div> <!-- End options -->
+    
+    <div class="clearfix"></div>
+                <h2>Current Projects</h2>
+    <div class="portfolio">
+    
+      <div class="gallery" id="contain"> 
+
+     {% block content %}
+      {% for project in curProjects %}
+      <!-- item 1 -->
+      <div class="one-third column item element-3 {% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" data-categories="{% for tag in project.tags.all %} {{tag.slug}} {% endfor %}">
+          <div class="caption">
+          <a href="{{project.thumb.url}}" rel="prettyPhoto[gallery1]">
+          <img src="{% cropped_thumbnail project "cropping" scale=1.0 %}"  class="pic" />
+          <span class="hover-effect zoom"></span></a>
+          </div><!-- hover effect -->
+          <h4><a href="{{project.get_absolute_url}}">{{project.name}}</a></h4>
+          <p>
+           {% for tag in project.tags.all %} {{tag.word}} ,{% endfor %}</p>
+      </div>
+      <!-- End -->
+      {% endfor %}  
+    </br>
+
+    <div class = "sixteen columns {% for tag in tags.all %} {{tag.slug}} {% endfor %}" style = "margin-left:-1px"><h2>Past Projects</h2></div>
+
+      {% for project in pastProjects %}
+      <!-- item 1 -->
+      <div class="one-third column item element-3 {% for tag in project.tags.all %} {{tag}} {% endfor %}" data-categories="{% for tag in project.tags.all %} {{tag}} {% endfor %}">
+          <div class="caption">
+          <a href="{{project.thumb.url}}" rel="prettyPhoto[gallery1]">
+          <img src="{% cropped_thumbnail project "cropping" scale=1.0 %}"  class="pic" />
+          <span class="hover-effect zoom"></span></a>
+          </div><!-- hover effect -->
+          <h4><a href="{{project.get_absolute_url}}">{{project.name}}</a></h4>
+          <p>
+           {% for tag in project.tags.all %} {{tag}} {% endfor %}</p>
+        </div>
+      </div>
+      <!-- End -->
+      {% endfor %}  
+
+
+      
+      </div><!-- End contain-->
+    
+    </div><!-- End portfolio -->
+    {% endblock %}    
+       
+     
+  </div><!-- <<< End Container >>> -->
+    {% endblock %}
