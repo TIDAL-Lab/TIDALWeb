@@ -65,7 +65,7 @@
     {% for project in projects|slice:":8" %}
       <!-- item 1 -->
       {% if forloop.counter < 4 %}
-      <div class="one-third column item element-3 {% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" data-categories="{% for tag in project.tags.all %} {{tag.slug}} {% endfor %}">
+      <div class="four column item element-3 {% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" data-categories="{% for tag in project.tags.all %} {{tag.slug}} {% endfor %}">
           <div class="caption">
           <a href="{{project.thumb.url}}" rel="prettyPhoto[gallery1]">
           <img src="{% cropped_thumbnail project "cropping" scale=1.0 %}"  class="pic" />
