@@ -33,13 +33,11 @@
       <!-- item 1 -->
       <div class="one-third column item element-3 {% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" data-categories="{% for tag in project.tags.all %} {{tag.slug}} {% endfor %}">
           <div class="caption">
-          <a href="{{project.thumb.url}}" rel="prettyPhoto[gallery1]">
+          <a href="{{project.get_absolute_url}}">
           <img src="{% cropped_thumbnail project "cropping" scale=1.0 %}"  class="pic" />
-          <span class="hover-effect zoom"></span></a>
+          <span class="hover-effect zoom"></span>
           </div><!-- hover effect -->
-          <h4><a href="{{project.get_absolute_url}}">{{project.name}}</a></h4>
-          <p>
-           {% for tag in project.tags.all %} {{tag.word}} ,{% endfor %}</p>
+          <h4>{{project.name}}</h4></a>
       </div>
       <!-- End -->
       {% endfor %}  
