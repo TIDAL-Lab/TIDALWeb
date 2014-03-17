@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+  <!-- Basic Page Needs -->
+  <meta charset="utf-8">
+  <title>TIDAL Lab | Northwestern University</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  {% load static %}
+  {% load staticfiles %}
+
+  <!-- CSS Style -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+  
+  <!-- Color Skins -->
+  <link rel="stylesheet" href="{% static 'css/skins/blue.css' %}" name="skins"> 
+  
+  <!-- Layout Style -->
+  <link rel="stylesheet" href="{% static 'css/layout/wide.css' %}" name="layout"> 
+  
+  <!-- Style Switcher Box -->
+  <link rel="stylesheet" href="{% static 'css/layout/switcher.css' %}">
+  
+  <!-- Small Icons -->
+  <link rel="stylesheet" href="{% static 'css/icons.css'%}">  
+  
+  <!-- Start JavaScript -->
+  
+    <script src="{% static 'js/jquery-1.7.2.min.js' %}"></script> <!-- jQuery library -->
+    <script src="{% static 'js/jquery.easing.1.3.min.js' %}"></script> <!-- jQuery Easing --> 
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script> <!-- jQuery Ui --> 
+    <script src="{% static 'js/jquery.cookie.js' %}"></script> <!-- jQuery cookie --> 
+    <script src="{% static 'js/jquery.uniform.min.js' %}"></script> <!-- jQuery Uniform -->
+    <script src="{% static 'js/ddsmoothmenu.js' %}"></script> <!-- Nav Menu ddsmoothmenu -->
+    <script src="{% static 'js/jquery.flexslider.js' %}"></script> <!-- Flex Slider  -->
+    <script src="{% static 'js/jquery.eislideshow.js' %}"></script> <!-- Elastic Slider  -->
+    <script src="{% static 'js/jquery.iconmenu.js' %}"></script> <!-- Sliding Text and Icon Menu Style  -->
+    <script src="{% static 'js/colortip.js' %}"></script> <!-- Colortip Tooltip Plugin  -->
+    <script src="{% static 'js/tytabs.js' %}"></script> <!-- jQuery Plugin tytabs  -->
+    <script src="{% static 'js/carousel.js' %}"></script> <!-- jQuery Carousel  -->
+    <script src="{% static 'js/jquery.prettyPhoto.js' %}"></script> <!-- jQuery Prettyphoto  -->
+    <script src="{% static 'js/jquery.isotope.min.js' %}"></script> <!-- Isotope Filtering  -->
+    <script src="{% static 'js/selectnav.js' %}"></script> <!-- Responsive Navigation Menu by SelectNav -->
+    <script src="{% static 'js/jquery.ui.totop.js' %}"></script> <!-- UItoTop plugin  -->
+    <script src="{% static 'js/custom.js' %}"></script> <!-- Custom Js file for javascript in html -->
+    <script src="{% static 'js/jquery.tweet.js' %}"></script> <!-- jQuery Tweets -->
+    <script src="{% static 'js/jflickrfeed.min.js' %}"></script> <!-- jQuery Flickr -->
+    <script src="{% static 'js/twitter-flickr-options.js' %}"></script> <!-- jQuery Tweets Options -->
+    <script src="{% static 'js/styleswitch.js' %}"></script> <!-- Style Switcher -->
+  
+  <!-- End JavaScript -->
+
+  <!--[if lt IE 9]>
+      <script src="js/html5.js"></script>
+  <![endif]-->
+
+  <!-- Favicons -->
+  <link rel="shortcut icon" href="{% static 'images/favicon/favicon.ico' %}">
+  <link rel="apple-touch-icon" href="{% static 'images/favicon/apple-touch-icon.png' %}">
+  <link rel="apple-touch-icon" sizes="72x72" href="{% static 'images/favicon/apple-touch-icon-72x72.png' %}">
+  <link rel="apple-touch-icon" sizes="114x114" href="{% static 'images/favicon/apple-touch-icon-114x114.png' %}">
+
+</head>
+<body>
+
+  <div id="wrap" class="boxed">
+
+  <header>
+    <div class="container clearfix">
+    
+      <div class="one-third column" style = "margin-bottom: -10px">
+        <div class="logo">
+        <a href="{% url 'index' %}">
+          <img src="{% static 'images/tidal_logo.png' %}" style = "height:75px; margin:-15px;" />
+        </a>
+        </div>
+      </div><!-- End Logo -->
+      
+      <div class="two-thirds column">
+        <nav id="menu" class="navigation">
+          <ul id="nav">
+            <!-- <li><a href="{% url 'index' %}" class="active">Home</a></li> -->
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'publications' %}">Publications</a></li>
+            <li><a href="{% url 'people' %}">People</a></li>
+            <li><a href="{% url 'portfolio' %}">Portfolio</a></li>
+            <li><a href="{% url 'news' %}">News</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+          </ul>
+          
+          
+          
+        </nav>
+      </div><!-- End Menu -->
+      
+      <div class="sixteen columns"><hr /></div>
+      
+    </div><!-- End Container -->
+  </header><!-- <<< End Header >>> -->
+    <body>
+        {% block primary %}{% endblock %}
+    </body>
+      {% comment %}
+    <footer>
+
+	    <div class="container">
+    
+      <div class="sixteen columns">
+        <h2 class = "line">TIDAL Lab, Northwestern University<h2>
+        <img src = "{% static 'images/footer.png' %}"></img>
+        <p></br></p>
+      </div>
+
+
+    
+    </div><!-- End container -->
+
+    </footer>
+        {% endcomment %}
+</html>

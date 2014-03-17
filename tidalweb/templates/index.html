@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% block primary %}
+
+  {% load static %}
+  {% load staticfiles %}
+  {% load cropping %}
+  <div id="slider">
+    <div class="container clearfix">
+    
+      <div class="sixteen columns">
+      
+      <div class="flex-container">
+	  <div class="flexslider">
+		<ul class="slides">
+    {% for image in frontimages %}
+
+      <li style = "float:center">
+			<img src="{% cropped_thumbnail image "cropping" scale=1.0 %}" style = "height:500px;float:center">
+      {% if image.description != "" %}
+			<p class="flex-caption"> <span>{{name}}</span> {{image.description}}</p>
+      {% endif %}
+		  </li>
+      {% endfor %}
+        </ul>
+	  </div>
+      
+      </div>
+      
+      </div>
+      
+    </div><!-- End Container -->
+  </div><!-- End Slider -->
+  
+  <div class="container clearfix">
+  
+    <div id="welcome">
+      <div class="sixteen columns">
+        <div class="qoute">
+          <div class="sixteen columns omega">
+            {% for front in frontPageBlurb %}
+            
+            <h2>{{front.title|safe}}</h2>
+            <p>{{front.description|safe}}</p>
+
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div><!-- End Welcome -->
+    
+    <div class="recent-work gallery clearfix">
+    
+      <div class="slidewrap" >
+    
+      <div class="sixteen columns"> <h2 class="title">Recent Work <span class="line"></span></h2> </div>
+      
+      <!-- <ul class="slidecontrols">
+      <li><a href="#sliderName" class="next">Next</a></li><li><a href="#sliderName" class="prev">Prev</a></li>
+	  </ul>	 -->
+      
+      <ul class="slider" id="sliderName">
+      
+      <li class="slide">	
+      
+    {% for project in projects|slice:":8" %}
+      <!-- item 1 -->
+      {% if forloop.counter < 4 %}
+      <div class="one-third column item element-3 {% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" data-categories="{% for tag in project.tags.all %} {{tag.slug}} {% endfor %}">
+          <div class="caption">
+          <a href="{{project.thumb.url}}" rel="prettyPhoto[gallery1]">
+          <img src="{{project.thumb.url}}"  class="pic" />
+          <span class="hover-effect zoom"></span></a>
+          </div><!-- hover effect -->
+          <h4><a href="{{project.get_absolute_url}}">{{project.name}}</a></h4>
+          <p>
+           {% for tag in project.tags.all %} {{tag.word}} ,{% endfor %}</p>
+      </div>
+      {% endif %}
+      <!-- End -->
+      {% endfor %}  
+      
+      </li><!-- End slide -->
+      
+      </ul>
+      
+      </div><!-- End slidewrap -->
+    
+    </div><!-- End recent-work -->
+    <div class = "container">
+    <div class = "eight columns">
+      <h2>Links<span class = "line"></span></h2>
+    </div>
+    <div class = "eight columns">
+      <h2>News<span class = "line"></span></h2></br>
+    </div>
+
+    <div class = "eight columns">
+
+        <div id="accordion">
+        <h3><a href="#">Related Labs</a></h3>
+          <div>
+            <div class = "choose">
+              <ul>
+                {% for lab in labs %}
+                <li><a href = "{{lab.url}}">{{lab.name}} at {{lab.institution}}</a></li>
+                {% endfor %}
+                {% for oustideLab in oustideLabs %}
+                <li><a href = "{{oustideLab.url}}">{{oustideLab.name}} at {{outsideLab.institution}}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        
+       <h3><a href="#">External Partners</a></h3>
+        <div>
+          <div class = "choose">
+            <ul>
+              {% for org in orgs %}
+              <li><a href = "{{org.url}}">{{org.name}} in {{org.institution}}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+
+          <h3><a href="#">Assoc. Departments</a></h3>
+          <div>
+            <div class = "choose">
+              <ul>
+                {% for dept in depts %}
+                <li><a href = "{{dept.url}}">{{dept.name}} at {{dept.institution}}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+
+
+    </div>
+  </div>
+    
+    <div class = "eight columns">
+      
+
+      {% for post in posts|slice:":3" %}
+
+      <h3 class=""><a href="{{post.get_absolute_url}}">{{post.title}}</a></h3>
+      <p>{{post.description}}</p>
+
+      {% endfor %}
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    </div>
+
+
+     
+  </div><!-- <<< End Container >>> -->
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block primary %}
+
+  {% load static %}
+  {% load staticfiles %}
+
+
+<div class="container clearfix">
+  
+   <div class="sixteen columns"> <h1 class="page-title">Portfolio / <span class="gray2">3 Columns</span><span class="line"></span></h1> </div> 
+   <!-- Page Title -->
+   
+   <div class="sixteen columns">  
+      <div class="title clearfix" id="options">
+        <ul id="filters" class="option-set clearfix" data-option-key="filter">
+        <li><a href="#filter" data-option-value="*" class="selected">All</a></li>
+        <li><a href="#filter" data-option-value=".Web">Web Design</a></li>
+        <li><a href="#filter" data-option-value=".Animation">Animation </a></li>
+        <li><a href="#filter" data-option-value=".Logo">Logo Design</a></li>
+        <li><a href="#filter" data-option-value=".Photography">Photography</a></li>
+        </ul>
+      </div>
+    </div> <!-- End options -->
+    
+    <div class="clearfix"></div>
+        
+    <div class="portfolio">
+    
+      <div class="gallery" id="contain"> 
+  
+  
+      <!-- item 1 -->
+      <div class="one-third column item element-3 Web Logo Animation" data-categories="Web Logo Animation">
+          <div class="caption">
+          <a href="{% static 'images/img/thumbs/thumb-1.jpg' %}" rel="prettyPhoto[gallery1]">
+          <img src="{% static 'images/img/thumbs/thumb-1.jpg' %}"  class="pic" />
+          <span class="hover-effect zoom"></span></a>
+          </div><!-- hover effect -->
+          <h4><a href="single_project_1.html">MonsterUp</a></h4>
+          <p>design ,graphic ,illustration</p>
+      </div>
+      <!-- End -->
+
+      
+      </div><!-- End contain-->
+    
+    </div><!-- End portfolio -->
+    
+       
+     
+  </div><!-- <<< End Container >>> -->
+    {% endblock %}
