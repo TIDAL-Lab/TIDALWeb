@@ -24,10 +24,12 @@
 
           <!-- item 1 -->
           <li class="four columns" >
+            <a href = "{{people.get_absolute_url}}">
             <img src="{% cropped_thumbnail people "cropping" scale=1.0 %}" alt="" />
             <h3>
-              <a href = "{{people.get_absolute_url}}">{{people.name}}</a>
+              {{people.name}}
             </h3>
+            </a>
             <p>
               {{people.status}}
             </p>
@@ -40,10 +42,12 @@
 
           <!-- item 1 -->
           <li class="four columns" >
+            <a href = "{{people.get_absolute_url}}">
             <img src="{% cropped_thumbnail people "cropping" scale=1.0 %}" alt="" />
             <h3>
-              <a href = "{{people.get_absolute_url}}">{{people.name}}</a>
+              {{people.name}}
             </h3>
+            </a>
             <p>
               {{people.status}}
             </p>
@@ -57,10 +61,11 @@
 
           <!-- item 1 -->
           <li class="four columns" >
+            <a href = "{{people.get_absolute_url}}">
             <img src="{% cropped_thumbnail people "cropping" scale=1.0 %}" alt="" />
             <h3>
-              <a href = "{{people.get_absolute_url}}">{{people.name}}</a>
-            </h3>
+              {{people.name}}
+            </h3></a>
             <p>
               {{people.status}}
             </p>
@@ -73,10 +78,12 @@
 
           <!-- item 1 -->
           <li class="four columns" >
+            <a href = "{{people.get_absolute_url}}">
             <img src="{% cropped_thumbnail people "cropping" scale=1.0 %}" alt="" />
             <h3>
-              <a href = "{{people.get_absolute_url}}">{{people.name}}</a>
+              {{people.name}}
             </h3>
+            </a>
             <p>
               {{people.status}}
             </p>
@@ -89,10 +96,12 @@
 
           <!-- item 1 -->
           <li class="four columns" >
+             <a href = "{{people.get_absolute_url}}">
             <img src="{% cropped_thumbnail people "cropping" scale=1.0 %}" alt="" />
             <h3>
-              <a href = "{{people.get_absolute_url}}">{{people.name}}</a>
+             {{people.name}}
             </h3>
+            </a>
             <p>
               {{people.status}}
             </p>
@@ -104,36 +113,12 @@
         
     </div><!-- End meet team -->
 
-
-    <div class="clearfix"></div>
-        
-      <ul class="team">
-
-          {% for people in undergrad %}             
-
-          <!-- item 1 -->
-          <li class="one-third column" >
-            <img src="{% cropped_thumbnail people "cropping" scale=1.0 %}" alt="" />
-            <h3>
-              <a href = "{{people.get_absolute_url}}">{{people.name}}</a>
-            </h3>
-            <p>
-              {{people.status}}
-            </p>
-          </li>
-          <!-- End -->
-
-          {% endfor %} 
-
-      </ul><!-- End team -->
-
-    </div><!-- End meet team -->
   <div class = "container">
     <div class = "sixteen columns">
       <h2 class = "title">Affiliated</h2>
     </div>
     <div class = "four columns">
-      <h3 class = "">Faculty<h3>
+      <h3 class = "">Faculty</h3>
         <ul class =   "square-list">
           {% for people in affilFaculty %}
           <li>
@@ -144,7 +129,7 @@
         </ul>
     </div>
     <div class = "four columns">
-      <h3 class = "">PhD Students<h3>
+      <h3 class = "">PhD Students</h3>
         <ul class =  "square-list">
           {% for people in affilPhd %}
           <li>
@@ -155,7 +140,7 @@
         </ul>
     </div>
     <div class = "four columns">
-      <h3 class = "">Masters Students<h3>
+      <h3 class = "">Masters Students</h3>
         <ul class =   "square-list">
           {% for people in affilMasters %}
           <li>
@@ -166,7 +151,7 @@
         </ul>
     </div>
     <div class = "four columns">
-      <h3 class = "">Undergraduate<h3>
+      <h3 class = "">Undergraduate</h3>
         <ul class =   "square-list">
           {% for people in affilUndergrad %}
           <li>
