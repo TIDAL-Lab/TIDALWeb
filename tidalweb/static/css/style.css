@@ -504,12 +504,7 @@ ul.team  li{
 }
 
 ul.team  li img {
-	opacity:.7;
 	margin-bottom:7px;
-}
-
-ul.team  li:hover img {
-	opacity:1;
 }
 
 ul.team  li h3 {

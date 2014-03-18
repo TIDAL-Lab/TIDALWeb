@@ -7,165 +7,79 @@
 
   <div class="container clearfix">
   
-    <div class="sixteen columns"> <h1 class="page-title">Our Team <span class="line"></span></h1> </div> <!-- Page Title -->
+    <div class="sixteen columns">
+      
+    <h1 class="page-title">Our Team <span class="line"></span></h1> </div> <!-- Page Title -->
   
     <div class="meet-team">
-      <div class="sixteen columns">
-        <p>
-          Tidal lab is composed of faculty, gradute and undergradate students from around Northwestern University.  TIDALalers come from varied backgrounds with a myraid of interests.  A majority members are based out of Northwesterns Learning Science and Computer Science programgs. (blah blah blah...)
-        </p>
-        </div>
-        
-        <div class="clearfix"></div>
         
         <ul class="team">
           
           {% for people in director %}             
 
-          <!-- item 1 -->
           <li class="four columns" >
             <a href = "{{people.get_absolute_url}}">
-            <img src="{% cropped_thumbnail people "cropping" scale=1.0 %}" alt="" />
-            <h3>
-              {{people.name}}
-            </h3>
+            <img src="{% cropped_thumbnail people "cropping" scale=1.0 %}" alt="{{people.name}}">
+            <h3>{{people.name}}</h3>
             </a>
-            <p>
-              {{people.status}}
-            </p>
+            <p>{{people.status}}</p>
           </li>
-          <!-- End -->
 
           {% endfor %} 
 
           {% for people in faculty %}             
 
-          <!-- item 1 -->
           <li class="four columns" >
             <a href = "{{people.get_absolute_url}}">
-            <img src="{% cropped_thumbnail people "cropping" scale=1.0 %}" alt="" />
-            <h3>
-              {{people.name}}
-            </h3>
+            <img src="{% cropped_thumbnail people "cropping" scale=1.0 %}" alt="{{people.name}}" />
+            <h3>{{people.name}}</h3>
             </a>
-            <p>
-              {{people.status}}
-            </p>
+            <p>{{people.status}}</p>
           </li>
-          <!-- End -->
 
           {% endfor %} 
 
 
           {% for people in phd %}             
 
-          <!-- item 1 -->
           <li class="four columns" >
             <a href = "{{people.get_absolute_url}}">
-            <img src="{% cropped_thumbnail people "cropping" scale=1.0 %}" alt="" />
-            <h3>
-              {{people.name}}
-            </h3></a>
-            <p>
-              {{people.status}}
-            </p>
+            <img src="{% cropped_thumbnail people "cropping" scale=1.0 %}" alt="{{people.name}}" />
+            <h3>{{people.name}}</h3>
+            </a>
+            <p>{{people.status}}</p>
           </li>
-          <!-- End -->
 
           {% endfor %} 
 
           {% for people in masters %}             
 
-          <!-- item 1 -->
           <li class="four columns" >
             <a href = "{{people.get_absolute_url}}">
-            <img src="{% cropped_thumbnail people "cropping" scale=1.0 %}" alt="" />
-            <h3>
-              {{people.name}}
-            </h3>
+            <img src="{% cropped_thumbnail people "cropping" scale=1.0 %}" alt="{{people.name}}" />
+            <h3>{{people.name}}</h3>
             </a>
-            <p>
-              {{people.status}}
-            </p>
+            <p>{{people.status}}</p>
           </li>
-          <!-- End -->
 
           {% endfor %} 
 
           {% for people in undergrad %}             
 
-          <!-- item 1 -->
           <li class="four columns" >
-             <a href = "{{people.get_absolute_url}}">
-            <img src="{% cropped_thumbnail people "cropping" scale=1.0 %}" alt="" />
-            <h3>
-             {{people.name}}
-            </h3>
+            <a href = "{{people.get_absolute_url}}">
+            <img src="{% cropped_thumbnail people "cropping" scale=1.0 %}" alt="{{people.name}}" />
+            <h3>{{people.name}}</h3>
             </a>
-            <p>
-              {{people.status}}
-            </p>
+            <p>{{people.status}}</p>
           </li>
-          <!-- End -->
 
           {% endfor %} 
         </ul><!-- End team   -->  
         
-    </div><!-- End meet team -->
-
-  <div class = "container">
-    <div class = "sixteen columns">
-      <h2 class = "title">Affiliated</h2>
-    </div>
-    <div class = "four columns">
-      <h3 class = "">Faculty</h3>
-        <ul class =   "square-list">
-          {% for people in affilFaculty %}
-          <li>
-            <a href = "{{people.website}}"> {{people.name}}</a>
-          </li>
-          {% endfor %}
-
-        </ul>
-    </div>
-    <div class = "four columns">
-      <h3 class = "">PhD Students</h3>
-        <ul class =  "square-list">
-          {% for people in affilPhd %}
-          <li>
-            <a href = "{{people.website}}"> {{people.name}}</a>
-          </li>
-          {% endfor %}
-
-        </ul>
-    </div>
-    <div class = "four columns">
-      <h3 class = "">Masters Students</h3>
-        <ul class =   "square-list">
-          {% for people in affilMasters %}
-          <li>
-            <a href = "{{people.website}}"> {{people.name}}</a>
-          </li>
-          {% endfor %}
-
-        </ul>
-    </div>
-    <div class = "four columns">
-      <h3 class = "">Undergraduate</h3>
-        <ul class =   "square-list">
-          {% for people in affilUndergrad %}
-          <li>
-            <a href = "{{people.website}}"> {{people.name}}</a>
-          </li>
-          {% endfor %}
-
-        </ul>
+      </div><!-- End meet team -->
     </div>
   </div>
-
-
-     
-  </div><!-- <<< End Container >>> -->
 
 
   {% endblock %}
