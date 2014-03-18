@@ -4,49 +4,52 @@
   {% load static %}
   {% load staticfiles %}
   {% load cropping %}
+
+  
+  <!-- Image carousel -->  
   <div id="slider">
     <div class="container clearfix">
     
       <div class="sixteen columns">
       
-      <div class="flex-container">
-	  <div class="flexslider">
-		<ul class="slides">
-    {% for image in frontimages %}
+        <div class="flex-container">
 
-      <li style = "float:center">
-			<img src="{% cropped_thumbnail image "cropping" scale=1.0 %}" style = "height:500px;float:center">
-      {% if image.description != "" %}
-			<p class="flex-caption"> <span>{{name}}</span> {{image.description}}</p>
-      {% endif %}
-		  </li>
-      {% endfor %}
-        </ul>
-	  </div>
-      
-      </div>
-      
-      </div>
-      
-    </div><!-- End Container -->
-  </div><!-- End Slider -->
-  
-  <div class="container clearfix">
-  
-    <div id="welcome">
-      <div class="sixteen columns">
-        <div class="qoute">
-          <div class="sixteen columns omega">
-            {% for front in frontPageBlurb %}
-            
-            <h2>{{front.title|safe}}</h2>
-            <p>{{front.description|safe}}</p>
-
+          <div class="flexslider">
+            <ul class="slides">
+            {% for image in frontimages %}
+        
+              <li style = "float:center">
+              <img src="{% cropped_thumbnail image "cropping" scale=1.0 %}">
+              {% if image.description != "" %}
+              <p class="flex-caption"> <span>{{name}}</span> {{image.description|safe}}</p>
+              {% endif %}
+              </li>
             {% endfor %}
+            </ul>
           </div>
         </div>
       </div>
+    </div><!-- End Container -->
+  </div><!-- End Slider -->
+  
+  
+  <div class="container clearfix">
+
+  
+    <!-- WELCOME MESSAGE -->  
+    <div id="welcome">
+      <div class="sixteen columns">
+        <div class="qoute">
+            {% for front in frontPageBlurb %}
+            
+            <!-- <h2>{{front.title|safe}}</h2> -->
+            <p style="width: 100%; color: #666; font-size: 16px;">{{front.description|safe}}</p>
+
+            {% endfor %}
+        </div>
+      </div>
     </div><!-- End Welcome -->
+  
     
     <div class="recent-work gallery clearfix">
     
@@ -88,15 +91,22 @@
       </div><!-- End slidewrap -->
     
     </div><!-- End recent-work -->
-    <div class = "container">
-    <div class = "eight columns">
+    
+    
+    <div class="container">
+      
+      
+    <div class = "eleven columns">
       <h2>Links<span class = "line"></span></h2>
     </div>
-    <div class = "eight columns">
+    
+    
+    <div class = "five columns">
       <h2>News<span class = "line"></span></h2></br>
     </div>
+    
 
-    <div class = "eight columns">
+    <div class = "eleven columns">
 
         <div id="accordion">
         <h3><a href="#">Related Labs</a></h3>
@@ -140,8 +150,7 @@
     </div>
   </div>
     
-    <div class = "eight columns">
-      
+    <div class = "five columns">
 
       {% for post in posts|slice:":3" %}
 
