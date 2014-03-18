@@ -141,7 +141,7 @@ body, .navigation ul li ul li a, .services p {
 }
 
 .navigation ul li a, .flex-caption, .qoute p, a.link, #horizontal-tabs ul.tabs li, #vertical-tabs ul.tabs li, input.subscribe-text, input.subscribe-button  {
-	font-size: 16px;
+	font-size: 18px;
 }
 
 .button.large, .dropcap{
@@ -229,7 +229,8 @@ footer, .subscribe input.mail {
 
 .navigation ul li a:hover, .navigation ul li a.selected, .navigation ul li a.active, .navigation ul li ul li a, .services .item, 
 .recent-work .item, .welcome, .qoute, .lightbox .item, .portfolio .item, #options li a, .popular-tags a, .meta {
-	background: #fbfbfb; 
+	/*background: #fbfbfb; */
+  background: #f2f2f2;
 }
 
 #accordion h3{
@@ -365,7 +366,7 @@ a, .recent-work .item, .services .item .square, .clients ul.items li img, .subsc
 }
 
 a { 
-   text-decoration:none;
+  text-decoration:none;
 	color:#585858;
 }
 
