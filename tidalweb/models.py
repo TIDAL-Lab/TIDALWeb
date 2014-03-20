@@ -39,7 +39,7 @@ class Project(models.Model):
     website = models.URLField(blank = True)
     about = models.TextField()
     thumb = models.ImageField(upload_to='images/projects/thumbs/')
-    cropping = ImageRatioField('thumb', '300x300')
+    cropping = ImageRatioField('thumb', '172x172')
     slug = models.SlugField(unique=True, max_length=255)
     viewable = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
