@@ -109,24 +109,40 @@
       
     </div><!-- End Container -->
   </header><!-- <<< End Header >>> -->
-    <body>
-        {% block primary %}{% endblock %}
-    </body>
-      {% comment %}
-    <footer>
+
+     {% block primary %}{% endblock %}
+
+     <footer>
 
 	    <div class="container">
+          
+          <div class="five columns">
+            Copyright &copy; 2014 TIDAL Lab<br><br>
+            Northwestern University<br>
+            2120 Campus Drive<br>
+            Evanston, Illinois 60208<br>
+            michael-horn@northwestern.edu<br>
+            http://tidal.sesp.northwestern.edu
+          </div>
     
-      <div class="sixteen columns">
-        <h2 class = "line">TIDAL Lab, Northwestern University<h2>
-        <img src = "{% static 'images/footer.png' %}"></img>
-        <p></br></p>
-      </div>
-
-
     
-    </div><!-- End container -->
+          <div class="seven columns">
+            Computer Science, <br>
+            McCormick School of Engineering and Applied Sciences<br>
+            http://eecs.northwestern.edu<br><br>
+            
+            Learning Sciences <br>
+            School of Education and Social Policy<br>
+            http://sesp.northwestern.edu/learning-sciences
+          </div>
+          
+          <div class="four columns">
+            <img src="{% static 'images/nu-logo.png' %}" style="float: right;" alt="Northwestern University">
+          </div>
+          
+        </div>
 
     </footer>
-        {% endcomment %}
+  </div>
+</body>
 </html>
