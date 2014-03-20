@@ -454,8 +454,12 @@ input.submit-search {
 
 /* footer */
 footer {
-	padding:5px 0 22px 0;
+	padding:22px 0 22px 0;
 	margin:25px 0 0 0;
+  font-family: arial, sans-serif;
+  font-size: 12px;
+  font-weight: 200;
+  line-height: 140%;
 }
 
 h3.title {
