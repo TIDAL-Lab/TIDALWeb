@@ -142,9 +142,10 @@ class FrontImage(models.Model):
     description = models.CharField(max_length=255, blank = True)
     published = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
- 
+    vieworder = models.IntegerField(default=100)
+
     class Meta:
-        ordering = ['-created']
+        ordering = ['vieworder']
  
     def __unicode__(self):
         return u'%s' % self.name
