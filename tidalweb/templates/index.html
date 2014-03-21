@@ -88,8 +88,13 @@
     
     <div class="sixteen columns">
       {% for post in posts|slice:":3" %}
-      <h3 class=""><a href="{{post.get_absolute_url}}">{{post.title}}</a></h3>
-      <p>{{post.description}}</p>
+        {% if post.weblink == "" %}
+      <h4><a href="{{post.get_absolute_url}}">{{post.title}}</a></h4>
+        {% else %}
+      <h4><a href="{{post.weblink}}">{{post.title}}</a></h4>
+        {% endif %}
+      <p class="post-date">{{post.pubdate|date:"F Y"}}</p>
+      <p style="margin-left: 15px; margin-bottom: 10px;">{{post.description}}</p>
       {% endfor %}
     </div>
   </div>
