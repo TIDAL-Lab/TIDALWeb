@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 from image_cropping import ImageRatioField
-
+from datetime import date
 
 class Publication(models.Model):
     authors = models.CharField(max_length=255)
@@ -121,13 +121,15 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     author = models.ForeignKey(People)
     slug = models.SlugField(unique=True, max_length=255)
+    weblink = models.URLField(blank = True)
     description = models.CharField(max_length=255)
     content = models.TextField()
     published = models.BooleanField(default=True)
+    pubdate = models.DateField(default=date.today())
     created = models.DateTimeField(auto_now_add=True)
  
     class Meta:
-        ordering = ['-created']
+        ordering = ['-pubdate']
  
     def __unicode__(self):
         return u'%s' % self.title
