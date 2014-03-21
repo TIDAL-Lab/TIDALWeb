@@ -97,6 +97,7 @@ class People(models.Model):
     slug = models.SlugField(unique=True, max_length=255)
     viewable = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
+    vieworder = models.IntegerField(default=100)
 
     projects = models.ManyToManyField(Project, blank = True)
 
@@ -104,7 +105,7 @@ class People(models.Model):
 
  
     class Meta:
-        ordering = ['-created']
+        ordering = ['vieworder']
  
     def __unicode__(self):
         return u'%s' % self.name
