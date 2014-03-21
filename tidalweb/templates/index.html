@@ -89,7 +89,8 @@
     <div class="sixteen columns">
       {% for post in posts|slice:":5" %}
         {% if post.weblink == "" %}
-      <h4><a href="{{post.get_absolute_url}}">{{post.title}}</a></h4>
+      <!-- <h4><a href="{{post.get_absolute_url}}">{{post.title}}</a></h4> -->
+      <h4>{{post.title}}</h4>
         {% else %}
       <h4><a href="{{post.weblink}}">{{post.title}}</a></h4>
         {% endif %}
