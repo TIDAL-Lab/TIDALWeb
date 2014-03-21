@@ -6,49 +6,47 @@
   <div class="container clearfix">
   
     <div class="sixteen columns">
-
       <h1 class="page-title">Publications<span class="line"></span></h1>
-      
-      {% block content %}
-
-      <div class="contents">
-        <div class="clearfix sixteen columns">
-            
-          {% for pubs in year %}
-              
-          {% ifchanged pubs.year %}
-          <div class="clearfix">
-            <h2 class="title">{{pubs.year}}<span class="line"></span></h2>
-          </div>
-          {% endifchanged %}
-  
-          <div class="clearfix fourteen columns">
-            <p class="publication">{{pubs.authors}} ({{pubs.year}}). 
-            {% if pubs.weblink != '' and pubs.localCopy == ''%}
-            <a href = "{{pubs.weblink}}">{{pubs.title}}.</a>
-            {% endif %}
-            {% if pubs.weblink == '' and pubs.localCopy != ''%}
-            <a href = "{{pubs.localCopy.url}}">{{pubs.title}}.</a>
-            {% endif %}
-            {% if pubs.weblink != '' and pubs.localCopy != ''%}
-            <a href = "{{pubs.localCopy.url}}">{{pubs.title}}.</a>
-            {% endif %}
-            {% if pubs.weblink == '' and pubs.localCopy == ''%}
-            {{pubs.title}}.
-            {% endif %}
-            {% if pubs.pages != '' %}
-            <i>{{pubs.journal}}</i>, {{pubs.pages}}.
-            {% else %}
-            <i>{{pubs.journal}}</i>.
-            {% endif %}
-            </p>
-          </div>            
-          {% endfor %} 
-        </div>
-      </div>
-      
-      {% endblock %} 
     </div>
+      
+    {% block content %}
+
+    <div class="contents">
+          
+      {% for pubs in year %}
+            
+      {% ifchanged pubs.year %}
+      <div class="clearfix sixteen columns">
+        <h2 class="title">{{pubs.year}}<span class="line"></span></h2>
+      </div>
+      <br>
+      {% endifchanged %}
+
+      <div class="clearfix fourteen columns">
+        <p class="publication">{{pubs.authors}} ({{pubs.year}}). 
+        {% if pubs.weblink != '' and pubs.localCopy == ''%}
+        <a href = "{{pubs.weblink}}">{{pubs.title}}.</a>
+        {% endif %}
+        {% if pubs.weblink == '' and pubs.localCopy != ''%}
+        <a href = "{{pubs.localCopy.url}}">{{pubs.title}}.</a>
+        {% endif %}
+        {% if pubs.weblink != '' and pubs.localCopy != ''%}
+        <a href = "{{pubs.localCopy.url}}">{{pubs.title}}.</a>
+        {% endif %}
+        {% if pubs.weblink == '' and pubs.localCopy == ''%}
+        {{pubs.title}}.
+        {% endif %}
+        {% if pubs.pages != '' %}
+        <i>{{pubs.journal}}</i>, {{pubs.pages}}.
+        {% else %}
+        <i>{{pubs.journal}}</i>.
+        {% endif %}
+        </p>
+      </div>            
+      {% endfor %} 
+    </div>
+    
+    {% endblock %} 
   </div> 
   
 {% endblock %}
