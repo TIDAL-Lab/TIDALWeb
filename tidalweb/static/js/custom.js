@@ -49,7 +49,7 @@ $().UItoTop({ easingType: 'easeOutQuart' });
 		});
   
   $('.flexslider2').flexslider({
-	animation: 'slide',
+	animation: 'fade',
 	animationLoop: true,             //Boolean: Should the animation loop? If false, directionNav will received "disable" classes at either end
 	slideshow: true,                //Boolean: Animate slider automatically
 	slideshowSpeed: 4500,           //Integer: Set the speed of the slideshow cycling, in milliseconds
