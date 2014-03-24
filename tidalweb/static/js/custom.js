@@ -43,8 +43,8 @@ $().UItoTop({ easingType: 'easeOutQuart' });
 	animationSpeed: 700,             //Boolean: Pause the slideshow when interacting with control elements, highly recommended.
 	pauseOnHover: true, 
 	pauseOnAction:false,
-	controlNav: true,
-	directionNav: false,
+	controlNav: false,
+	directionNav: true,
 	controlsContainer: '.flex-container'
 		});
   
