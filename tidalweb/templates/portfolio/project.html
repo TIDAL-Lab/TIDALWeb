@@ -5,67 +5,26 @@
   {% load staticfiles %}
  <div class="container gallery clearfix">
   
-   <div class="sixteen columns"> <h1 class="page-title">Portfolio / <span class="gray2">{{project.name}}</span><span class="line"></span></h1>
-   </div><!-- Page Title -->
+  
+  <div class="sixteen columns"> <h1 class="page-title">Projects / {{project.name}}<span class="line"></span></h1> </div>
    
-   <div class="sixteen columns top">
-   <h2 class="title">{{project.name}}<a href="#" data="Next Project" class="next-project"></a> 
-   <a href="#" data="Previous Project" class="prev-project disabled"></a></h2>
-   </div><!-- Project Title -->
    
-   <!-- Start Project Slider -->
-   <div class="sixteen columns top bottom">
+  <div class="clearfix"></div>
+  
+  <div class="sixteen columns">
+    <p>{{project.about|safe}}</p>
+  </div>
    
-     <div class="slider-project">
-       
-      <div class="flex-container">
-	  <div class="flexslider2">
-		<ul class="slides">
-          {% for photo in project.photoFilter %}
-          <li>
-			<div class="caption">
-          <a href="{{photo.image.url}}" rel="prettyPhoto[gallery1]">
-          <img style = "text-align:center; margin: 0 auto;" src="{{photo.image.url}}"  class="pic" />
-            <span class="hover-effect big zoom"></span></a>
-            </div><!-- hover effect -->
-		  </li>
-      {% endfor %}
-        </ul>
-	  </div>
-      </div>
+  <!-- People -->  
+  <div class="sixteen columns bottom">
+    
+    <h2 class="title">People Involved<span class="line"></span></h2>
+     
+    <ul class="square-list job bottom-2">
+    </ul>
+  </div>
       
-     </div><!-- End slider-project -->  
-   
-   </div>
-   <!-- End -->
-   
-   <div class="clearfix"></div>
-   
-   <!-- Start Project Details -->
-   <div class="twelve columns bottom">
-   
-     <h2 class="title">About Project <span class="line"></span></h2>
-     
-     <div class="about-project bottom">
-       <p>
-        {{project.about|safe}}
-       </p>
-     </div>
-     
-      </div>
-   <!-- End  Project Details -->
-   
-   <div class="four columns bottom">
-     
-     <h2 class="title">People Involved<span class="line"></span></h2>
-     
-      <ul class="square-list job bottom-2">
-        <li><a href="#">Need to make</a></li>
-        <li><a href="#">Django interface</a></li>
-        <li><a href="#">Here, but haven't</a></li>
-      </ul><!-- End square-list -->
-      
-   <div class="clearfix"></div>
+  <div class="clearfix"></div>
 
    <!-- Start Related Projects -->
       {% comment %}
@@ -99,8 +58,6 @@
       
       </div><!-- End slidewrap -->
        {% endcomment %}   
-    </div><!-- End Related Projects -->
-
        
      
   </div><!-- <<< End Container >>> -->
