@@ -17,7 +17,7 @@ class Publication(models.Model):
     pubType = models.CharField(max_length = 255, choices = [('journal', 'Journal Articles'), ('book', 'Book Chapters'), ('refConfs', 'Refereed Conference Papers'), ('presentations', 'Presentations and Posters'), ('workshops', 'Workshop Papers'), ('others', 'Other Papers')])
     pubAffil = models.CharField(max_length = 255, choices = [('lab', 'TIDAL Lab'), ('personal', ('Personal'))])
     class Meta:
-        ordering = ['-created']
+        ordering = ['-year']
  
     def __unicode__(self):
         return u'%s' % self.title
