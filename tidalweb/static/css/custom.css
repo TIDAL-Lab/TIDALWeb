@@ -32,6 +32,8 @@
 .publication {
   font-size: 15px;
   padding-bottom: 20px;
+  text-indent: -0.4in;
+  padding-left: 0.4in;
 }
 
 .publication a {
