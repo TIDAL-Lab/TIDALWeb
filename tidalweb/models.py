@@ -42,6 +42,7 @@ class Project(models.Model):
     cropping = ImageRatioField('thumb', '172x172')
     slug = models.SlugField(unique=True, max_length=255)
     viewable = models.BooleanField(default=True)
+    vieworder = models.IntegerField(default=100)
     created = models.DateTimeField(auto_now_add=True)
 
 
@@ -69,7 +70,7 @@ class Project(models.Model):
         return listofProjects
 
     class Meta:
-        ordering = ['-created']
+        ordering = ['vieworder']
  
     def __unicode__(self):
         return u'%s' % self.name
@@ -85,7 +86,7 @@ class Photos(models.Model):
 class People(models.Model):
     name = models.CharField(max_length=255)
     netID = models.CharField(max_length = 255, blank = True)
-    status = models.CharField(max_length = 255, choices = [('director', 'Director'), ('faculty', 'Faculty'), ('phd', 'PhD Student'), ('masters', 'Masters Student'), ('undergrad', 'Undergraduate Student'), ('designer', 'Graphic Designer')])
+    status = models.CharField(max_length = 255, choices = [('Director', 'Director'), ('Faculty', 'Faculty'), ('PhD Student', 'PhD Student'), ('Masters Student', 'Masters Student'), ('Undergraduate', 'Undergraduate Student'), ('Graphic Designer', 'Graphic Designer')])
     biography = models.TextField()
     website = models.URLField(blank = True)
     linkedin = models.URLField(blank = True)
