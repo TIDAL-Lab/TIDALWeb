@@ -62,14 +62,16 @@
             {% endcomment %}
 
             {% if project.videoPopupHtmlField != '' %}
-            <a class = "videoLink">
-            {% endif %}
+            <div class = "caption">
+              <a class = "videoLink">
+              {% endif %}
 
-            <img src="{% cropped_thumbnail project "cropping" scale=1.0 %}" class="pic">
-            {% if project.videoPopupHtmlField != '' %}
-            <span class="hover-effect big facetime_video"></span>
-            </a>
-            {% endif %}
+              <img src="{% cropped_thumbnail project "cropping" scale=1.0 %}" class="pic">
+              {% if project.videoPopupHtmlField != '' %}
+              <span class="hover-effect big facetime_video"></span>
+              </a>
+              </div>
+              {% endif %}
           {% comment %}
           </a>
           {% endcomment %}
