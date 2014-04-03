@@ -4,16 +4,6 @@
   {% load static %}
   {% load cropping %}
   {% load staticfiles %}
-  <script>
-  $(document).ready(function (e) {
-    $(".video").hide();
-      $(".videoLink").click(
-        function (e) {
-          $(this).attr("id").show();
-          $(this).attr("id").css({'display':'block'});
-        });
-});
-</script>
 
 <div class="container clearfix">
   
@@ -37,16 +27,6 @@
   
     
   <!-- PORTFOLIO -->  
-
-  {% for project in curProjects %}
-    {% if project.videoPopupHtmlField != '' %}
-      <div id="{{project.slug}}" class = "eight columns video">
-        {{project.videoPopupHtmlField|safe}}
-      </div>
-    {% endif %}
-
-  {% endfor %}
-  
   <div class="portfolio sixteen columns">
     <div class="gallery" id="contain"> 
 
@@ -61,14 +41,14 @@
             {% endif %}
             {% endcomment %}
 
-            {% if project.videoPopupHtmlField != '' %}
+            {% if project.videoURL != '' %}
             <div class = "caption">
-              <a class = "videoLink">
+              <a href = "{{project.videoURL}}" rel="prettyPhoto">
               {% endif %}
 
               <img src="{% cropped_thumbnail project "cropping" scale=1.0 %}" class="pic">
-              {% if project.videoPopupHtmlField != '' %}
-              <span class="hover-effect big facetime_video"></span>
+              {% if project.videoURL != '' %}
+              <span class="hover-effect link"></span>
               </a>
               </div>
               {% endif %}
