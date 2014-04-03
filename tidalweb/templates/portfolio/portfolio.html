@@ -9,6 +9,7 @@
     $(".video").hide();
       $(".videoLink").click(
         function (e) {
+          $(this).attr("id").show();
           $(this).attr("id").css({'display':'block'});
         });
 });
@@ -36,15 +37,20 @@
   
     
   <!-- PORTFOLIO -->  
+
+  {% for project in curProjects %}
+    {% if project.videoPopupHtmlField != '' %}
+      <div id="{{project.slug}}" class = "eight columns video">
+        {{project.videoPopupHtmlField|safe}}
+      </div>
+    {% endif %}
+
+  {% endfor %}
+  
   <div class="portfolio sixteen columns">
     <div class="gallery" id="contain"> 
 
       {% for project in curProjects %}
-        {% if project.videoPopupHtmlField != '' %}
-          <div id="{{project.slug}}" class = "video">
-            {{project.videoPopupHtmlField|safe}}
-          </div>
-      {% endif %}
       <div class="sixteen columns item {% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" data-categories="{% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" style="min-height: 0px;">
           <div class = "four columns" style="width:25%;height:100%">
             {% comment %}
