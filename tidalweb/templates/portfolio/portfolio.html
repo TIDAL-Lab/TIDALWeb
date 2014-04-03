@@ -33,22 +33,24 @@
 
       {% for project in curProjects %}
    
-      <div class="one-fifth column item element-3 {% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" data-categories="{% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" style="min-height: 0px;">
-        <div class="caption">
-        
-          {% if project.website != '' %}
-          <a href="{{project.website}}">
-          {% else %}
-          <a href="{{project.get_absolute_url}}">
-          {% endif %}
-          <img src="{% cropped_thumbnail project "cropping" scale=1.0 %}" class="pic"></a>
-          {% if project.website != '' %}
-          <h4><a href="{{project.website}}">{{project.name}}</a></h4>
-          {% else %}
-          <h4><a href="{{project.get_absolute_url}}">{{project.name}}</a></h4>
-          {% endif %}
+      <div class="sixteen columns item {% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" data-categories="{% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" style="min-height: 0px;">
+          <div class = "four columns" style="width:25%;height:100%">
+            {% if project.website != '' %}
 
-        </div>
+            <a href="{{project.website}}">
+            {% else %}
+            <a href="{{project.get_absolute_url}}">
+            {% endif %}
+            <img src="{% cropped_thumbnail project "cropping" scale=1.0 %}" class="pic"></a>
+          </div>
+          <div class ="eleven columns" style = "text-align:left;">
+          {% if project.website != '' %}
+            <h4><a href="{{project.website}}">{{project.name}}</a></h4>
+            {% else %}
+            <h4><a href="{{project.get_absolute_url}}">{{project.name}}</a></h4>
+            {% endif %}
+            <p>{{project.about|safe}}</p>
+          </div>
       </div>
       {% endfor %}  
     </div>
