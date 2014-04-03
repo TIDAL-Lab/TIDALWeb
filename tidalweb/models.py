@@ -38,6 +38,7 @@ class Project(models.Model):
     active = models.BooleanField(default=True)
     website = models.URLField(blank = True)
     about = models.TextField()
+    videoPopupHtmlField = models.TextField()
     thumb = models.ImageField(upload_to='images/projects/thumbs/')
     cropping = ImageRatioField('thumb', '172x172')
     slug = models.SlugField(unique=True, max_length=255)

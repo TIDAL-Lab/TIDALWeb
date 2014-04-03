@@ -4,7 +4,15 @@
   {% load static %}
   {% load cropping %}
   {% load staticfiles %}
-
+  <script>
+  $(document).ready(function (e) {
+    $(".video").hide();
+      $(".videoLink").click(
+        function (e) {
+          $(this).attr("id").css({'display':'block'});
+        });
+});
+</script>
 
 <div class="container clearfix">
   
@@ -32,16 +40,33 @@
     <div class="gallery" id="contain"> 
 
       {% for project in curProjects %}
-   
+        {% if project.videoPopupHtmlField != '' %}
+          <div id="{{project.slug}}" class = "video">
+            {{project.videoPopupHtmlField|safe}}
+          </div>
+      {% endif %}
       <div class="sixteen columns item {% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" data-categories="{% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" style="min-height: 0px;">
           <div class = "four columns" style="width:25%;height:100%">
+            {% comment %}
             {% if project.website != '' %}
-
             <a href="{{project.website}}">
             {% else %}
             <a href="{{project.get_absolute_url}}">
             {% endif %}
-            <img src="{% cropped_thumbnail project "cropping" scale=1.0 %}" class="pic"></a>
+            {% endcomment %}
+
+            {% if project.videoPopupHtmlField != '' %}
+            <a class = "videoLink">
+            {% endif %}
+
+            <img src="{% cropped_thumbnail project "cropping" scale=1.0 %}" class="pic">
+            {% if project.website != '' %}
+            <span class="hover-effect big facetime_video"></span>
+            </a>
+            {% endif %}
+          {% comment %}
+          </a>
+          {% endcomment %}
           </div>
           <div class ="eleven columns" style = "text-align:left;">
           {% if project.website != '' %}
@@ -50,6 +75,9 @@
             <h4><a href="{{project.get_absolute_url}}">{{project.name}}</a></h4>
             {% endif %}
             <p>{{project.about|safe}}</p>
+            {% if project.website != '' %}
+            <p style = "position:absolute;bottom:0;right:20px;"><a href ="{{project.website}}">Read More...</a></p>
+            {% endif %}
           </div>
       </div>
       {% endfor %}  
