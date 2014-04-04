@@ -41,6 +41,7 @@ class Project(models.Model):
     videoURL = models.URLField(blank=True)
     thumb = models.ImageField(upload_to='images/projects/thumbs/')
     cropping = ImageRatioField('thumb', '172x172')
+    projectCrop = ImageRatioField('thumb', '500x350')
     slug = models.SlugField(unique=True, max_length=255)
     viewable = models.BooleanField(default=True)
     vieworder = models.IntegerField(default=100)

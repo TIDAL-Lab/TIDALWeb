@@ -32,7 +32,7 @@
 
       {% for project in curProjects %}
       <div class="sixteen columns item {% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" data-categories="{% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" style="min-height: 0px;">
-          <div class = "four columns" style="width:25%;height:100%">
+          <div class = "six columns" style="width:35%;height:100%">
             {% comment %}
             {% if project.website != '' %}
             <a href="{{project.website}}">
@@ -46,7 +46,7 @@
               <a href = "{{project.videoURL}}" rel="prettyPhoto">
               {% endif %}
 
-              <img src="{% cropped_thumbnail project "cropping" scale=1.0 %}" class="pic">
+              <img src="{% cropped_thumbnail project "projectCrop" scale=1.0 %}" class="pic">
               {% if project.videoURL != '' %}
               <span class="hover-effect link"></span>
               </a>
@@ -56,7 +56,7 @@
           </a>
           {% endcomment %}
           </div>
-          <div class ="eleven columns" style = "text-align:left;">
+          <div class ="nine columns" style = "text-align:left;">
           {% if project.website != '' %}
             <h4><a href="{{project.website}}">{{project.name}}</a></h4>
             {% else %}
