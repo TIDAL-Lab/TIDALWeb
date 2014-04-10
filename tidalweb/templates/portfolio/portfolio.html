@@ -30,8 +30,8 @@
     <div class="gallery" id="contain"> 
 
       {% for project in curProjects %}
-      <div class="sixteen columns item {% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" data-categories="{% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" style="min-height: 0px;">
-        <div style="text-align: left;">
+      <div class="sixteen columns {% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" data-categories="{% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" style="min-height: 0px;">
+        <div class="fifteen columns" style="text-align: left; color: #444; background-color: #efefef; margin-bottom: 15px;">
           {% if project.videoURL != '' %}
           <div class="caption">
             <a href = "{{project.videoURL}}" rel="prettyPhoto">
