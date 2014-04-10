@@ -4,7 +4,7 @@
   {% load static %}
   {% load cropping %}
   {% load staticfiles %}
-
+  
 <div class="container clearfix">
   
   <div class="sixteen columns">
@@ -14,7 +14,7 @@
   
   <!-- TAG LIST --> 
   <div class="sixteen columns">  
-    <div class="title clearfix" id="options">
+    <div class="clearfix" id="options">
       <ul id="filters" class="option-set clearfix" data-option-key="filter">
         <li><a href="#filter" data-option-value="*" class="selected">all</a></li>
         {% for tag in tags %}
@@ -26,21 +26,21 @@
   
     
   <!-- PORTFOLIO -->  
-  <div class="portfolio sixteen columns">
+  <div class="sixteen columns">
     <div class="gallery" id="contain"> 
 
       {% for project in curProjects %}
-      <div class="sixteen columns {% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" data-categories="{% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" style="min-height: 0px;">
-        <div class="fifteen columns" style="text-align: left; color: #444; background-color: #efefef; margin-bottom: 15px;">
+      <div class="portfolio-item {% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" data-categories="{% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" style="min-height: 0px;">
+        <div style="padding-right: 10px;">
           {% if project.videoURL != '' %}
           <div class="caption">
             <a href = "{{project.videoURL}}" rel="prettyPhoto">
-            <img src="{% cropped_thumbnail project "projectCrop" scale=1.0 %}" class="pic" style="margin: 10px; margin-right: 20px; float: left; width: 33%;">
+            <img src="{% cropped_thumbnail project "projectCrop" scale=1.0 %}" class="pic" style="margin-right: 20px; float: left; width: 33%;">
             <span class="hover-effect link"></span>
             </a>
           </div>
           {% else %}
-          <img src="{% cropped_thumbnail project "projectCrop" scale=1.0 %}" class="pic" style="margin: 10px; margin-right: 20px; float: left; width: 33%;">
+          <img src="{% cropped_thumbnail project "projectCrop" scale=1.0 %}" class="pic" style="margin-right: 20px; float: left; width: 33%;">
           {% endif %}
 
           {% if project.website != '' %}
@@ -50,7 +50,7 @@
           {% endif %}
           <p>{{project.about|safe}}</p>
           {% if project.website != '' %}
-          <p style = "position: absolute; bottom: 0px; right: 20px;"><a href ="{{project.website}}">Read More...</a></p>
+          <p style = "position: absolute; bottom: 0px; right: 20px; color: #00AEC8;"><a href ="{{project.website}}">Read More...</a></p>
           {% endif %}
         </div>
       </div>
