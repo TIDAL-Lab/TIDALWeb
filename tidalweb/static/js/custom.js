@@ -217,66 +217,68 @@ $(document).ready(function(){
 });
 
 // Isotope Filtering
-$(function(){
-      
-var $container = $('#contain');
+$(window).load(function(){
+	$(function(){
+	      
+	var $container = $('#contain');
 
-// initialize Isotope
-  $container.isotope({
-	// options...
-	resizable: false, // disable normal resizing
-	// set columnWidth to a percentage of container width
-	masonry: { columnWidth: $container.width() / 12 }
-  });
+	// initialize Isotope
+	  $container.isotope({
+		// options...
+		resizable: false, // disable normal resizing
+		// set columnWidth to a percentage of container width
+		masonry: { columnWidth: $container.width() / 12 }
+	  });
 
-  // update columnWidth on window resize
-  $(window).smartresize(function(){
+	  // update columnWidth on window resize
+	  $(window).smartresize(function(){
+		$container.isotope({
+		  // update columnWidth to a percentage of container width
+		  masonry: { columnWidth: $container.width() / 12 }
+		});
+	  });
+	  
+
 	$container.isotope({
-	  // update columnWidth to a percentage of container width
-	  masonry: { columnWidth: $container.width() / 12 }
+	  itemSelector : '.item',
+	   animationOptions: {
+	     duration: 750,
+	     easing: 'linear',
+	     queue: true
+	   }
 	});
-  });
-  
-
-$container.isotope({
-  itemSelector : '.item',
-   animationOptions: {
-     duration: 750,
-     easing: 'linear',
-     queue: true
-   }
-});
 
 
-var $optionSets = $('#options .option-set'),
-	$optionLinks = $optionSets.find('a');
+	var $optionSets = $('#options .option-set'),
+		$optionLinks = $optionSets.find('a');
 
-$optionLinks.click(function(){
-  var $this = $(this);
-  // don't proceed if already selected
-  if ( $this.hasClass('selected') ) {
-	return false;
-  }
-  var $optionSet = $this.parents('.option-set');
-  $optionSet.find('.selected').removeClass('selected');
-  $this.addClass('selected');
+	$optionLinks.click(function(){
+	  var $this = $(this);
+	  // don't proceed if already selected
+	  if ( $this.hasClass('selected') ) {
+		return false;
+	  }
+	  var $optionSet = $this.parents('.option-set');
+	  $optionSet.find('.selected').removeClass('selected');
+	  $this.addClass('selected');
 
-  // make option object dynamically, i.e. { filter: '.my-filter-class' }
-  var options = {},
-	  key = $optionSet.attr('data-option-key'),
-	  value = $this.attr('data-option-value');
-  // parse 'false' as false boolean
-  value = value === 'false' ? false : value;
-  options[ key ] = value;
-  if ( key === 'layoutMode' && typeof changeLayoutMode === 'function' ) {
-	// changes in layout modes need extra logic
-	changeLayoutMode( $this, options )
-  } else {
-	// otherwise, apply new options
-	$container.isotope( options );
-  }
-  
-  return false;
+	  // make option object dynamically, i.e. { filter: '.my-filter-class' }
+	  var options = {},
+		  key = $optionSet.attr('data-option-key'),
+		  value = $this.attr('data-option-value');
+	  // parse 'false' as false boolean
+	  value = value === 'false' ? false : value;
+	  options[ key ] = value;
+	  if ( key === 'layoutMode' && typeof changeLayoutMode === 'function' ) {
+		// changes in layout modes need extra logic
+		changeLayoutMode( $this, options )
+	  } else {
+		// otherwise, apply new options
+		$container.isotope( options );
+	  }
+	  
+	  return false;
+	});
 });
 
 
