@@ -30,6 +30,7 @@
     <div class="gallery" id="contain"> 
 
       {% for project in curProjects %}
+      <a id = "{{project.slug}}"></a>
       <div class="portfolio-item {% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" data-categories="{% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" style="min-height: 0px;">
         <div style="padding-right: 10px;">
           {% if project.videoURL != '' %}
