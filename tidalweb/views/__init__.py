@@ -1,4 +1,4 @@
-from views import index, contact
+from views import index, contact, ntango
 from viewsFront import images
 from viewsNews import news,post
 from viewsPartners import partner

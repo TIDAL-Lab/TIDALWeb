@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render_to_response
+from django.shortcuts import render, render_to_response
 from tidalweb.models import Project
 from tidalweb.models import Post
 from tidalweb.models import Partner
@@ -15,6 +15,13 @@ def index(request):
 	frontimages = FrontImage.objects.filter(published = True)
 	frontPageBlurb = FrontPageBlurb.objects.all
 	return render_to_response('index.html', {'projects': projects, 'posts':posts,'labs': labs, 'depts': depts, 'oustideLabs': oustideLabs, 'orgs': orgs,'frontimages': frontimages, 'frontPageBlurb':frontPageBlurb})
+
+
+
+def ntango(request):
+  return render(request, 'ntango.html', { })
+
+
 
 # def publications(request):
 #     return render_to_response('publications.html')
