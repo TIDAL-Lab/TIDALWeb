@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render, render_to_response
+from django.template import RequestContext
 from tidalweb.models import Project
 from tidalweb.models import Post
 from tidalweb.models import Partner
@@ -19,8 +20,7 @@ def index(request):
 
 
 def ntango(request):
-  return render(request, 'ntango.html', { })
-
+  return render_to_response('ntango.html', context_instance=RequestContext(request))
 
 
 # def publications(request):
