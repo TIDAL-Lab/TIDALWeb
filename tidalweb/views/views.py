@@ -18,9 +18,8 @@ def index(request):
 	return render_to_response('index.html', {'projects': projects, 'posts':posts,'labs': labs, 'depts': depts, 'oustideLabs': oustideLabs, 'orgs': orgs,'frontimages': frontimages, 'frontPageBlurb':frontPageBlurb})
 
 
-
-def ntango(request):
-  return render_to_response('ntango.html', context_instance=RequestContext(request))
+def greenhomegames(request):
+  return render_to_response('greenhomegames.html')
 
 
 # def publications(request):
