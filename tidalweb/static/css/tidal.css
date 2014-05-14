@@ -1,0 +1,197 @@
+/*
+ * Tangible Interaction Design and Learning Lab
+ * tidal.northwestern.edu
+ */
+
+
+/*
+ * BODY ELEMENTS
+ */
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 11pt;
+  padding: 0;
+  margin: 0;
+  text-align: justify;
+}
+
+div.content {
+  width: 900px;
+  margin: 0 auto;
+  padding: 80px 20px 20px 20px;
+  color: black;
+  line-height: 123%;
+}
+
+h1 {
+   font-size: 24pt;
+   margin-bottom: 20pt;
+   padding: 0px;
+}
+
+b {
+   font-weight: 700;
+}
+
+p {
+   margin-bottom: 12pt;
+   margin-top: 0pt;
+   line-height: 140%;
+}
+
+li {
+  margin-bottom: 3pt;
+  margin-left: -0.25in;
+}
+
+
+
+/*
+ * HEADER AND LOGO
+ */
+header {
+  display: block;
+  width: 100%;
+  margin: 0px;
+  background-color: rgb(0, 174, 200);
+  color: white;
+  font-size: 11pt;
+  position: fixed;
+}
+
+.head {
+  width: 900px;
+  height: 60px;
+  margin: 0 auto;
+  padding: 0px;
+}
+
+.logo {
+  width: 200px;
+  height: 36px;
+  background-image: url('/static/images/logo_white.png');
+  background-size: 50px 50px;
+  background-repeat: no-repeat;
+  background-position: 0px 5px;
+  padding: 12px 0px 12px 67px;
+  font-size: 10pt;
+  font-weight: 100;
+  float: left;
+}
+
+.logo a {
+  text-decoration: none;
+  color: white;
+}
+
+
+/*
+ * NAVIGATION BAR
+ */
+nav {
+  float: right;
+  display: block;
+  text-align: right;
+  height: 36px;
+  padding: 20px 0 4px 0;
+  position: relative;
+  right: -15px;
+}
+
+nav ul {
+  padding: 0px;
+  margin: 0px;
+}
+
+nav ul li {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 11pt;
+}
+
+nav a {
+  margin: 0;
+  padding: 15px;
+  text-decoration: none;
+  color: white;
+  transition: background-color 0.3s ease-in-out;
+}
+
+nav a:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+/*
+ * FOOTER
+ */
+footer {
+  background-color: #444;
+  display: block;
+  width: 100%;
+  color: #aaa;
+  font-size: 12px;
+  line-height: 135%;
+  min-height: 180px;
+}
+
+.foot {
+  width: 900px;
+  margin: 0 auto;
+  padding: 20px 0px;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: rgb(0, 174, 200);
+}
+
+
+
+/*
+ * COLUMNS
+ */
+div.column.three {
+  width: 300px;
+  float: left;
+}
+
+
+div.column.two {
+  width: 450px;
+  float: left;
+}
+
+
+div.separator {
+  border-bottom: 1px solid black;
+  width: 900px;
+  height: 30px;
+  clear: both;
+}
+
+
+div.column.one {
+  width: 900px;
+}
+
+
+/*
+ * LINKS
+ */
+.content a {
+  color: rgb(0, 130, 160);
+  text-decoration: none;
+}
+
+
+.content a:hover {
+  color: #900;
+}
