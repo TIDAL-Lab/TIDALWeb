@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Tangible Interaction Design and Learning Lab at Northwestern University">
+  <meta name="author" content="Michael Horn">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+  {% load static %}
+  {% load staticfiles %}
+  
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{% static 'css/tidal.css' %}">
+  <link rel="shortcut icon" href="{% static 'images/favicon/favicon.ico' %}">
+
+  <title>TIDAL Lab | Northwestern University</title>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="head">
+      
+      <!-- LOGO -->
+      <div class="logo">
+        <a href="{% url 'index' %}">Tangible Interaction Design<br> and Learning Lab</a>
+      </div>
+      
+      <!-- NAVIGATION BAR -->
+      <nav>
+        <ul>
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'portfolio' %}">Projects</a></li>
+          <li><a href="{% url 'people' %}">People</a></li>
+          <li><a href="{% url 'publications' %}">Publications</a></li>
+          <!-- <li><a href="#teaching">Teaching</a></li> -->
+          <!-- <li><a href="{% url 'news' %}">News</a></li> -->
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+      </nav>
+      
+    </div>
+  </header>
+  
+
+  <!-- CONTENT -->  
+  <div class="content">
+    {% block primary %}{% endblock %}
+  </div>     
+      
+  
+  <!-- FOOTER -->  
+  <footer>
+    <div class="foot">
+      
+      <div class="column three">
+        Copyright &copy; 2014 TIDAL Lab<br><br>
+        Northwestern University<br>
+        2120 Campus Drive<br>
+        Evanston, Illinois 60208<br>
+        <a href="mailto:michael-horn@northwestern.edu">michael-horn@northwestern.edu</a><br>
+        <a href="http://tidal.northwestern.edu">http://tidal.northwestern.edu</a>
+      </div>
+  
+      <div class="column three">
+        Computer Science <br>
+        McCormick School of Engineering and Applied Sciences<br>
+        <a href="http://eecs.northwestern.edu">http://eecs.northwestern.edu</a><br><br>
+        
+        Learning Sciences <br>
+        School of Education and Social Policy<br>
+        <a href="http://sesp.northwestern.edu/learning-sciences">http://sesp.northwestern.edu/learning-sciences</a>
+      </div>
+      
+      <div class="column three">
+        <img src="{% static 'images/nu-logo.png' %}" alt="Northwestern University" style="float: right;">
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

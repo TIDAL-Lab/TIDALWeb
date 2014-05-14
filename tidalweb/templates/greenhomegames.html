@@ -1,125 +1,75 @@
-<!DOCTYPE html>
+{% extends 'base-mini.html' %}
+{% block primary %}
 
-<html>
-<head>
-   <title>Green Home Games: Turn Up the Heat!</title>
-   <link href='http://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
-   
-<style>
-@page {
-   size: 8.5in 11in;
-   margin: 0.5in 0in 0.5in 0in;
-   padding: 0;
-}
-   
-body {
-   font-family: 'Lato', sans-serif;
-   font-weight: 400;
-   font-size: 11pt;
-   padding: 0 0.5in 0 0.5in;
-   margin: 0;
-   text-align: justify;
-   background-color: #eee;
-}
+  {% load static %}
+  {% load staticfiles %}
 
-div.content {
-  width: 850px;
-  margin: 10px auto;
-  padding: 20px;
-  color: black;
-  line-height: 123%;
-  background-color: white;
-}
 
-h1 {
-   font-size: 24pt;
-   margin-bottom: 20pt;
-   padding: 0px;
-}
+    <div class="column two">
+      <h1>Turn Up the Heat!</h1>
+      <p>
+        Turn Up the Heat is an interactive board game for the entire family.
+        See if your family can survive for a year with limited resources and
+        unforseen events that can stretch you thin.
+      </p>
+      <p>
+        Turn Up the Heat is the world's first thermostat board game. Why play a
+        game about thermostats? Because it's fun! Not to mention thermostats are
+        widely misunderstood, poorly used, and account for a huge portion of our
+        nation's energy consumption. To win the game you will need 
+        to make careful tradeoffs around comfort, money, and the environment.
+      </p>
+      <img src="{% static 'images/greenhomegames/ipad.png' %}" style="width: 370px; margin-bottom: 20px;" alt="iPad screenshot">
+    </div>
 
-b {
-   font-weight: 700;
-}
+    <div class="column two">
+      <img src="{% static 'images/greenhomegames/board-cards.png' %}" style="float: right; width: 430px;" alt="Game board and cards">
+    </div>    
 
-p {
-   margin-bottom: 12pt;
-   margin-top: 0pt;
-   line-height: 140%;
-}
-
-li {
-  margin-bottom: 3pt;
-  margin-left: -0.25in;
-}
-
-</style>
-</head>
-
-<body>
-  <div class="content">
-    <img src="/static/images/greenhomegames/board-cards.png" style="float: right; width: 450px; margin-top: 20px;" alt="Game board and cards">
-    <h1>Turn Up the Heat!</h1>
-    <p>
-      Turn Up the Heat is an interactive board game for the entire family.
-      See if your family can survive for a year with limited resources and
-      unforseen events that can stretch you thin.
-    </p>
-    <p>
-      Turn Up the Heat is the world's first thermostat board game. Why play a
-      game about thermostats? Because it's fun! Not to mention thermostats are
-      widely misunderstood, poorly used, and account for a huge portion of our
-      nation's energy consumption. To win the game you will need 
-      to make careful tradeoffs around comfort, money, and the environment.
-    </p>
-    <img src="/static/images/greenhomegames/ipad.png" style="width: 370px; margin-bottom: 20px;" alt="iPad screenshot">
-
-    <br>
-    <br>
-    <br>
-    <div style="border-bottom: 1px solid black;"></div>
-
+    <div class="separator"></div>
 
     
     <!-- GET THE GAME -->      
-    <div style="float: left; width: 330px;">
+    <div class="column two">
       <h1>Get the Game</h1>
       <p>
         Download and print out the game elements:
       </p>
       <ul>
-         <li><a href="/static/pdf/greenhomegames/rules.pdf" target="_blank">Game Rules</a></li>
-         <li><a href="/static/pdf/greenhomegames/resources.pdf" target="_blank">Resource Cards</a> (27 cards)</li>
-         <li><a href="/static/pdf/greenhomegames/events.pdf" target="_blank">Event Cards</a> (18 cards)</li>
-         <li><a href="/static/pdf/greenhomegames/characters.pdf" target="_blank">Player Cards</a> (5 cards)</li>
-         <li><a href="/static/pdf/greenhomegames/gameboard.pdf" target="_blank">Gameboard</a></li>
-         <li><a href="/static/pdf/greenhomegames/money.pdf" target="_blank">Play Money</a> ($100s, $50s, $20s, $10s, and $5s)</li>
+         <li><a href="{% static 'pdf/greenhomegames/rules.pdf' %}" target="_blank">Game Rules</a></li>
+         <li><a href="{% static 'pdf/greenhomegames/resources.pdf' %}" target="_blank">Resource Cards</a> (27 cards)</li>
+         <li><a href="{% static 'pdf/greenhomegames/events.pdf' %}" target="_blank">Event Cards</a> (18 cards)</li>
+         <li><a href="{% static 'pdf/greenhomegames/characters.pdf' %}" target="_blank">Player Cards</a> (5 cards)</li>
+         <li><a href="{% static 'pdf/greenhomegames/gameboard.pdf' %}" target="_blank">Gameboard</a></li>
+         <li><a href="{% static 'pdf/greenhomegames/money.pdf' %}" target="_blank">Play Money</a> ($100s, $50s, $20s, $10s, and $5s)</li>
       </ul>
       <p>
         You'll also need a die and a player token.<br>
-        <img src="/static/images/greenhomegames/red-die.png" style="height: 75px; margin: 5px 5px 5px 15px;" alt="Die">
-        <img src="/static/images/greenhomegames/token.png" style="height: 100px; margin: 5px 5px 5px 15px;" alt="Token">
+        <img src="{% static 'images/greenhomegames/red-die.png' %}" style="height: 75px; margin: 5px 5px 5px 15px;" alt="Die">
+        <img src="{% static 'images/greenhomegames/token.png' %}" style="height: 100px; margin: 5px 5px 5px 15px;" alt="Token">
       </p>
     </div>
     
     
+    
     <!-- GET THE APP -->
-    <div style="float: right; width: 430px;">
+    <div class="column two">
       <h1>Play the Game</h1>
       <p>
         When you're ready to play, open the <a href="http://litl.sesp.northwestern.edu/ghg/" target="_blank">Turn Up the Heat App</a>!
       </p>
       <a href="http://litl.sesp.northwestern.edu/ghg/" target="_blank">
-      <img src="/static/images/greenhomegames/play.png" style="margin-left: 90px; margin-top: 10px; width: 150px;" alt="App Link" target="_blank"></a>
+      <img src="{% static 'images/greenhomegames/play.png' %}" style="margin-left: 90px; margin-top: 10px; width: 150px;" alt="App Link" target="_blank"></a>
     </div>
-    <br clear="all">
-    <br>
+    
+    
+    <div class="separator"></div>
 
     
-    <div style="border-bottom: 1px solid black;"></div>
-
     <h1>Game Play Video</h1>
     <iframe width="560" height="315" src="//www.youtube.com/embed/h9ImU9uX9AU" frameborder="0" allowfullscreen style="margin: 50px 90px;"></iframe>
-    <div style="border-bottom: 1px solid black;"></div>
+
+    <div class="separator"></div>
 
     
     <!-- ABOUT US -->
@@ -128,8 +78,8 @@ li {
       Turn Up the Heat was produced at Northwestern University by the <a href="http://tidal.northwestern.edu">Tangible
       Interaction Design and Learning</a> (TIDAL) Lab and the Learning, Interaction,
       and Media in the Everyday (LIME) Lab.<br>
-      <img src="/static/images/greenhomegames/tidal.png" style="margin-left: 85px; margin-top: 10px; height: 60px;" alt="TIDAL Lab">
-      <img src="/static/images/greenhomegames/lime.png" style="height: 60px; margin-top: 10px;" alt="LIME Lab">
+      <img src="{% static 'images/greenhomegames/tidal.png' %}" style="margin-left: 85px; margin-top: 10px; height: 60px;" alt="TIDAL Lab">
+      <img src="{% static 'images/greenhomegames/lime.png' %}" style="height: 60px; margin-top: 10px;" alt="LIME Lab">
     </p>
     <p>
       <b>Game Design:</b> Michael Horn, Reed Stevens, Amartya Banerjee, Pei-Yi Kuo,
@@ -151,16 +101,15 @@ li {
       <br>
     </p>
 
-    <div style="width: 100%;">
-      <img src="/static/images/greenhomegames/logo.png" style="margin-left: 370px; margin-top: 40px; width: 1in;" alt="Green Home Games">
+    
+    <div class="column one" style="text-align: center;">
+      <img src="{% static 'images/greenhomegames/logo.png' %}" style="margin-top: 40px; width: 1in;" alt="Green Home Games"><br>
+      <p style="font-size: 9pt; position: relative; bottom: -15px; text-align: center;">
+        Copyright &copy; Michael Horn and Reed Stevens. All rights reserved.
+      </p>
     </div>
-    <p style="font-size: 9pt; position: relative; bottom: -15px; text-align: center;">
-      Copyright &copy; Michael Horn and Reed Stevens. All rights reserved.
-    </p>
 </div>
 <br>
 <br>
-<br>
-<br>
-</body>
-</html>
+  
+{% endblock %}
