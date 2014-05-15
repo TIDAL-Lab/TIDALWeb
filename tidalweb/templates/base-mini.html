@@ -24,7 +24,7 @@
     <div class="head">
       
       <!-- LOGO -->
-      <div class="logo">
+      <div class="logo wide-screen">
         <a href="{% url 'index' %}">Tangible Interaction Design<br> and Learning Lab</a>
       </div>
       
@@ -37,7 +37,7 @@
           <li><a href="{% url 'publications' %}">Publications</a></li>
           <!-- <li><a href="#teaching">Teaching</a></li> -->
           <!-- <li><a href="{% url 'news' %}">News</a></li> -->
-          <li><a href="{% url 'contact' %}">Contact</a></li>
+          <li><a href="{% url 'contact' %}" class="wide-only">Contact</a></li>
         </ul>
       </nav>
       
@@ -64,19 +64,16 @@
         <a href="http://tidal.northwestern.edu">http://tidal.northwestern.edu</a>
       </div>
   
-      <div class="column three">
+      <div class="column three wide-only">
         Computer Science <br>
-        McCormick School of Engineering and Applied Sciences<br>
+        McCormick School of Engineering<br>
         <a href="http://eecs.northwestern.edu">http://eecs.northwestern.edu</a><br><br>
         
         Learning Sciences <br>
         School of Education and Social Policy<br>
-        <a href="http://sesp.northwestern.edu/learning-sciences">http://sesp.northwestern.edu/learning-sciences</a>
+        <a href="http://sesp.northwestern.edu">http://sesp.northwestern.edu</a>
       </div>
       
-      <div class="column three">
-        <img src="{% static 'images/nu-logo.png' %}" alt="Northwestern University" style="float: right;">
-      </div>
     </div>
   </footer>
 
