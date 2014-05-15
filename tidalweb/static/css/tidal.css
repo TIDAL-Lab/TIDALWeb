@@ -3,6 +3,12 @@
  * tidal.northwestern.edu
  */
 
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 
 /*
  * BODY ELEMENTS
@@ -14,10 +20,11 @@ body {
   padding: 0;
   margin: 0;
   text-align: justify;
+  background-color: #eee;
 }
 
-div.content {
-  width: 900px;
+.content {
+  width: 940px;
   margin: 0 auto;
   padding: 80px 20px 20px 20px;
   color: black;
@@ -61,23 +68,22 @@ header {
 }
 
 .head {
-  width: 900px;
+  width: 940px;
   height: 60px;
   margin: 0 auto;
-  padding: 0px;
-}
-
-.logo {
-  width: 200px;
-  height: 36px;
+  padding: 0px 20px 0px 85px;
   background-image: url('/static/images/logo_white.png');
   background-size: 50px 50px;
   background-repeat: no-repeat;
-  background-position: 0px 5px;
-  padding: 12px 0px 12px 67px;
+  background-position: 25px 5px;
+}
+
+.logo {
+  height: 100%;
+  padding: 15px 0px;
   font-size: 10pt;
   font-weight: 100;
-  float: left;
+  display: inline-block;
 }
 
 .logo a {
@@ -93,10 +99,8 @@ nav {
   float: right;
   display: block;
   text-align: right;
-  height: 36px;
+  height: 100%;
   padding: 20px 0 4px 0;
-  position: relative;
-  right: -15px;
 }
 
 nav ul {
@@ -133,15 +137,21 @@ footer {
   display: block;
   width: 100%;
   color: #aaa;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 135%;
-  min-height: 180px;
+  clear: both;
+  text-align: left;
+  min-height: 150px;
 }
 
 .foot {
-  width: 900px;
+  width: 940px;
+  min-height: 150px;
   margin: 0 auto;
-  padding: 20px 0px;
+  padding: 10px 20px;
+  background-image: url('/static/images/nu-logo.png');
+  background-repeat: no-repeat;
+  background-position: right 30px top 20px;
 }
 
 footer a {
@@ -158,29 +168,28 @@ footer a:hover {
 /*
  * COLUMNS
  */
-div.column.three {
-  width: 300px;
+.column {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
   float: left;
 }
 
+.column.one { width: 100%; clear: both; }
 
-div.column.two {
-  width: 450px;
-  float: left;
-}
+.column.two { width: 50%; }
 
+.column.three { width: 33%; }
 
-div.separator {
+.column.four { width: 25%; }
+
+.separator {
   border-bottom: 1px solid black;
-  width: 900px;
+  width: 100%;
   height: 30px;
   clear: both;
 }
 
-
-div.column.one {
-  width: 900px;
-}
 
 
 /*
@@ -195,3 +204,33 @@ div.column.one {
 .content a:hover {
   color: #900;
 }
+
+
+/*
+ * RESPONSIVE MEDIA QUERIES
+ */
+@media only screen and (max-device-width : 940px) {
+  .content { width: 100%; }
+  .head { width: 100%; }
+  .foot { width: 100%; }
+  .column.one { width: 100%; }
+}
+
+
+@media only screen and (max-device-width : 700px) {
+  .logo { display : none; }
+  .column.two { width: 100%; }
+  .column.three { width: 100%; }
+  .column.four { width: 100%; }
+  nav a { padding: 5px; }
+  .wide-only { display: none; }
+  body { text-align: left; }
+}
+
+
+@media only screen and (max-device-width : 400px) {
+  .foot { background-image: none; }
+  nav ul li { font-size: 9pt; }
+  nav a { padding: 2px; }
+}
+
