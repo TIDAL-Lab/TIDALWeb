@@ -1,28 +1,21 @@
-{% extends 'base.html' %}
+{% extends 'base-mini.html' %}
 {% block primary %}
 
   {% load static %}
   {% load staticfiles %}
-  <div class="container clearfix">
   
-    <div class="sixteen columns">
-      <h1 class="page-title">Publications<span class="line"></span></h1>
-    </div>
-      
+  <div class="column one">
+    <h1>Publications</h1>
+    
+    <div style="width: 85%;">
     {% block content %}
-
-    <div class="contents">
-          
+  
       {% for pubs in year %}
-            
-      {% ifchanged pubs.year %}
-      <div class="clearfix sixteen columns">
-        <h2 class="title">{{pubs.year}}<span class="line"></span></h2>
-      </div>
-      <br>
-      {% endifchanged %}
-
-      <div class="clearfix fourteen columns">
+              
+        {% ifchanged pubs.year %}
+        <h2>{{pubs.year}}</h2>
+        {% endifchanged %}
+  
         <p class="publication">{{pubs.authors}} ({{pubs.year}}). 
         {% if pubs.weblink != '' and pubs.localCopy == ''%}
         <a href = "{{pubs.weblink}}">{{pubs.title}}.</a>
@@ -42,11 +35,9 @@
         <i>{{pubs.journal}}</i>.
         {% endif %}
         </p>
-      </div>            
       {% endfor %} 
-    </div>
-    
-    {% endblock %} 
+    {% endblock %}
+    </div>  
   </div> 
   
 {% endblock %}
