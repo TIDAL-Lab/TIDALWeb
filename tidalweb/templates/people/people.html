@@ -10,10 +10,11 @@
     
     {% for person in peeps %}             
 
-    <div class="column four" style="margin-bottom: 20px; text-align: left;">
+    <div class="column four" style="text-align: left;">
       <a href="{{person.get_absolute_url}}">
       <img src="{% cropped_thumbnail person "cropping" scale=1.0 %}" style="width: 100%" alt="{{person.name}}"> 
-      {{person.name}}</a>, {{person.status}}
+      {{person.name}}</a><br>
+      {{person.status}}
     </div>
     
     {% endfor %} 
