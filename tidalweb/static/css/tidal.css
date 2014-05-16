@@ -36,6 +36,12 @@ h1 {
    padding: 0px;
 }
 
+h3 {
+  font-size: 14pt;
+  margin: 6pt 0;
+  padding: 0px;
+}
+
 b {
    font-weight: 700;
 }
@@ -183,6 +189,8 @@ footer a:hover {
 
 .column.four { width: 25%; }
 
+.column.five { width: 20%; }
+
 .separator {
   border-bottom: 1px solid black;
   width: 100%;
@@ -221,7 +229,8 @@ footer a:hover {
   .logo { display : none; }
   .column.two { width: 100%; }
   .column.three { width: 100%; }
-  .column.four { width: 100%; }
+  .column.four { width: 50%; }
+  .column.five { width: 50%; }
   nav a { padding: 5px; }
   .wide-only { display: none; }
   body { text-align: left; }
@@ -229,6 +238,8 @@ footer a:hover {
 
 
 @media only screen and (max-device-width : 400px) {
+  .column.four { width: 100%; }
+  .column.five { width: 100%; }
   .foot { background-image: none; }
   nav ul li { font-size: 9pt; }
   nav a { padding: 2px; }
