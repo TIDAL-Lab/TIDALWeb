@@ -1,75 +1,65 @@
-  {% extends 'base.html' %}
+{% extends 'base-mini.html' %}
 {% block primary %}
 
   {% load static %}
   {% load staticfiles %}
-<div class="container clearfix">
   
-   <div class="sixteen columns"> <h1 class="page-title">Contact Us<span class="line"></span></h1>
-   </div><!-- Page Title -->
-   
-   
-   <div id="description">
-      <div class="sixteen columns">
-        <div class="description top-3 bottom-2">
-        <p>
-          If you have any questions or comments about TIDAL Lab please feel free to get in touch with us! Thank you.
-        </p>
-        </div>
-      </div>
-    </div><!-- End description -->
-   
   
-   
-   <!-- End -->
-   
-   
-   <!-- Start Contact Form -->
-   <div class="eight columns  bottom">    
+  <div class="column two">
+    <h1>Contact Us</h1>
+    <p>
+      If you have any questions or comments about the TIDAL Lab please feel free to get in touch with us!
+    </p>
+    <p style="margin-left: 30px; margin-top: 30px;">
+      Michael Horn<br>
+      2120 Campus Drive<br>
+      Annenberg Hall (room 222)<br>
+      Northwestern University<br>
+      Evanston, IL 60208 USA<br>
+      <a href="mailto:michael-horn@northwestern.edu">michael-horn@northwestern.edu</a><br>
+      <a href="http://tidal.northwestern.edu">http://tidal.northwestern.edu</a><br>
+    </p>
+    
+    <br>
+    
+    <h1>Join Us</h1>
+    <p>
+      We're always on the lookout for outstanding students who are passionate
+      about creating innovative learning experiences! Consider applying to
+      one of the following PhD programs.
+    </p>
+    <ul>
+      <li>
+        <a href = "http://www.sesp.northwestern.edu/learning-sciences/index.html">Learning Science Admissions</a><br>
+        School of Education and Social Policy (SESP)<br><br>
+      </li>
+          
+      <li>
+        <a href = "http://www.eecs.northwestern.edu/graduate-study/graduate-admissions">Computer Science Admissions</a><br>
+        McCormick School of Engineering and Applied Sciences<br><br>
+      </li>
       
-      <h2 class="title">Contact Details<span class="line"></span></h4>
+      <li>
+        <a href = "http://tsb.northwestern.edu/admissions.php">Technology and Social Behavior Admissions</a><br>
+        McCormick School of Engineering and School of Communication<br><br>
+      </li>
+    </ul>
+    
+  </div>
+  
+  
+  <div class="column two">
+    <img src="{% static 'images/northwestern.jpg' %}" style="width: 100%; margin-top: 30px;" alt="Northwestern University">
+    <img src="{% static 'images/nu-arch.jpg' %}" style="width: 100%; margin-top: 30px;" alt="Northwestern University">
+  </div>
+  
+  
+  
       
-       
-       <ul class="details top-3 bottom-2">
-        <li><span class = "user icon"></span><p>Michael Horn<p></li>
-        <li><span class="google_maps icon black"></span><p>2120 Campus Drive</br>
-        Annenberg Hall (room 222)</br>
-        Northwestern University</br>
-        Evanston, IL 60208</br><p></li>
-
-        <li><span class="e-mail icon black"></span><p>michael-horn (at) northwestern (dot) edu</br></p>
-
-        <li><span class="globe icon black"></span><p><a href ="http://tidal.sesp.northwestern.edu">http://tidal.northwestern.edu</a></p></li>
-      </ul>
-      
-   </div><!-- End column -->  
+  <div class="column one">
+    <h1>Our Location</h1>
    
-      <div class="eight columns  bottom">    
-      
-      <h2 class="title">Join Us<span class="line"></span></h4>
-      
-       
-       <ul class="details top-3 bottom-2">
-        <li>
-          <a href = "http://www.sesp.northwestern.edu/learning-sciences/index.html">Learning Science Admissions</a><br>
-          School of Education and Social Policy (SESP)
-        </li>
-        <li>
-          <a href = "http://www.eecs.northwestern.edu/graduate-study/graduate-admissions">Computer Science Admissions</a><br>
-          McCormick School of Engineering and Applied Sciences
-        </li>
-        <li>
-          <a href = "http://tsb.northwestern.edu/admissions.php">Technology and Social Behavior Admissions</a><br>
-        </li>
-      </ul>
-      
-   </div><!-- End column --> 
-
-      <div class="sixteen columns"> <h2 class="title">Our Location<span class="line"></span></h2></div>
    
-   <!-- google map -->
-   
-   <div class="sixteen columns google-map top-2">
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 <script>
 $( document ).ready(function() {
@@ -94,17 +84,10 @@ function initialize() {
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 });
-    </script>
+</script>
 
 
-<div id="map-canvas" style = "width:100%;height:500px;margin:0px;padding:0px;"></div>
-   </div>
+    <div id="map-canvas" style = "width:100%;height:500px;margin:20px 0px;padding:0px;"></div>
+  </div>
    
-   <div class="clearfix"></div>
-   
-   
-   
-       
-     
-  </div><!-- <<< End Container >>> -->
-      {% endblock %}
+{% endblock %}
