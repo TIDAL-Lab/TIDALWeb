@@ -1,145 +1,86 @@
-{% extends 'base.html' %}
+{% extends 'base-mini.html' %}
 {% block primary %}
 
 {% load static %}
-{% load staticfiles %} 
+{% load staticfiles %}
 
-<div class="container clearfix">
 
-  <!-- TITLE -->
-  <div class="sixteen columns">
-    <h1 class="title">{{person.name}}<span class="line"></span></h1>
-  </div>
+<div class="column one">
+  <h1 class="title">{{person.name}}</h1>
+</div>
+
+
+<div class="column two-thirds">
   
-  
-  
-  <!-- LEFT COLUMNS -->
-  <div class="eleven columns">
+  <!-- PHOTO -->
+  <img src="{{person.photo.url}}" alt="{{person.name}}" style="width: 50%; float: left; margin: 0 30px 10px 0;">
     
-    
-    <div class="post gallery bottom">
-      <div class="post-content top">
-
+  <!-- BIO -->
+  <p style="padding-right: 8px; text-align: left;">{{person.biography|safe }}</p>
   
-        <!-- PHOTO -->
-        <div class="one-third column">
-          <img src="{{person.photo.url}}" alt="{{person.name}}" class="pic-3" style="position: relative; left: -10px;">
-        </div>
-
-        
-        <!-- BIO -->
-        <p style="margin-bottom: 30px;">{{person.biography|safe }}</p>
-
-        
-        <!-- PUBLICATIONS -->
-        {% if person.publications.all %}
-        <h2 class="title top-1 bottom-1">My Publications<span class="line"></span></h2>
-        {% for pubs in person.publications.all %}
-          
-        <p class="publication">
-          {{pubs.authors}} ({{pubs.year}}). 
-          {% if pubs.weblink != '' and pubs.localCopy == ''%}
-          <a href = "{{pubs.weblink}}">{{pubs.title}}.</a>
-          {% endif %}
-          {% if pubs.weblink == '' and pubs.localCopy != ''%}
-          <a href = "{{pubs.localCopy.url}}">{{pubs.title}}.</a>
-          {% endif %}
-          {% if pubs.weblink != '' and pubs.localCopy != ''%}
-          <a href = "{{pubs.localCopy.url}}">{{pubs.title}}.</a>
-          {% endif %}
-          {% if pubs.weblink == '' and pubs.localCopy == ''%}
-          {{pubs.title}}.
-          {% endif %}
-          {% if pubs.pages != '' %}
-          <i>{{pubs.journal}}</i>, {{pubs.pages}}.
-          {% else %}
-          <i>{{pubs.journal}}</i>.
-          {% endif %}
-        </p>
-        {% endfor %}
-        {% endif %}
-
-        
-      {% comment %}
-      <!-- PROJECTS -->
-      <div class="post-content bottom">
-        <div class="slidewrap" >
-          <h2 class="title top-1 bottom-1">My Lab Projects<span class="line"></span></h2>
-          
-          <ul class="slidecontrols">
-            <li><a href="#sliderName" class="next">Next</a></li>
-            <li><a href="#sliderName" class="prev">Prev</a></li>
-          </ul> 
-        
-          <ul class="slider" id="sliderName">
-          <!-- <li class="slide">  -->
-          {% for project in person.projects.all %}
-          {% if forloop.counter0|divisibleby:3 = 1 %}
-            <li class="slide"> 
-          {% endif %}
-        
-          <div class="four columns item">
-            <div class="caption">
-              {% for photo in project.photoThumb %}
-                <a href="{{project.get_absolute_url}}"><img src="{{photo.image.url}}" alt="" class="pic" />
-              {% endfor %} 
-              <span class="hover-effect link"></span></a>
-            </div><!-- hover effect -->
-            <h4><a href="{{project.get_absolute_url}}">{{project.name}}</a></h4>
-          </div>
-        
-          {% if forloop.counter0|divisibleby:3 = 2 %}
-            </li>
-          {% endif %}
-          {% endfor %}
-          </ul>
-        </div><!-- End slidewrap -->
-      </div>
-      {% endcomment %}
-        
-        
-
-
-
-
-
-      </div>
-    </div><!-- End post -->
-  </div><!-- End column  --> 
-
-    
-    
-  <!-- Start Sidebar Widgets -->
-  <div class="five columns bottom">
-  
-   
-    <!-- CONTACT ME -->
-    <h2 class="top">Contact Me!</h2>
-    <div class="about-project bottom">
-      <p>{{person.emailuser}} at {{person.emaildomain}}</p>
-    </div>
-     
-
-    <!-- CV / RESUME --> 
-    {% if person.cv != "" %}
-    <h2 class="top">CV/Resume</h2>
-    <div class="about-project bottom">
-      <a href="{{person.cv.url}}" class="button medium color">PDF</a>
-    </div>
+  <!-- PUBLICATIONS -->
+  {% if person.publications.all %}
+  <h2>Publications</h2>
+  {% for pubs in person.publications.all %}
+  <p class="publication">
+    {{pubs.authors}} ({{pubs.year}}). 
+    {% if pubs.weblink != '' and pubs.localCopy == ''%}
+    <a href = "{{pubs.weblink}}">{{pubs.title}}.</a>
     {% endif %}
-
-    
-    <!-- PERSONAL WEBSITE -->
-    <h2 class="top">Personal Website</h2>
-    <div class="search bottom">
-      <a href="{{person.website}}" class="button medium color">Click Here</a>
-    </div>
- 
-
-  </div><!-- End Sidebar Widgets -->
+    {% if pubs.weblink == '' and pubs.localCopy != ''%}
+    <a href = "{{pubs.localCopy.url}}">{{pubs.title}}.</a>
+    {% endif %}
+    {% if pubs.weblink != '' and pubs.localCopy != ''%}
+    <a href = "{{pubs.localCopy.url}}">{{pubs.title}}.</a>
+    {% endif %}
+    {% if pubs.weblink == '' and pubs.localCopy == ''%}
+    {{pubs.title}}.
+    {% endif %}
+    {% if pubs.pages != '' %}
+    <i>{{pubs.journal}}</i>, {{pubs.pages}}.
+    {% else %}
+    <i>{{pubs.journal}}</i>.
+    {% endif %}
+  </p>
+  {% endfor %}
+  {% endif %}
+</div>
 
   
-  <div class="clearfix"></div>
-</div><!-- <<< End Container >>> -->
+<div class="column three" style="padding-left: 40px;">
+  
+  <!-- CONTACT ME -->
+  <h3>Contact Me!</h3>
+  <p style="text-align: left; margin-bottom: 30px;">{{person.emailuser}} at {{person.emaildomain}}</p>
+  
+     
+  <!-- CV / RESUME --> 
+  {% if person.cv != "" %}
+  <h3>CV/Resume</h3>
+  <a href="{{person.cv.url}}" class="blue-button">PDF</a>
+  <br><br>
+  {% endif %}
+
+  
+  <!-- PERSONAL WEBSITE -->
+  {% if person.website != "" %}
+  <h3>Personal Website</h3>
+  <a href="{{person.website}}" class="blue-button">Click Here</a>
+  <br><br>
+  {% endif %}
+  
+  <!-- PROJECTS -->
+  {% if person.projects.all %}
+  <h3>Projects</h3>
+  <ul>
+  {% for project in person.projects.all %}
+    <li><a href="{{project.get_absolute_url}}">{{project.name}}</a></li>
+  {% endfor %}
+  </ul>
+  {% endif %}
+  
+</div>
+
+        
 {% endblock %}
   

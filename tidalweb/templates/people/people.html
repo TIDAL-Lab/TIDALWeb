@@ -12,7 +12,7 @@
 
     <div class="column four" style="text-align: left;">
       <a href="{{person.get_absolute_url}}">
-      <img src="{% cropped_thumbnail person "cropping" scale=1.0 %}" style="width: 100%" alt="{{person.name}}"> 
+      <img src="{% cropped_thumbnail person "cropping" scale=1.0 %}" style="width: 100%;" alt="{{person.name}}" class="hover-image"> 
       {{person.name}}</a><br>
       {{person.status}}
     </div>
