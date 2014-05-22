@@ -1,42 +1,120 @@
-{% extends 'base.html' %}
+{% extends 'base-mini.html' %}
+
+{% load cropping %}
 {% block primary %}
 
   {% load static %}
-  {% load cropping %}
   {% load staticfiles %}
   
-<div class="container clearfix">
+<script src="{% static 'js/jquery.prettyPhoto.js' %}"></script> <!-- jQuery Prettyphoto  -->
+<script src="{% static 'js/isotope.pkgd.min.js' %}"></script> <!-- Isotope Filtering  -->
+<script>
+    
+// Isotope Filtering
+$(function() {
   
-  <div class="sixteen columns">
-    <h1 class="page-title">Current Projects<span class="line"></span></h1>
+  var $container = $('#container');
+  
+  $container.isotope({
+    itemSelector : '.portfolio-item'
+  });
+  
+	var $optionSets = $('#options');
+  var $optionLinks = $optionSets.find('a');
+
+	$optionLinks.click(function(){
+	  var $this = $(this);
+	  // don't proceed if already selected
+	  if ( $this.hasClass('selected') ) return false;
+
+	  var $optionSet = $('#options');
+	  $optionSet.find('.selected').removeClass('selected');
+	  $this.addClass('selected');
+
+	  var value = $this.attr('data-filter');
+    $container.isotope( {filter : value });
+	  return false;
+	});
+});
+  
+  
+$(document).ready(function(){
+	$("a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'fast',theme:'pp_default',slideshow:4000, opacity: 0.50, deeplinking: false, overlay_gallery: false, autoplay_slideshow: false});
+});
+</script>
+  
+  
+
+<div class="column one">
+  <h1>Current Projects</h1>
+    
+  
+  <!-- TAG LIST -->
+  <div id="options">
+    <ul id="filters" class="tag-list">
+      <li><a href="#filter" data-filter="*" class="selected">all</a></li>
+      {% for tag in tags %}
+      <li><a href="#filter" data-filter=".{{tag.slug}}">{{tag.word}}</a></li>
+      {% endfor %}
+    </ul>
   </div>
+</div>
+
+
+
+<!-- PORTFOLIO -->  
+<div id="container" style="clear: both;">
   
-  
-  <!-- TAG LIST --> 
-  <div class="sixteen columns">  
-    <div class="clearfix" id="options">
-      <ul id="filters" class="option-set clearfix" data-option-key="filter">
-        <li><a href="#filter" data-option-value="*" class="selected">all</a></li>
-        {% for tag in tags %}
-        <li><a href="#filter" data-option-value=".{{tag.slug}}">{{tag.word}}</a></li>
-        {% endfor %}
-      </ul>
+  {% for project in curProjects %}
+  <div class="portfolio-item {% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" data-categories="{% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" style="min-height: 0px; width: 100%; clear: both; margin-top: 10px;">
+      
+    <div class="separator" style="height: 10px;"></div>
+    <a id="{{project.slug}}"></a>
+    
+    <!-- PROJECT IMAGE -->
+    <div class="column three">
+      {% if project.website != '' %}
+      <a href="{{project.website}}" style="outline: none;">
+      <img src="{% cropped_thumbnail project "projectCrop" scale=1.0 %}" class="pic" style="width: 100%; margin: 0 30px 0 0;"></a>
+      {% else %}
+      <img src="{% cropped_thumbnail project "projectCrop" scale=1.0 %}" style="width: 100%; margin: 0 30px 0 0;">
+      {% endif %}
     </div>
-  </div>
   
     
-  <!-- PORTFOLIO -->  
-  <div class="sixteen columns">
-    <div class="gallery" id="contain"> 
-
-      {% for project in curProjects %}
-      <a id = "{{project.slug}}"></a>
-      <div class="portfolio-item {% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" data-categories="{% for tag in project.tags.all %} {{tag.slug}} {% endfor %}" style="min-height: 0px;">
-        <div style="padding-right: 10px;">
-          {% if project.videoURL != '' %}
-          <div class="caption">
-            <a href = "{{project.videoURL}}" rel="prettyPhoto">
-            <img src="{% cropped_thumbnail project "projectCrop" scale=1.0 %}" class="pic" style="margin-right: 20px; float: left; width: 33%;">
+    <!-- PROJECT DESCRIPTION -->
+    <div class="column two-thirds">
+      {% if project.website != '' %}
+      <h3><a href="{{project.website}}">{{project.name}}</a></h3>
+      {% else %}
+      <h3>{{project.name}}</h3>
+      {% endif %}
+    
+      <!-- PROJECT DESCRIPTION -->  
+      <p>{{project.about|safe}}</p>
+      
+      <!-- READ MORE LINK -->
+      <p style="font-size: 10pt; text-align: right; width: 100%;">
+      {% if project.website != '' %}
+      <a href="{{project.website}}">Read More</a>
+      {% endif %}
+      {% if project.videoURL != '' %}
+      <a href="{{project.videoURL}}" style="margin-left: 20px;" rel="prettyPhoto">Video</a>
+      {% endif %}
+      </p>
+    </div>
+    
+  </div>
+  
+  {% endfor %}  
+</div>
+<br style="clear: both;">
+<br>
+<br>
+        
+<!--
+{% comment %}
+    <div class="caption">
             <span class="hover-effect link"></span>
             </a>
           </div>
@@ -44,21 +122,11 @@
           <img src="{% cropped_thumbnail project "projectCrop" scale=1.0 %}" class="pic" style="margin-right: 20px; float: left; width: 33%;">
           {% endif %}
 
-          {% if project.website != '' %}
-          <h4><a href="{{project.website}}">{{project.name}}</a></h4>
-          {% else %}
-          <h4>{{project.name}}</h4>
-          {% endif %}
-          <p>{{project.about|safe}}</p>
-          {% if project.website != '' %}
-          <p style = "position: absolute; bottom: 0px; right: 20px; color: #00AEC8;"><a href ="{{project.website}}">Read More...</a></p>
-          {% endif %}
         </div>
       </div>
-      {% endfor %}  
     </div>
   </div>
-       
+{% endcomment %}
+-->       
      
-</div>
 {% endblock %}
