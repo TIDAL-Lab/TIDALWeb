@@ -12,6 +12,7 @@
   
   <link href='http://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="{% static 'css/tidal.css' %}">
+  <link rel="stylesheet" href="{% static 'css/javascript.css' %}">
   <link rel="shortcut icon" href="{% static 'images/favicon/favicon.ico' %}">
   <script src="{% static 'js/jquery-1.7.2.min.js' %}"></script>
   
@@ -26,6 +27,7 @@
     ga('send', 'pageview');
   
   </script>
+  
   <title>TIDAL Lab | Northwestern University</title>
 </head>
 
@@ -55,13 +57,13 @@
       
     </div>
   </header>
-  
 
   <!-- CONTENT -->  
-  <div class="content">
+  <div class="content" style="clear: both;">
     {% block primary %}{% endblock %}
   </div>     
-      
+
+  
   
   <!-- FOOTER -->  
   <footer>
