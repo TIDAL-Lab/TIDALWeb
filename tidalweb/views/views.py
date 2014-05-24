@@ -21,6 +21,16 @@ def index(request):
 def greenhomegames(request):
   return render_to_response('greenhomegames.html')
 
+def roberto(request):
+  return render_to_response('roberto.html')
+
+def nettango(request):
+  return render_to_response('nettango.html')
+
+
+def teaching(request):
+  return render_to_response('teaching.html')
+
 
 # def publications(request):
 #     return render_to_response('publications.html')

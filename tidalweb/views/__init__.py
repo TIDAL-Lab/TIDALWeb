@@ -1,4 +1,4 @@
-from views import index, contact, greenhomegames
+from views import index, contact, greenhomegames, nettango, roberto, teaching
 from viewsFront import images
 from viewsNews import news,post
 from viewsPartners import partner
