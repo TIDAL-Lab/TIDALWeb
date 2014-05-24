@@ -327,17 +327,19 @@ ul.tag-list a.selected {
   .column.one { width: 100%; }
 }
 
+@media only screen and (max-device-width : 800px) {
+  .logo { display : none; }
+}
 
 @media only screen and (max-device-width : 700px) {
-  .logo { display : none; }
   .column.two { width: 100%; }
   .column.three { width: 100%; }
   .column.three-quarters { width: 100%; }
   .column.two-thirds { width: 100%; }
   .column.four { width: 50%; }
   .column.five { width: 50%; }
-  nav a { padding: 5px; }
   .wide-only { display: none; }
+  nav a { padding: 5px; }
   body { text-align: left; }
 }
 
