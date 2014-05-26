@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="{% static 'css/javascript.css' %}">
   <link rel="shortcut icon" href="{% static 'images/favicon/favicon.ico' %}">
   <script src="{% static 'js/jquery-1.7.2.min.js' %}"></script>
+  <script src="{% static 'js/jquery.flexslider.js' %}"></script> <!-- Flex Slider  -->
+  
   
   <!-- GOOGLE ANALYTICS -->
   <script>
@@ -27,6 +29,13 @@
     ga('send', 'pageview');
   
   </script>
+  
+  <!-- FLEX SLIDER -->
+  <script type="text/javascript" charset="utf-8">
+    $(window).load(function() {
+      $('.flexslider').flexslider();
+    });
+  </script>  
   
   <title>TIDAL Lab | Northwestern University</title>
 </head>
@@ -49,7 +58,7 @@
           <li><a href="{% url 'portfolio' %}">Projects</a></li>
           <li><a href="{% url 'people' %}">People</a></li>
           <li><a href="{% url 'publications' %}">Publications</a></li>
-          <li><a href="{% url 'teaching' %}">Teaching</a></li>
+          <li><a href="{% url 'teaching' %}">Courses</a></li>
           <!-- <li><a href="{% url 'news' %}">News</a></li> -->
           <li><a href="{% url 'contact' %}" class="wide-only">Contact</a></li>
         </ul>
