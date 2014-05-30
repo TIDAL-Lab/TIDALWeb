@@ -1,0 +1,24 @@
+{% extends 'base-mini.html' %}
+{% block primary %}
+
+  {% load static %}
+  {% load staticfiles %}
+  
+  <div class="column one">
+    <h1>Upload Logs {{ logId }}</h1>
+    <p>
+      Coming soon...
+    </p>
+    
+    <form>
+      <input id="logId" value="{{logId}}">
+        <br>
+      <textarea id="logData" rows="20" cols="80">
+        {{ logData }}
+      </textarea>
+      <br>
+      <button type="submit">Upload</button>
+    </form>
+  </div> 
+  
+{% endblock %}
