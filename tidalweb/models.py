@@ -5,10 +5,11 @@ from datetime import date
 
 class Publication(models.Model):
     authors = models.CharField(max_length=255)
-    year = models.CharField(max_length = 255)
+    year = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
-    journal = models.CharField(max_length = 255)
-    pages = models.CharField(max_length = 255, blank = True)
+    journal = models.CharField(max_length=255)
+    pages = models.CharField(max_length=255, blank = True)
+    award = models.CharField(max_length=255, blank=True)
     slug = models.SlugField(unique=True, max_length=255)
     viewable = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
