@@ -17,7 +17,7 @@
         {% endifchanged %}
   
         {% if pubs.award != '' and pubs.award != None %}
-        <img src="{% static 'images/icons/award_small.png' %}" style="width: 35px; height: 35px; position: relative; left: -50px; float: left;" alt="{{pubs.award}}">
+        <img src="{% static 'images/icons/award_small.png' %}" style="width: 30px; height: 30px; position: relative; left: -40px; float: left;" alt="{{pubs.award}}">
         {% endif %}
         <p class="publication">{{pubs.authors}} ({{pubs.year}}). 
         {% if pubs.weblink != '' and pubs.localCopy == ''%}
