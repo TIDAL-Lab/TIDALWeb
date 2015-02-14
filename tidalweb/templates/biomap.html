@@ -1,0 +1,72 @@
+{% extends 'base-mini.html' %}
+{% block primary %}
+
+  {% load static %}
+  {% load staticfiles %}
+
+
+<div class="column one">
+  <h1>BioMap &mdash; Exploring the diversity of life on earth</h1>
+  
+  <p>
+    BioMap is an interactive visualization of the diversity of life on earth.
+    It makes use of a <a href="http://dl.acm.org/citation.cfm?id=1056041" target="_blank">voronoi treemap</a>
+    visualization technique to present hundreds of thousands of species in a
+    zoomable map-like interface. BioMap was used to create a multi-touch tabletop
+    exhibit on Arthropod diversity for the Harvard Museum of Natural History.
+  </p>
+  
+  <img src="{% static 'images/biomap/biomap.png' %}" style="width: 100%; margin-bottom: 20px; border: 1px solid black;" alt="BioMap Screenshot">
+    
+</div>
+
+<div class="column two-thirds">
+  <h2>People</h2>
+  <p>
+    <b>Design:</b> Michael Horn and Chia Shen
+  </p>
+  <p>
+    <b>Software:</b> Michael Horn
+  </p>
+  <p>
+    <b>Science Advisors:</b> James Hanken and Robert Lue, Harvard University
+  </p>
+  <p>
+    <b>With Support From:</b> The Encyclopedia of Life (eol.org)
+  </p>
+  <br>
+  <br>
+  
+  <h2>Papers</h2>
+  
+  <p class="publication">
+    Horn, M.S., Tobiasz, M., and Shen, C. (2009).
+    <a href="/media/files/pubs/visualizing_biodiversity_with_voronoi_treemaps.pdf">Visualizing
+    Biodiversity with Voronoi Treemaps</a>.
+    In Proc. International Symposium on Voronoi Diagrams in Science and
+    Engineering ISVD’09, Copenhagen, Denmark.
+  </p>
+
+  <p class="publication">
+    Horn, M.S. & Shen, C. (2009).
+    <a href="/media/files/pubs/frogs_and_toads_memory.pdf">Frogs and Toads Memory:
+    A Voronoi Twist on the Classic Children’s Game</a>. In Proc. International
+    Symposium on Voronoi Diagrams in Science and Engineering ISVD’09, Copenhagen,
+    Denmark.
+  </p>
+  
+</div>
+
+<div class="column one">
+  <h2>Videos</h2>
+  
+  <iframe src="//player.vimeo.com/video/119612060" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  <br>
+  
+  <iframe width="420" height="315" src="https://www.youtube.com/embed/XAvtNJxSFpU" frameborder="0" allowfullscreen></iframe>  
+</div>
+
+<br>
+<br>
+  
+{% endblock %}
