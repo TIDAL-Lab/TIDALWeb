@@ -24,9 +24,11 @@ def greenhomegames(request):
 def roberto(request):
   return render_to_response('roberto.html')
 
+def biomap(request):
+  return render_to_response('biomap.html')
+
 def nettango(request):
   return render_to_response('nettango.html')
-
 
 def teaching(request):
   return render_to_response('teaching.html')
