@@ -44,7 +44,7 @@ USE_TZ = True
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
 #MEDIA_ROOT = os.path.join(PUBLIC_DIR, 'media')
-MEDIA_ROOT = '/home/ec2-user/tidalweb/tidalweb/media'
+MEDIA_ROOT = '/Users/msh801/github/TIDALWeb/tidalweb/public/media' #/home/ec2-user/tidalweb/tidalweb/media'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -172,12 +172,12 @@ LOGGING = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': os.path.join(PROJECT_DIR, 'tidalweb.db'), # Or path to database file if using sqlite3.
-        'USER': '',                             # Not used with sqlite3.
-        'PASSWORD': '',                         # Not used with sqlite3.
-        'HOST': '',                             # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                             # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'tidal',
+        'USER': 'root',
+        'PASSWORD': 't0k3n',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
