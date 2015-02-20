@@ -1,13 +1,23 @@
-{% extends 'base.html' %}
+{% extends 'base-mini.html' %}
 {% block primary %}
 
   {% load static %}
   {% load staticfiles %}
   {% load cropping %}
-
-
   
-  <!-- SPLASH IMAGES -->  
+  <!-- SPLASH IMAGES -->
+  <div class="column one">
+    <img src="{% static 'images/tern_banner.jpg' %}" style="width: 100%;">
+      
+    <p id="welcome">
+      The TIDAL Lab is a team of designers, artists, learning scientists, and
+      computer scientists at Northwestern University. Our research creates
+      innovative learning experiences using new forms of interactive technology.
+      We take a cautious but optimistic stance towards technology that tightly
+      couples learning, research, and design.
+    </p>
+  </div>
+  <!--
   <div class="container gallery clearfix">
     <div class="sixteen columns">
       <div class="flex-container">
@@ -26,144 +36,110 @@
       </div>
     </div>
   </div>
-  
-
-
-  <!-- WELCOME MESSAGE -->  
-  <div class="container clearfix">
-    <div id="welcome">
-      <div class="sixteen columns">
-        <div class="qoute">
-          {% for front in frontPageBlurb %}
-          <p style="width: 100%; color: #666; font-size: 16px;">{{front.description|safe}}</p>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-  </div>
-  
+  -->
 
 
   <!-- PROJECTS -->    
-  <div class="container clearfix">
-    <div class="sixteen columns">
-      <h2 class="title">Current Projects <span class="line"></span></h2>
-    </div>
-      
-    <div class="recent-work gallery clearfix">
-      <div class="slidewrap" >
-        <ul class="slider" id="sliderName">
-          <li class="slide">	
-          {% for project in projects|slice:":10" %}
-            {% if forloop.counter < 11 %}
-              <div class="one-fifth column item element-3" data-categories="{% for tag in project.tags.all %} {{tag.slug}} {% endfor %}">
-                {% if project.website != '' %}
-                <a href="{{project.website}}">
-                {% else %}
-                <a href="{{project.get_absolute_url}}">
-                {% endif %}
-                <img src="{% cropped_thumbnail project "cropping" scale=1.0 %}" class="pic"></a>
-                {% if project.website != '' %}
-                <h4><a href="{{project.website}}">{{project.name}}</a></h4>
-                {% else %}
-                <h4><a href="{{project.get_absolute_url}}">{{project.name}}</a></h4>
-                {% endif %}
-              </div>
-            {% endif %}
-          {% endfor %}  
-          </li>
-        </ul>
-      </div><!-- End slidewrap -->
-    </div><!-- End recent-work -->
+  <div class="column one">
+    <h3 class="title">Current Projects</h3>
+    {% for project in projects %}
+      {% if forloop.counter < 11 %}
+      <div class="column five" style="padding: 6px;">
+        <a href="{{project.website}}"><img src="{% cropped_thumbnail project "cropping" scale=1.0 %}" class="pic" style="width: 100%; max-width: 172px;"></a>
+        <h4 style="margin: 0 0 10px 0; text-align: left;"><a href="{{project.website}}">{{project.name}}</a></h4>
+      </div>
+      {% endif %}
+    {% endfor %}
   </div>
-
+  
+  
 
   <!-- NEWS -->    
-  <div class="container clearfix">
-    <div class="sixteen columns">
-      <h2 class="title">Recent News<span class="line"></span></h2>
-    </div>
+  <div class="column one">
+    <h3 class="title">Recent News</h3>
     
-    <div class="sixteen columns">
-      {% for post in posts|slice:":8" %}
-        {% if post.weblink == "" %}
-      <!-- <h4><a href="{{post.get_absolute_url}}">{{post.title}}</a></h4> -->
-      <h4>{{post.title}}</h4>
-        {% else %}
-      <h4><a href="{{post.weblink}}">{{post.title}}</a></h4>
-        {% endif %}
-      <p class="post-date">{{post.pubdate|date:"F Y"}}</p>
-      <p style="margin-left: 15px; margin-bottom: 10px;">{{post.description}}</p>
-      {% endfor %}
+    <div style="width: 100%;">
+    {% for post in posts %}
+      <div class="column three news-post">
+        <div class="news-title">
+          {% if post.weblink == "" %}{{post.title}}{% else %}<a href="{{post.weblink}}" target="_blank">{{post.title}}</a>{% endif %}
+        </div>
+        <div class="news-content">
+          <span class="news-date">{{post.pubdate|date:"F Y"}}</span> &mdash;
+          {{post.content}}
+          {% if post.weblink != "" %}
+          <div class="news-more">
+            <a href="{{post.weblink}}">Read More</a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {% if forloop.counter|divisibleby:3 %}
+    </div>
+    <div style="width: 100%;">
+      {% endif %}
+    {% endfor %}
     </div>
   </div>
 
   
-  <!-- AFFILIATED RESEARCH LABS -->  
-  <div class="container clearfix" style="margin-top: 40px;">
-    <div class="sixteen columns">
-      <h2 class="title">Affiliated Research Labs<span class="line"></span></h2><br>
+  <!-- AFFILIATED RESEARCH LABS -->
+  <style>
+
+  </style>
+  <div class="column one">
+    <h3 class="title">Affiliated Research Labs</h3>
+    <div class="column two affiliated">
+      <img src="{% static 'images/collaborators/ccl.png' %}" style="float: left; height: 60px; opacity: 0.6;">
+      Center for Connected Learning and Computer-Based Modeling (CCL)<br>
+      <a href="http://ccl.northwestern.edu">http://ccl.northwestern.edu</a>
     </div>
- 
-    <div class="eight columns affiliated">
-        <div>
-          <img src="{% static 'images/collaborators/ccl.png' %}" style="float: left; height: 60px; opacity: 0.6;">
-          Center for Connected Learning and Computer-Based Modeling (CCL)<br>
-          <a href="http://ccl.northwestern.edu">http://ccl.northwestern.edu</a>
-        </div>
-        <div>
-          <img src="{% static 'images/collaborators/sdr.png' %}" style="float: left; height: 60px; opacity: 0.6;">
-          Scientists' Discovery Room (SDR) Lab<br>
-          Harvard University<br>
-          <a href="http://sdr.seas.harvard.edu">http://sdr.seas.harvard.edu</a>
-        </div>
-        <div>
-          <img src="{% static 'images/collaborators/lime.png' %}" style="float: left; height: 60px;">
-          Learning, Interaction, and Media in the Everyday (LIME) Lab<br>
-          Northwestern University
-        </div>
+    <div class="column two affiliated">
+      <img src="{% static 'images/collaborators/sdr.png' %}" style="float: left; height: 60px; opacity: 0.6;">
+      Scientists' Discovery Room (SDR) Lab<br>
+      Harvard University<br>
+      <a href="http://sdr.seas.harvard.edu">http://sdr.seas.harvard.edu</a>
     </div>
-    
-    <div class="eight columns affiliated">
-        <div>
-          <img src="{% static 'images/collaborators/collab.png' %}" style="float: left; height: 60px; opacity: 0.6;">
-          The Collaborative Technology Laboratory (CollabLab)<br>
-          Northwestern University<br>
-          <a href="http://collablab.northwestern.edu">http://collablab.northwestern.edu</a>
-        </div>
-        <div>
-          <img src="{% static 'images/collaborators/delta.png' %}" style="float: left; height: 60px; opacity: 0.4;">
-          Delta Lab<br>
-          Northwestern University<br>
-          <a href="http://delta.northwestern.edu">http://delta.northwestern.edu</a>
-        </div>
-        <div>
-          <img src="{% static 'images/collaborators/osep.png' %}" style="float: left; height: 60px; opacity: 0.6;">
-          Office of STEM Education Partnerships (OSEP)<br>
-          Northwestern University<br>
-          <a href="http://osep.northwestern.edu">http://osep.northwestern.edu</a>
-        </div>
+    <div class="column two affiliated">
+      <img src="{% static 'images/collaborators/lime.png' %}" style="float: left; height: 60px;">
+      Learning, Interaction, and Media in the Everyday (LIME) Lab<br>
+      Northwestern University
+    </div>
+    <div class="column two affiliated">
+      <img src="{% static 'images/collaborators/collab.png' %}" style="float: left; height: 60px; opacity: 0.6;">
+      The Collaborative Technology Laboratory (CollabLab)<br>
+      Northwestern University<br>
+      <a href="http://collablab.northwestern.edu">http://collablab.northwestern.edu</a>
+    </div>
+    <div class="column two affiliated">
+      <img src="{% static 'images/collaborators/delta.png' %}" style="float: left; height: 60px; opacity: 0.4;">
+      Delta Lab<br>
+      Northwestern University<br>
+      <a href="http://delta.northwestern.edu">http://delta.northwestern.edu</a>
+    </div>
+    <div class="column two affiliated">
+      <img src="{% static 'images/collaborators/osep.png' %}" style="float: left; height: 60px; opacity: 0.6;">
+      Office of STEM Education Partnerships (OSEP)<br>
+      Northwestern University<br>
+      <a href="http://osep.northwestern.edu">http://osep.northwestern.edu</a>
     </div>
   </div>      
     
   
   
   <!-- MUSEUM COLLABORATORS -->
-  <div class="container clearfix" style="margin-top: 40px;">
-    <div class="sixteen columns">
-      <h2 class="title">Museum Collaborators<span class="line"></span></h2><br>
-    </div>
- 
-    <div class="sixteen columns">
-      <a href="http://www.fieldmuseum.org"><img src="{% static 'images/collaborators/field.png' %}" style="height: 80px;"></a>
-      <a href="http://www.calacademy.org"><img src="{% static 'images/collaborators/cas.png' %}" style="height: 80px;"></a>
-      <a href="http://www.computerhistory.org"><img src="{% static 'images/collaborators/chm.png' %}" style="height: 80px;"></a>
-      <a href="http://hmnh.harvard.edu"><img src="{% static 'images/collaborators/hmnh.png' %}" style="height: 80px;"></a>
-      <a href="http://museum.unl.edu"><img src="{% static 'images/collaborators/unl.png' %}" style="height: 80px;"></a>
-      <a href="http://mos.org"><img src="{% static 'images/collaborators/mos.png' %}" style="height: 80px;"></a>
+  <div class="column one">
+    <h3 class="title">Museum Collaborators</h3>
+    <div style="text-align: center;">
+      <a href="http://www.fieldmuseum.org"><img src="{% static 'images/collaborators/field.png' %}" style="height: 70px;"></a>
+      <a href="http://www.calacademy.org"><img src="{% static 'images/collaborators/cas.png' %}" style="height: 70px;"></a>
+      <a href="http://www.computerhistory.org"><img src="{% static 'images/collaborators/chm.png' %}" style="height: 70px;"></a>
+      <a href="http://hmnh.harvard.edu"><img src="{% static 'images/collaborators/hmnh.png' %}" style="height: 70px;"></a>
+      <a href="http://museum.unl.edu"><img src="{% static 'images/collaborators/unl.png' %}" style="height: 70px;"></a>
+      <a href="http://mos.org"><img src="{% static 'images/collaborators/mos.png' %}" style="height: 70px;"></a>
     </div>
   </div>      
 
-
+  <div class="column one" style="height: 40px;"></div>
 
 {% endblock %}
