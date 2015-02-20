@@ -1,0 +1,861 @@
+-- MySQL dump 10.13  Distrib 5.6.11, for osx10.7 (x86_64)
+--
+-- Host: localhost    Database: tidal
+-- ------------------------------------------------------
+-- Server version	5.6.11
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `auth_group`
+--
+
+DROP TABLE IF EXISTS `auth_group`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_group` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(80) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_group`
+--
+
+LOCK TABLES `auth_group` WRITE;
+/*!40000 ALTER TABLE `auth_group` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_group` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_group_permissions`
+--
+
+DROP TABLE IF EXISTS `auth_group_permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_group_permissions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `group_id` int(11) NOT NULL,
+  `permission_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `group_id` (`group_id`,`permission_id`),
+  KEY `auth_group_permissions_5f412f9a` (`group_id`),
+  KEY `auth_group_permissions_83d7f98b` (`permission_id`),
+  CONSTRAINT `group_id_refs_id_f4b32aac` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`),
+  CONSTRAINT `permission_id_refs_id_6ba0f519` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_group_permissions`
+--
+
+LOCK TABLES `auth_group_permissions` WRITE;
+/*!40000 ALTER TABLE `auth_group_permissions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_group_permissions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_permission`
+--
+
+DROP TABLE IF EXISTS `auth_permission`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_permission` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `content_type_id` int(11) NOT NULL,
+  `codename` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `content_type_id` (`content_type_id`,`codename`),
+  KEY `auth_permission_37ef4eb4` (`content_type_id`),
+  CONSTRAINT `content_type_id_refs_id_d043b34a` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_permission`
+--
+
+LOCK TABLES `auth_permission` WRITE;
+/*!40000 ALTER TABLE `auth_permission` DISABLE KEYS */;
+INSERT INTO `auth_permission` VALUES (1,'Can add permission',1,'add_permission'),(2,'Can change permission',1,'change_permission'),(3,'Can delete permission',1,'delete_permission'),(4,'Can add group',2,'add_group'),(5,'Can change group',2,'change_group'),(6,'Can delete group',2,'delete_group'),(7,'Can add user',3,'add_user'),(8,'Can change user',3,'change_user'),(9,'Can delete user',3,'delete_user'),(10,'Can add content type',4,'add_contenttype'),(11,'Can change content type',4,'change_contenttype'),(12,'Can delete content type',4,'delete_contenttype'),(13,'Can add session',5,'add_session'),(14,'Can change session',5,'change_session'),(15,'Can delete session',5,'delete_session'),(16,'Can add site',6,'add_site'),(17,'Can change site',6,'change_site'),(18,'Can delete site',6,'delete_site'),(19,'Can add log entry',7,'add_logentry'),(20,'Can change log entry',7,'change_logentry'),(21,'Can delete log entry',7,'delete_logentry'),(22,'Can add migration history',8,'add_migrationhistory'),(23,'Can change migration history',8,'change_migrationhistory'),(24,'Can delete migration history',8,'delete_migrationhistory'),(25,'Can add publication',9,'add_publication'),(26,'Can change publication',9,'change_publication'),(27,'Can delete publication',9,'delete_publication'),(28,'Can add tag',10,'add_tag'),(29,'Can change tag',10,'change_tag'),(30,'Can delete tag',10,'delete_tag'),(31,'Can add project',11,'add_project'),(32,'Can change project',11,'change_project'),(33,'Can delete project',11,'delete_project'),(34,'Can add photos',12,'add_photos'),(35,'Can change photos',12,'change_photos'),(36,'Can delete photos',12,'delete_photos'),(37,'Can add people',13,'add_people'),(38,'Can change people',13,'change_people'),(39,'Can delete people',13,'delete_people'),(40,'Can add r interests',14,'add_rinterests'),(41,'Can change r interests',14,'change_rinterests'),(42,'Can delete r interests',14,'delete_rinterests'),(43,'Can add post',15,'add_post'),(44,'Can change post',15,'change_post'),(45,'Can delete post',15,'delete_post'),(46,'Can add front image',16,'add_frontimage'),(47,'Can change front image',16,'change_frontimage'),(48,'Can delete front image',16,'delete_frontimage'),(49,'Can add partner',17,'add_partner'),(50,'Can change partner',17,'change_partner'),(51,'Can delete partner',17,'delete_partner'),(52,'Can add affil person',18,'add_affilperson'),(53,'Can change affil person',18,'change_affilperson'),(54,'Can delete affil person',18,'delete_affilperson'),(55,'Can add front page blurb',19,'add_frontpageblurb'),(56,'Can change front page blurb',19,'change_frontpageblurb'),(57,'Can delete front page blurb',19,'delete_frontpageblurb'),(58,'Can add source',20,'add_source'),(59,'Can change source',20,'change_source'),(60,'Can delete source',20,'delete_source'),(61,'Can add thumbnail',21,'add_thumbnail'),(62,'Can change thumbnail',21,'change_thumbnail'),(63,'Can delete thumbnail',21,'delete_thumbnail'),(64,'Can add thumbnail dimensions',22,'add_thumbnaildimensions'),(65,'Can change thumbnail dimensions',22,'change_thumbnaildimensions'),(66,'Can delete thumbnail dimensions',22,'delete_thumbnaildimensions');
+/*!40000 ALTER TABLE `auth_permission` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_user`
+--
+
+DROP TABLE IF EXISTS `auth_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `password` varchar(128) NOT NULL,
+  `last_login` datetime NOT NULL,
+  `is_superuser` tinyint(1) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `first_name` varchar(30) NOT NULL,
+  `last_name` varchar(30) NOT NULL,
+  `email` varchar(75) NOT NULL,
+  `is_staff` tinyint(1) NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  `date_joined` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_user`
+--
+
+LOCK TABLES `auth_user` WRITE;
+/*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
+INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$10000$VJEACEXrCUrx$7uNqf4IpFz07kMQniPl65GjFkf6g5mDFE/lwQ/PNkRg=','2015-02-18 21:29:39',1,'tidal','','','michael-horn@northwestern.edu',1,1,'2015-02-18 21:15:07');
+/*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_user_groups`
+--
+
+DROP TABLE IF EXISTS `auth_user_groups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_user_groups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user_id` (`user_id`,`group_id`),
+  KEY `auth_user_groups_6340c63c` (`user_id`),
+  KEY `auth_user_groups_5f412f9a` (`group_id`),
+  CONSTRAINT `user_id_refs_id_40c41112` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`),
+  CONSTRAINT `group_id_refs_id_274b862c` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_user_groups`
+--
+
+LOCK TABLES `auth_user_groups` WRITE;
+/*!40000 ALTER TABLE `auth_user_groups` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_user_groups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_user_user_permissions`
+--
+
+DROP TABLE IF EXISTS `auth_user_user_permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_user_user_permissions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `permission_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user_id` (`user_id`,`permission_id`),
+  KEY `auth_user_user_permissions_6340c63c` (`user_id`),
+  KEY `auth_user_user_permissions_83d7f98b` (`permission_id`),
+  CONSTRAINT `user_id_refs_id_4dc23c39` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`),
+  CONSTRAINT `permission_id_refs_id_35d9ac25` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_user_user_permissions`
+--
+
+LOCK TABLES `auth_user_user_permissions` WRITE;
+/*!40000 ALTER TABLE `auth_user_user_permissions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_user_user_permissions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_admin_log`
+--
+
+DROP TABLE IF EXISTS `django_admin_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `django_admin_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `action_time` datetime NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `content_type_id` int(11) DEFAULT NULL,
+  `object_id` longtext,
+  `object_repr` varchar(200) NOT NULL,
+  `action_flag` smallint(5) unsigned NOT NULL,
+  `change_message` longtext NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `django_admin_log_6340c63c` (`user_id`),
+  KEY `django_admin_log_37ef4eb4` (`content_type_id`),
+  CONSTRAINT `user_id_refs_id_c0d12874` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`),
+  CONSTRAINT `content_type_id_refs_id_93d2d1f8` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_admin_log`
+--
+
+LOCK TABLES `django_admin_log` WRITE;
+/*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
+INSERT INTO `django_admin_log` VALUES (1,'2015-02-18 21:31:02',1,9,'1','The role of cultural forms in tangible interaction design',1,''),(2,'2015-02-19 01:01:03',1,19,'1','FrontPageBlurb object',1,''),(3,'2015-02-19 01:01:33',1,19,'1','FrontPageBlurb object',2,'Changed description.'),(4,'2015-02-19 14:12:34',1,10,'1','Tangible Programming',1,''),(5,'2015-02-19 14:13:21',1,10,'2','Computational Literacy',1,''),(6,'2015-02-19 14:13:56',1,10,'3','Cultural Forms',1,''),(7,'2015-02-19 14:14:03',1,11,'1','Tern',1,''),(8,'2015-02-19 14:15:39',1,10,'4','Environmental Sustainability',1,''),(9,'2015-02-19 14:15:46',1,11,'2','Green Home Games',1,''),(10,'2015-02-19 14:22:44',1,11,'2','Green Home Games',2,'Changed cropping and projectCrop.'),(11,'2015-02-19 14:24:24',1,11,'3','Roberto',1,''),(12,'2015-02-19 14:24:35',1,11,'3','Roberto',2,'Changed cropping, projectCrop and vieworder.'),(13,'2015-02-19 14:24:48',1,11,'2','Green Home Games',2,'Changed vieworder.'),(14,'2015-02-19 14:26:16',1,10,'5','Museums',1,''),(15,'2015-02-19 14:26:34',1,10,'6','Interactive Tabletops',1,''),(16,'2015-02-19 14:26:46',1,10,'7','Evolution',1,''),(17,'2015-02-19 14:27:22',1,11,'4','DeepTree Exhibit',1,''),(18,'2015-02-19 14:31:00',1,11,'5','Frog Pond Exhibit',1,''),(19,'2015-02-19 14:31:22',1,11,'5','Frog Pond Exhibit',2,'Changed cropping, projectCrop and vieworder.'),(20,'2015-02-19 14:31:30',1,11,'4','DeepTree Exhibit',2,'Changed cropping, projectCrop and vieworder.'),(21,'2015-02-19 14:33:07',1,11,'6','Robot Park Exhibit',1,''),(22,'2015-02-19 14:33:22',1,11,'5','Frog Pond Exhibit',2,'Changed vieworder.'),(23,'2015-02-19 14:33:29',1,11,'4','DeepTree Exhibit',2,'Changed vieworder.'),(24,'2015-02-19 14:35:08',1,11,'7','Tree Builder Exhibit',1,''),(25,'2015-02-19 14:38:46',1,11,'8','BioMap',1,''),(26,'2015-02-19 14:38:59',1,11,'8','BioMap',2,'Changed cropping, projectCrop and vieworder.'),(27,'2015-02-19 14:40:44',1,11,'9','NetTango',1,''),(28,'2015-02-19 14:42:17',1,10,'8','Tangible Interaction',1,''),(29,'2015-02-19 14:42:33',1,11,'10','Sickle Cell Station',1,''),(30,'2015-02-19 14:44:51',1,11,'11','TopCodes',1,''),(31,'2015-02-19 16:27:51',1,13,'1','Mike Horn',1,''),(32,'2015-02-19 16:29:15',1,15,'1','Life on Earth featured in PBS NOVA blog post',1,''),(33,'2015-02-19 16:38:15',1,15,'1','PBS NOVA blog post',2,'Changed title, content and pubdate.'),(34,'2015-02-19 16:40:20',1,15,'1','PBS NOVA blog post',2,'Changed content.'),(35,'2015-02-19 21:36:22',1,15,'2','Best Paper Award (IDC 2014)',1,''),(36,'2015-02-19 21:41:14',1,15,'2','Best Paper Award (IDC 2014)',2,'Changed content.'),(37,'2015-02-19 21:41:26',1,15,'1','PBS NOVA blog post',2,'Changed content.'),(38,'2015-02-19 21:44:06',1,15,'3','Best Short Paper Award (IDC 2014)',1,''),(39,'2015-02-19 21:46:33',1,15,'4','Games+Learning+Society Showcase Award',1,''),(40,'2015-02-19 21:48:40',1,15,'4','Games, Learning, Society and Showcase Award',2,'Changed title.'),(41,'2015-02-19 21:49:14',1,15,'4','Games, Learning, Society and Showcase Award (GLS 2014)',2,'Changed title.'),(42,'2015-02-19 21:52:25',1,15,'4','Games, Learning, Society and Showcase Award (GLS 2014)',2,'Changed content.'),(43,'2015-02-19 21:54:20',1,15,'5','New York Times: Very Young Programmers',1,''),(44,'2015-02-19 21:57:50',1,15,'1','PBS NOVA blog post',2,'Changed content.'),(45,'2015-02-19 22:00:46',1,15,'6','Best Design Paper Award (CSCL 2013)',1,''),(46,'2015-02-19 22:31:09',1,15,'7','Life on Earth Exhibits Launch!',1,''),(47,'2015-02-20 01:18:53',1,11,'1','Tern',2,'Changed thumb, cropping and projectCrop.'),(48,'2015-02-20 01:20:03',1,11,'1','Tern',2,'Changed cropping and projectCrop.'),(49,'2015-02-20 01:47:24',1,13,'2','Zeina Leong',1,''),(50,'2015-02-20 01:49:09',1,13,'2','Zeina Leong',2,'Changed cropping and projects.'),(51,'2015-02-20 01:50:39',1,13,'3','Elham Beheshti',1,''),(52,'2015-02-20 01:52:00',1,13,'4','Sarah Alsulaiman',1,''),(53,'2015-02-20 01:53:13',1,13,'5','Amartya Banerjee',1,''),(54,'2015-02-20 01:54:16',1,13,'6','Pei-Yi Kuo',1,''),(55,'2015-02-20 01:54:29',1,13,'6','Pei-Yi Kuo',2,'Changed cropping and vieworder.'),(56,'2015-02-20 01:55:44',1,13,'7','D. Harmon Pollock',1,''),(57,'2015-02-20 01:57:01',1,13,'8','Sarah D\'Angelo',1,''),(58,'2015-02-20 01:58:09',1,13,'9','Krystal Villanosa',1,''),(59,'2015-02-20 02:01:13',1,13,'10','Pryce Davis',1,''),(60,'2015-02-20 02:02:37',1,13,'11','Maisa Morin',1,'');
+/*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_content_type`
+--
+
+DROP TABLE IF EXISTS `django_content_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `django_content_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `app_label` varchar(100) NOT NULL,
+  `model` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `app_label` (`app_label`,`model`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_content_type`
+--
+
+LOCK TABLES `django_content_type` WRITE;
+/*!40000 ALTER TABLE `django_content_type` DISABLE KEYS */;
+INSERT INTO `django_content_type` VALUES (1,'permission','auth','permission'),(2,'group','auth','group'),(3,'user','auth','user'),(4,'content type','contenttypes','contenttype'),(5,'session','sessions','session'),(6,'site','sites','site'),(7,'log entry','admin','logentry'),(8,'migration history','south','migrationhistory'),(9,'publication','tidalweb','publication'),(10,'tag','tidalweb','tag'),(11,'project','tidalweb','project'),(12,'photos','tidalweb','photos'),(13,'people','tidalweb','people'),(14,'r interests','tidalweb','rinterests'),(15,'post','tidalweb','post'),(16,'front image','tidalweb','frontimage'),(17,'partner','tidalweb','partner'),(18,'affil person','tidalweb','affilperson'),(19,'front page blurb','tidalweb','frontpageblurb'),(20,'source','easy_thumbnails','source'),(21,'thumbnail','easy_thumbnails','thumbnail'),(22,'thumbnail dimensions','easy_thumbnails','thumbnaildimensions');
+/*!40000 ALTER TABLE `django_content_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_session`
+--
+
+DROP TABLE IF EXISTS `django_session`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `django_session` (
+  `session_key` varchar(40) NOT NULL,
+  `session_data` longtext NOT NULL,
+  `expire_date` datetime NOT NULL,
+  PRIMARY KEY (`session_key`),
+  KEY `django_session_b7b81f0c` (`expire_date`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_session`
+--
+
+LOCK TABLES `django_session` WRITE;
+/*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
+INSERT INTO `django_session` VALUES ('54lcohwkxnu349vxyr2hpaqo6hi7afcf','ZGM0NDg3ODgwOGE1NmFjMjU5NzQ4YzM4MWJiNGZhMTZhMWJlYzBiZDqAAn1xAShVEl9hdXRoX3VzZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHEDVQ1fYXV0aF91c2VyX2lkcQSKAQF1Lg==','2015-03-04 21:29:39');
+/*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_site`
+--
+
+DROP TABLE IF EXISTS `django_site`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `django_site` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `domain` varchar(100) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_site`
+--
+
+LOCK TABLES `django_site` WRITE;
+/*!40000 ALTER TABLE `django_site` DISABLE KEYS */;
+INSERT INTO `django_site` VALUES (1,'example.com','example.com');
+/*!40000 ALTER TABLE `django_site` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `easy_thumbnails_source`
+--
+
+DROP TABLE IF EXISTS `easy_thumbnails_source`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `easy_thumbnails_source` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `modified` datetime NOT NULL,
+  `storage_hash` varchar(40) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `easy_thumbnails_source_name_7549c98cc6dd6969_uniq` (`name`,`storage_hash`),
+  KEY `easy_thumbnails_source_4da47e07` (`name`),
+  KEY `easy_thumbnails_source_3f0464e5` (`storage_hash`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `easy_thumbnails_source`
+--
+
+LOCK TABLES `easy_thumbnails_source` WRITE;
+/*!40000 ALTER TABLE `easy_thumbnails_source` DISABLE KEYS */;
+INSERT INTO `easy_thumbnails_source` VALUES (1,'images/projects/thumbs/Jigsaw1_1.jpg','2015-02-20 01:16:12','f9bde26a1556cd667f742bd34ec7c55e'),(2,'images/projects/thumbs/weather-spinner.jpg','2015-02-19 16:22:24','f9bde26a1556cd667f742bd34ec7c55e'),(3,'images/projects/thumbs/idc13-figure2_002.png','2015-02-19 16:22:24','f9bde26a1556cd667f742bd34ec7c55e'),(4,'images/projects/thumbs/IMG_1150.jpg','2015-02-19 16:22:24','f9bde26a1556cd667f742bd34ec7c55e'),(5,'images/projects/thumbs/DeepTree_1.png','2015-02-19 16:22:24','f9bde26a1556cd667f742bd34ec7c55e'),(6,'images/projects/thumbs/Screen_Shot_2014-03-19_at_9.jpg','2015-02-19 16:22:24','f9bde26a1556cd667f742bd34ec7c55e'),(7,'images/projects/thumbs/robot_1.jpg','2015-02-19 16:22:24','f9bde26a1556cd667f742bd34ec7c55e'),(8,'images/projects/thumbs/Fig3_1.png','2015-02-19 16:22:24','f9bde26a1556cd667f742bd34ec7c55e'),(9,'images/projects/thumbs/IMG_9925_1.jpg','2015-02-19 16:22:24','f9bde26a1556cd667f742bd34ec7c55e'),(10,'images/projects/thumbs/IMG_9781.jpg','2015-02-19 16:22:24','f9bde26a1556cd667f742bd34ec7c55e'),(11,'images/projects/thumbs/topcodes_1.png','2015-02-19 16:22:24','f9bde26a1556cd667f742bd34ec7c55e'),(12,'images/projects/thumbs/Jigsaw1_2.jpg','2015-02-20 01:35:23','f9bde26a1556cd667f742bd34ec7c55e'),(13,'images/people/Mike_Horn.jpg','2015-02-20 01:43:27','f9bde26a1556cd667f742bd34ec7c55e'),(14,'images/people/IMGP0405-edited-scaled.jpg','2015-02-20 02:02:51','f9bde26a1556cd667f742bd34ec7c55e'),(15,'images/people/IMG_0949.jpg','2015-02-20 02:02:52','f9bde26a1556cd667f742bd34ec7c55e'),(16,'images/people/Profile-picture.jpg','2015-02-20 02:02:51','f9bde26a1556cd667f742bd34ec7c55e'),(17,'images/people/photo.jpg','2015-02-20 02:02:52','f9bde26a1556cd667f742bd34ec7c55e'),(18,'images/people/Amartya.jpg','2015-02-20 02:02:52','f9bde26a1556cd667f742bd34ec7c55e'),(19,'images/people/harmon.jpg','2015-02-20 02:02:52','f9bde26a1556cd667f742bd34ec7c55e'),(20,'images/people/dangelo.jpg','2015-02-20 02:02:52','f9bde26a1556cd667f742bd34ec7c55e'),(21,'images/people/Pic_3.jpg','2015-02-20 02:02:52','f9bde26a1556cd667f742bd34ec7c55e'),(22,'images/people/7fffdd957e49ebdd939564617c911a60.jpg','2015-02-20 02:02:52','f9bde26a1556cd667f742bd34ec7c55e'),(23,'images/people/cowgirl_1.jpg','2015-02-20 02:02:52','f9bde26a1556cd667f742bd34ec7c55e');
+/*!40000 ALTER TABLE `easy_thumbnails_source` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `easy_thumbnails_thumbnail`
+--
+
+DROP TABLE IF EXISTS `easy_thumbnails_thumbnail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `easy_thumbnails_thumbnail` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `modified` datetime NOT NULL,
+  `source_id` int(11) NOT NULL,
+  `storage_hash` varchar(40) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `easy_thumbnails_thumbnail_source_id_1f50d53db8191480_uniq` (`source_id`,`name`,`storage_hash`),
+  KEY `easy_thumbnails_thumbnail_a34b03a6` (`source_id`),
+  KEY `easy_thumbnails_thumbnail_4da47e07` (`name`),
+  KEY `easy_thumbnails_thumbnail_3f0464e5` (`storage_hash`),
+  CONSTRAINT `source_id_refs_id_0df57a91` FOREIGN KEY (`source_id`) REFERENCES `easy_thumbnails_source` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `easy_thumbnails_thumbnail`
+--
+
+LOCK TABLES `easy_thumbnails_thumbnail` WRITE;
+/*!40000 ALTER TABLE `easy_thumbnails_thumbnail` DISABLE KEYS */;
+INSERT INTO `easy_thumbnails_thumbnail` VALUES (1,'images/projects/thumbs/Jigsaw1_1.jpg.172x172_q85_crop_detail.jpg','2015-02-19 14:15:50',1,'d26becbf46ac48eda79c7a39a13a02dd'),(2,'images/projects/thumbs/weather-spinner.jpg.172x172_q85_crop_detail.jpg','2015-02-19 14:15:50',2,'d26becbf46ac48eda79c7a39a13a02dd'),(3,'images/projects/thumbs/weather-spinner.jpg.300x300_q85_detail.jpg','2015-02-19 14:22:28',2,'d26becbf46ac48eda79c7a39a13a02dd'),(4,'images/projects/thumbs/idc13-figure2_002.png.300x300_q85_detail.png','2015-02-19 14:24:30',3,'d26becbf46ac48eda79c7a39a13a02dd'),(5,'images/projects/thumbs/IMG_1150.jpg.300x300_q85_detail.jpg','2015-02-19 14:31:17',4,'d26becbf46ac48eda79c7a39a13a02dd'),(6,'images/projects/thumbs/DeepTree_1.png.300x300_q85_detail.png','2015-02-19 14:31:25',5,'d26becbf46ac48eda79c7a39a13a02dd'),(7,'images/projects/thumbs/Screen_Shot_2014-03-19_at_9.jpg.300x300_q85_detail.jpg','2015-02-19 14:38:53',6,'d26becbf46ac48eda79c7a39a13a02dd'),(8,'images/projects/thumbs/weather-spinner.jpg.172x172_q85_box-0,0,172,172_crop_detail.jpg','2015-02-19 14:45:10',2,'d26becbf46ac48eda79c7a39a13a02dd'),(9,'images/projects/thumbs/idc13-figure2_002.png.172x172_q85_box-0,0,172,172_crop_detail.png','2015-02-19 14:45:10',3,'d26becbf46ac48eda79c7a39a13a02dd'),(10,'images/projects/thumbs/DeepTree_1.png.172x172_q85_box-0,0,172,172_crop_detail.png','2015-02-19 14:45:10',5,'d26becbf46ac48eda79c7a39a13a02dd'),(11,'images/projects/thumbs/IMG_1150.jpg.172x172_q85_box-0,0,172,172_crop_detail.jpg','2015-02-19 14:45:10',4,'d26becbf46ac48eda79c7a39a13a02dd'),(12,'images/projects/thumbs/robot_1.jpg.172x172_q85_crop_detail.jpg','2015-02-19 14:45:10',7,'d26becbf46ac48eda79c7a39a13a02dd'),(13,'images/projects/thumbs/Fig3_1.png.172x172_q85_crop_detail.png','2015-02-19 14:45:10',8,'d26becbf46ac48eda79c7a39a13a02dd'),(14,'images/projects/thumbs/Screen_Shot_2014-03-19_at_9.jpg.172x172_q85_box-0,0,172,172_crop_detail.jpg','2015-02-19 14:45:10',6,'d26becbf46ac48eda79c7a39a13a02dd'),(15,'images/projects/thumbs/IMG_9925_1.jpg.172x172_q85_crop_detail.jpg','2015-02-19 14:45:10',9,'d26becbf46ac48eda79c7a39a13a02dd'),(16,'images/projects/thumbs/IMG_9781.jpg.172x172_q85_crop_detail.jpg','2015-02-19 14:45:10',10,'d26becbf46ac48eda79c7a39a13a02dd'),(17,'images/projects/thumbs/Jigsaw1_1.jpg.250x150_q85_crop_detail.jpg','2015-02-19 16:22:24',1,'d26becbf46ac48eda79c7a39a13a02dd'),(18,'images/projects/thumbs/weather-spinner.jpg.250x150_q85_box-0,34,172,137_crop_detail.jpg','2015-02-19 16:22:24',2,'d26becbf46ac48eda79c7a39a13a02dd'),(19,'images/projects/thumbs/idc13-figure2_002.png.250x150_q85_box-0,34,172,137_crop_detail.png','2015-02-19 16:22:24',3,'d26becbf46ac48eda79c7a39a13a02dd'),(20,'images/projects/thumbs/DeepTree_1.png.250x150_q85_box-0,34,172,137_crop_detail.png','2015-02-19 16:22:24',5,'d26becbf46ac48eda79c7a39a13a02dd'),(21,'images/projects/thumbs/IMG_1150.jpg.250x150_q85_box-0,34,172,137_crop_detail.jpg','2015-02-19 16:22:24',4,'d26becbf46ac48eda79c7a39a13a02dd'),(22,'images/projects/thumbs/robot_1.jpg.250x150_q85_crop_detail.jpg','2015-02-19 16:22:24',7,'d26becbf46ac48eda79c7a39a13a02dd'),(23,'images/projects/thumbs/Fig3_1.png.250x150_q85_crop_detail.png','2015-02-19 16:22:24',8,'d26becbf46ac48eda79c7a39a13a02dd'),(24,'images/projects/thumbs/Screen_Shot_2014-03-19_at_9.jpg.250x150_q85_box-0,34,172,137_crop_detail.jpg','2015-02-19 16:22:24',6,'d26becbf46ac48eda79c7a39a13a02dd'),(25,'images/projects/thumbs/IMG_9925_1.jpg.250x150_q85_crop_detail.jpg','2015-02-19 16:22:24',9,'d26becbf46ac48eda79c7a39a13a02dd'),(26,'images/projects/thumbs/IMG_9781.jpg.250x150_q85_crop_detail.jpg','2015-02-19 16:22:24',10,'d26becbf46ac48eda79c7a39a13a02dd'),(27,'images/projects/thumbs/topcodes_1.png.250x150_q85_crop_detail.png','2015-02-19 16:22:24',11,'d26becbf46ac48eda79c7a39a13a02dd'),(28,'images/projects/thumbs/Jigsaw1_1.jpg.300x300_q85_detail.jpg','2015-02-20 01:16:12',1,'d26becbf46ac48eda79c7a39a13a02dd'),(29,'images/projects/thumbs/Jigsaw1_2.jpg.300x300_q85_detail.jpg','2015-02-20 01:18:56',12,'d26becbf46ac48eda79c7a39a13a02dd'),(30,'images/projects/thumbs/Jigsaw1_2.jpg.250x150_q85_box-0,0,580,347_crop_detail.jpg','2015-02-20 01:20:07',12,'d26becbf46ac48eda79c7a39a13a02dd'),(31,'images/projects/thumbs/Jigsaw1_2.jpg.172x172_q85_box-41,0,392,350_crop_detail.jpg','2015-02-20 01:35:23',12,'d26becbf46ac48eda79c7a39a13a02dd'),(32,'images/people/Mike_Horn.jpg.300x300_q85_crop_detail.jpg','2015-02-20 01:43:27',13,'d26becbf46ac48eda79c7a39a13a02dd'),(33,'images/people/IMGP0405-edited-scaled.jpg.300x300_q85_detail.jpg','2015-02-20 01:49:02',14,'d26becbf46ac48eda79c7a39a13a02dd'),(34,'images/people/IMG_0949.jpg.300x300_q85_detail.jpg','2015-02-20 01:54:22',15,'d26becbf46ac48eda79c7a39a13a02dd'),(35,'images/people/IMGP0405-edited-scaled.jpg.300x300_q85_box-0,0,300,300_crop_detail.jpg','2015-02-20 02:02:51',14,'d26becbf46ac48eda79c7a39a13a02dd'),(36,'images/people/Profile-picture.jpg.300x300_q85_crop_detail.jpg','2015-02-20 02:02:51',16,'d26becbf46ac48eda79c7a39a13a02dd'),(37,'images/people/photo.jpg.300x300_q85_crop_detail.jpg','2015-02-20 02:02:52',17,'d26becbf46ac48eda79c7a39a13a02dd'),(38,'images/people/Amartya.jpg.300x300_q85_crop_detail.jpg','2015-02-20 02:02:52',18,'d26becbf46ac48eda79c7a39a13a02dd'),(39,'images/people/IMG_0949.jpg.300x300_q85_box-0,0,300,300_crop_detail.jpg','2015-02-20 02:02:52',15,'d26becbf46ac48eda79c7a39a13a02dd'),(40,'images/people/harmon.jpg.300x300_q85_crop_detail.jpg','2015-02-20 02:02:52',19,'d26becbf46ac48eda79c7a39a13a02dd'),(41,'images/people/dangelo.jpg.300x300_q85_crop_detail.jpg','2015-02-20 02:02:52',20,'d26becbf46ac48eda79c7a39a13a02dd'),(42,'images/people/Pic_3.jpg.300x300_q85_crop_detail.jpg','2015-02-20 02:02:52',21,'d26becbf46ac48eda79c7a39a13a02dd'),(43,'images/people/7fffdd957e49ebdd939564617c911a60.jpg.300x300_q85_crop_detail.jpg','2015-02-20 02:02:52',22,'d26becbf46ac48eda79c7a39a13a02dd'),(44,'images/people/cowgirl_1.jpg.300x300_q85_crop_detail.jpg','2015-02-20 02:02:52',23,'d26becbf46ac48eda79c7a39a13a02dd');
+/*!40000 ALTER TABLE `easy_thumbnails_thumbnail` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `easy_thumbnails_thumbnaildimensions`
+--
+
+DROP TABLE IF EXISTS `easy_thumbnails_thumbnaildimensions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `easy_thumbnails_thumbnaildimensions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `thumbnail_id` int(11) NOT NULL,
+  `width` int(10) unsigned DEFAULT NULL,
+  `height` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `thumbnail_id` (`thumbnail_id`),
+  CONSTRAINT `thumbnail_id_refs_id_ef901436` FOREIGN KEY (`thumbnail_id`) REFERENCES `easy_thumbnails_thumbnail` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `easy_thumbnails_thumbnaildimensions`
+--
+
+LOCK TABLES `easy_thumbnails_thumbnaildimensions` WRITE;
+/*!40000 ALTER TABLE `easy_thumbnails_thumbnaildimensions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `easy_thumbnails_thumbnaildimensions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `south_migrationhistory`
+--
+
+DROP TABLE IF EXISTS `south_migrationhistory`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `south_migrationhistory` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `app_name` varchar(255) NOT NULL,
+  `migration` varchar(255) NOT NULL,
+  `applied` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `south_migrationhistory`
+--
+
+LOCK TABLES `south_migrationhistory` WRITE;
+/*!40000 ALTER TABLE `south_migrationhistory` DISABLE KEYS */;
+INSERT INTO `south_migrationhistory` VALUES (1,'tidalweb','0001_initial','2015-02-18 21:15:35'),(2,'tidalweb','0002_auto__del_field_post_website__del_field_post_pubdate__add_field_fronti','2015-02-18 21:15:35'),(3,'tidalweb','0003_auto__add_field_people_vieworder','2015-02-18 21:15:35'),(4,'tidalweb','0004_auto__add_field_post_pubdate','2015-02-18 21:15:35'),(5,'tidalweb','0005_auto__add_field_post_weblink','2015-02-18 21:15:35'),(6,'tidalweb','0006_auto__add_field_project_videoURL__add_field_project_projectCrop__add_f','2015-02-18 21:15:36'),(7,'easy_thumbnails','0001_initial','2015-02-18 21:15:36'),(8,'easy_thumbnails','0002_filename_indexes','2015-02-18 21:15:36'),(9,'easy_thumbnails','0003_auto__add_storagenew','2015-02-18 21:15:36'),(10,'easy_thumbnails','0004_auto__add_field_source_storage_new__add_field_thumbnail_storage_new','2015-02-18 21:15:36'),(11,'easy_thumbnails','0005_storage_fks_null','2015-02-18 21:15:36'),(12,'easy_thumbnails','0006_copy_storage','2015-02-18 21:15:36'),(13,'easy_thumbnails','0007_storagenew_fks_not_null','2015-02-18 21:15:36'),(14,'easy_thumbnails','0008_auto__del_field_source_storage__del_field_thumbnail_storage','2015-02-18 21:15:37'),(15,'easy_thumbnails','0009_auto__del_storage','2015-02-18 21:15:37'),(16,'easy_thumbnails','0010_rename_storage','2015-02-18 21:15:37'),(17,'easy_thumbnails','0011_auto__add_field_source_storage_hash__add_field_thumbnail_storage_hash','2015-02-18 21:15:37'),(18,'easy_thumbnails','0012_build_storage_hashes','2015-02-18 21:15:37'),(19,'easy_thumbnails','0013_auto__del_storage__del_field_source_storage__del_field_thumbnail_stora','2015-02-18 21:15:37'),(20,'easy_thumbnails','0014_auto__add_unique_source_name_storage_hash__add_unique_thumbnail_name_s','2015-02-18 21:15:37'),(21,'easy_thumbnails','0015_auto__del_unique_thumbnail_name_storage_hash__add_unique_thumbnail_sou','2015-02-18 21:15:37'),(22,'easy_thumbnails','0016_auto__add_thumbnaildimensions','2015-02-18 21:15:37');
+/*!40000 ALTER TABLE `south_migrationhistory` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tidalweb_affilperson`
+--
+
+DROP TABLE IF EXISTS `tidalweb_affilperson`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tidalweb_affilperson` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `netID` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `website` varchar(200) NOT NULL,
+  `photo` varchar(100) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `viewable` tinyint(1) NOT NULL,
+  `created` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tidalweb_affilperson`
+--
+
+LOCK TABLES `tidalweb_affilperson` WRITE;
+/*!40000 ALTER TABLE `tidalweb_affilperson` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tidalweb_affilperson` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tidalweb_frontimage`
+--
+
+DROP TABLE IF EXISTS `tidalweb_frontimage`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tidalweb_frontimage` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `image` varchar(100) NOT NULL,
+  `cropping` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `published` tinyint(1) NOT NULL,
+  `created` datetime NOT NULL,
+  `vieworder` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tidalweb_frontimage`
+--
+
+LOCK TABLES `tidalweb_frontimage` WRITE;
+/*!40000 ALTER TABLE `tidalweb_frontimage` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tidalweb_frontimage` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tidalweb_frontpageblurb`
+--
+
+DROP TABLE IF EXISTS `tidalweb_frontpageblurb`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tidalweb_frontpageblurb` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `description` longtext NOT NULL,
+  `created` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tidalweb_frontpageblurb`
+--
+
+LOCK TABLES `tidalweb_frontpageblurb` WRITE;
+/*!40000 ALTER TABLE `tidalweb_frontpageblurb` DISABLE KEYS */;
+INSERT INTO `tidalweb_frontpageblurb` VALUES (1,'TIDAL Lab','The TIDAL Lab is a team of designers, artists, learning scientists, and computer scientists at Northwestern University. Our research creates innovative learning experiences using new forms of interactive technology. We take a cautious but optimistic stance towards technology that tightly couples learning research and design.','2015-02-19 01:01:03');
+/*!40000 ALTER TABLE `tidalweb_frontpageblurb` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tidalweb_partner`
+--
+
+DROP TABLE IF EXISTS `tidalweb_partner`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tidalweb_partner` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `institution` varchar(255) NOT NULL,
+  `affiliation` varchar(255) NOT NULL,
+  `logo` varchar(100) NOT NULL,
+  `url` varchar(200) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `viewable` tinyint(1) NOT NULL,
+  `created` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tidalweb_partner`
+--
+
+LOCK TABLES `tidalweb_partner` WRITE;
+/*!40000 ALTER TABLE `tidalweb_partner` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tidalweb_partner` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tidalweb_people`
+--
+
+DROP TABLE IF EXISTS `tidalweb_people`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tidalweb_people` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `netID` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `biography` longtext NOT NULL,
+  `website` varchar(200) NOT NULL,
+  `linkedin` varchar(200) NOT NULL,
+  `photo` varchar(100) NOT NULL,
+  `cropping` varchar(255) NOT NULL,
+  `cv` varchar(100) NOT NULL,
+  `emailuser` varchar(255) NOT NULL,
+  `emaildomain` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `viewable` tinyint(1) NOT NULL,
+  `created` datetime NOT NULL,
+  `vieworder` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tidalweb_people`
+--
+
+LOCK TABLES `tidalweb_people` WRITE;
+/*!40000 ALTER TABLE `tidalweb_people` DISABLE KEYS */;
+INSERT INTO `tidalweb_people` VALUES (1,'Mike Horn','','Director','Testing','http://tidal.northwestern.edu/people/mikehorn','','images/people/Mike_Horn.jpg','','files/cv/MichaelHornCV_1.pdf','michael-horn','northwestern.edu','mikehorn',1,'2015-02-19 16:27:51',1),(2,'Zeina Leong','','PhD Student','Coming soon...','','','images/people/IMGP0405-edited-scaled.jpg','0,0,300,300','','zeinaatrash2012','u.northwestern.edu','zeina-leong',1,'2015-02-20 01:47:24',2),(3,'Elham Beheshti','','PhD Student','Coming soon...','','','images/people/Profile-picture.jpg','','','beheshti','u.northwestern.edu','elham-beheshti',1,'2015-02-20 01:50:39',3),(4,'Sarah Alsulaiman','','PhD Student','Coming soon...','','','images/people/photo.jpg','','','sarahalsulaiman2012','u.northwestern.edu','sarah-alsulaiman',1,'2015-02-20 01:52:00',4),(5,'Amartya Banerjee','','PhD Student','Coming soon...','','','images/people/Amartya.jpg','','','amartya','u.northwestern.edu','amartya-banerjee',1,'2015-02-20 01:53:13',5),(6,'Pei-Yi Kuo','','PhD Student','Coming soon...','','','images/people/IMG_0949.jpg','0,0,300,300','','pykuo','u.northwestern.edu','pei-yi-kuo',1,'2015-02-20 01:54:16',6),(7,'D. Harmon Pollock','','PhD Student','Coming soon...','','','images/people/harmon.jpg','','','drewpollock2012','u.northwestern.edu','d-harmon-pollock',1,'2015-02-20 01:55:44',7),(8,'Sarah D\'Angelo','','PhD Student','Coming soon...','','','images/people/dangelo.jpg','','','sarahdangelo2017','u.northwestern.edu','sarah-dangelo',1,'2015-02-20 01:57:01',8),(9,'Krystal Villanosa','','PhD Student','Coming soon...','','','images/people/Pic_3.jpg','','','kvillanosa','u.northwestern.edu','krystal-villanosa',1,'2015-02-20 01:58:09',9),(10,'Pryce Davis','','Postdoc','Coming soon...','','','images/people/7fffdd957e49ebdd939564617c911a60.jpg','','','pryce','u.northwestern.edu','pryce-davis',1,'2015-02-20 02:01:13',10),(11,'Maisa Morin','','Graphic Designer','Coming soon...','','','images/people/cowgirl_1.jpg','','','maisamorin','gmail.com','maisa-morin',1,'2015-02-20 02:02:37',11);
+/*!40000 ALTER TABLE `tidalweb_people` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tidalweb_people_projects`
+--
+
+DROP TABLE IF EXISTS `tidalweb_people_projects`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tidalweb_people_projects` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `people_id` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `tidalweb_people_projects_people_id_2f6cea01633baf12_uniq` (`people_id`,`project_id`),
+  KEY `tidalweb_people_projects_3cff102f` (`people_id`),
+  KEY `tidalweb_people_projects_37952554` (`project_id`),
+  CONSTRAINT `people_id_refs_id_6b3d7ce3` FOREIGN KEY (`people_id`) REFERENCES `tidalweb_people` (`id`),
+  CONSTRAINT `project_id_refs_id_83879900` FOREIGN KEY (`project_id`) REFERENCES `tidalweb_project` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tidalweb_people_projects`
+--
+
+LOCK TABLES `tidalweb_people_projects` WRITE;
+/*!40000 ALTER TABLE `tidalweb_people_projects` DISABLE KEYS */;
+INSERT INTO `tidalweb_people_projects` VALUES (1,1,1),(2,1,2),(3,1,3),(4,1,4),(5,1,5),(6,1,6),(7,1,7),(8,1,8),(9,1,9),(10,1,10),(11,1,11),(14,2,7),(13,2,10),(15,3,9),(17,5,2),(16,5,9),(19,6,2),(20,7,5),(21,9,7),(22,11,2),(23,11,5);
+/*!40000 ALTER TABLE `tidalweb_people_projects` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tidalweb_people_publications`
+--
+
+DROP TABLE IF EXISTS `tidalweb_people_publications`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tidalweb_people_publications` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `people_id` int(11) NOT NULL,
+  `publication_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `tidalweb_people_publications_people_id_21dfa4d560099038_uniq` (`people_id`,`publication_id`),
+  KEY `tidalweb_people_publications_3cff102f` (`people_id`),
+  KEY `tidalweb_people_publications_8af9c21b` (`publication_id`),
+  CONSTRAINT `people_id_refs_id_64e5fac3` FOREIGN KEY (`people_id`) REFERENCES `tidalweb_people` (`id`),
+  CONSTRAINT `publication_id_refs_id_cc6e3c01` FOREIGN KEY (`publication_id`) REFERENCES `tidalweb_publication` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tidalweb_people_publications`
+--
+
+LOCK TABLES `tidalweb_people_publications` WRITE;
+/*!40000 ALTER TABLE `tidalweb_people_publications` DISABLE KEYS */;
+INSERT INTO `tidalweb_people_publications` VALUES (1,1,1),(2,1,2),(3,1,3),(4,1,4),(5,1,5),(6,1,6),(7,1,7),(8,1,8),(9,1,9),(10,1,10),(11,1,11),(12,1,12),(13,1,13),(14,1,14),(15,1,15),(16,1,16),(17,1,17),(18,1,18),(19,1,19);
+/*!40000 ALTER TABLE `tidalweb_people_publications` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tidalweb_photos`
+--
+
+DROP TABLE IF EXISTS `tidalweb_photos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tidalweb_photos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `image` varchar(100) NOT NULL,
+  `myproject_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `tidalweb_photos_67a1e124` (`myproject_id`),
+  CONSTRAINT `myproject_id_refs_id_3f55cff4` FOREIGN KEY (`myproject_id`) REFERENCES `tidalweb_project` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tidalweb_photos`
+--
+
+LOCK TABLES `tidalweb_photos` WRITE;
+/*!40000 ALTER TABLE `tidalweb_photos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tidalweb_photos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tidalweb_post`
+--
+
+DROP TABLE IF EXISTS `tidalweb_post`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tidalweb_post` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `author_id` int(11) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `content` longtext NOT NULL,
+  `published` tinyint(1) NOT NULL,
+  `created` datetime NOT NULL,
+  `pubdate` date NOT NULL,
+  `weblink` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug` (`slug`),
+  KEY `tidalweb_post_e969df21` (`author_id`),
+  CONSTRAINT `author_id_refs_id_b5048c5a` FOREIGN KEY (`author_id`) REFERENCES `tidalweb_people` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tidalweb_post`
+--
+
+LOCK TABLES `tidalweb_post` WRITE;
+/*!40000 ALTER TABLE `tidalweb_post` DISABLE KEYS */;
+INSERT INTO `tidalweb_post` VALUES (1,'PBS NOVA blog post',1,'nova-blog','Our Life on Earth exhibits were featured in a PBS NOVA blog post','Our Life on Earth exhibits were featured in a PBS NOVA blog post by Ralph Bouquet:\r\n\r\n\"imagine doing a family tree project that took into account all the biodiversity and history of 3.5 billion years of life...\"',1,'2015-02-19 16:29:15','2014-07-21','http://www.pbs.org/wgbh/nova/blogs/education/2014/07/life-on-earth-project-turns-evolution-into-a-gaming-experience/'),(2,'Best Paper Award (IDC 2014)',1,'best-paper-idc14','Best Paper Award (IDC 2014)','Zeina Atrash Leong\'s paper, Waiting for Learning, was awarded Best Full Paper at the 2014 Interaction Design and Children Conference in Aarhus, Denmark. Congratulations, Zeina!',1,'2015-02-19 21:36:22','2014-06-20',''),(3,'Best Short Paper Award (IDC 2014)',1,'best-short-paper-idc14','Best Short Paper Award (IDC 2014)','Our Frog Pond Evolution paper was awarded Best Short Paper at the Interaction Design and Children Conference (IDC 2014) in Aarhus, Denmark. Congratulations, team!',1,'2015-02-19 21:44:06','2014-06-20',''),(4,'Games, Learning, Society and Showcase Award (GLS 2014)',1,'gls-showcase-award','Games+Learning+Society Showcase Award','Our Green Home Games project, Turn Up the Heat, just won the 2nd Place Showcase Award at the 2014\r\nGames, Learning, and Society Conference in Madison, Wisconsin.',1,'2015-02-19 21:46:33','2014-06-19',''),(5,'New York Times: Very Young Programmers',1,'nytimes-programmers','New York Times: Very Young Programmers','Mike\'s work on Tangible Programming in the DevTech group at Tufts University was mentioned in the New York Times Science Section.',1,'2015-02-19 21:54:20','2013-09-03','http://www.nytimes.com/2013/09/03/science/very-young-programmers.html'),(6,'Best Design Paper Award (CSCL 2013)',1,'best-paper-cscl13','Best Design Paper Award (CSCL 2013)','Our Going Deep paper was just awarded Best Design Paper at the Computer Supported Collaborative Learning Conference (CSCL\'13) conference in Madison, Wisconsin. Congratulations, team!',1,'2015-02-19 22:00:46','2013-06-15',''),(7,'Life on Earth Exhibits Launch!',1,'loe-launch','Life on Earth Exhibits Launch!','Our Life on Earth exhibits have launched at the California Academy of Sciences and the Field Museum',1,'2015-02-19 22:31:09','2013-04-01','http://vimeo.com/51581735');
+/*!40000 ALTER TABLE `tidalweb_post` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tidalweb_project`
+--
+
+DROP TABLE IF EXISTS `tidalweb_project`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tidalweb_project` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `active` tinyint(1) NOT NULL,
+  `website` varchar(200) NOT NULL,
+  `about` longtext NOT NULL,
+  `thumb` varchar(100) NOT NULL,
+  `cropping` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `viewable` tinyint(1) NOT NULL,
+  `created` datetime NOT NULL,
+  `videoURL` varchar(200) NOT NULL,
+  `projectCrop` varchar(255) NOT NULL,
+  `vieworder` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tidalweb_project`
+--
+
+LOCK TABLES `tidalweb_project` WRITE;
+/*!40000 ALTER TABLE `tidalweb_project` DISABLE KEYS */;
+INSERT INTO `tidalweb_project` VALUES (1,'Tern',1,'http://hci.cs.tufts.edu/tern/','Tern is a tangible computer language designed to provide an easy introduction to computer programming. With Tern you can create programs for robots like the LEGO Mindstorms RCX or the iRobot Create. Tern is featured in a permanent exhibit at the Boston Museum of Science called Robot Park. It is also being used for the Tangible Kindergarten project at the Tufts University Developmental Technologies group.','images/projects/thumbs/Jigsaw1_2.jpg','41,0,392,350','tern',1,'2015-02-19 14:14:03','','0,0,580,347',1),(2,'Green Home Games',1,'http://tidal.northwestern.edu/greenhomegames','Green Home Games is a research and design initiative to create playful learning activities for parents and children to learn about energy consumption in homes. Through this project we have developed a board game called <i>Turn Up the Heat!</i> designed to help families think about tradeoffs related to comfort, energy, and the environment through the use of household heating and cooling systems. We have also created an energy exploration game called <i>Ghost Hunter</i>.\r\n\r\nNSF grant number IIS-1123574.','images/projects/thumbs/weather-spinner.jpg','0,0,172,172','green-home-games',1,'2015-02-19 14:15:46','','0,34,172,137',2),(3,'Roberto',1,'http://tidal.northwestern.edu/roberto','Roberto is a <i>computational literacy stickerbook</i> concept. The design includes a physical children\'s storybook that parents and kids read together. On the pages of the book are sticker activities. Chains of stickers form simple computer programs that control an digital version of Roberto animated on a smartphone or tablet computer.','images/projects/thumbs/idc13-figure2_002.png','0,0,172,172','roberto',1,'2015-02-19 14:24:24','http://vimeo.com/32874650','0,34,172,137',3),(4,'DeepTree Exhibit',1,'https://lifeonearth.seas.harvard.edu/learning-activities/deeptree/','The DeepTree is a visualization of the history of all life on earth. This tree of life represents the evolutionary relationship of millions of species from the very beginning of life, 3.5 billion years ago. The DeepTree is a multi-touch interactive application, allowing people to “fly through” the vast tree of life to any species, and to \r\nlearn how species are related through a set of showcase species and shared derived traits. \r\n\r\nNSF grant number DRL-1010889.','images/projects/thumbs/DeepTree_1.png','0,0,172,172','deeptree-exhibit',1,'2015-02-19 14:27:22','https://www.youtube.com/watch?feature=player_embedded&amp;v=dpo9iK26el8','0,34,172,137',4),(5,'Frog Pond Exhibit',1,'http://tidal.northwestern.edu/portfolio/#frog-pond','Frog Pond is an interactive computational literacy exhibit that we are developing in partnership with the Computer History Museum in Mountain View, California. The exhibit will feature an interactive tabletop with a graphical programming language. Visitors create simple computer programs that control the actions of many colorful frogs that hop around a lily pond and eat beetles.','images/projects/thumbs/IMG_1150.jpg','0,0,172,172','frog-pond-exhibit',1,'2015-02-19 14:31:00','','0,34,172,137',5),(6,'Robot Park Exhibit',1,'http://hci.cs.tufts.edu/tern/robotpark.html','Robot Park is an exhibit on robotics and computer programming at the Museum of Science, Boston. Robot Park was launched in 2007 and features the Tern tangible programming language. Visitors create simple computer programs using chains of wooden blocks that control the actions of an iRobot Create.','images/projects/thumbs/robot_1.jpg','','robot-park-exhibit',1,'2015-02-19 14:33:07','','',6),(7,'Tree Builder Exhibit',1,'https://lifeonearth.seas.harvard.edu/learning-activities/bat/','Build-a-Tree (BAT) is a multi-level puzzle game designed to help people learn about evolution and to develop phylogenetic tree-thinking skills. Through game play people can learn about relationships between different groups of organisms as well as the traits that help define those relationships. Build-a-Tree is on display at the California Academy of Sciences in San Francisco. \r\n\r\nNSF grant number DRL-1010889.','images/projects/thumbs/Fig3_1.png','','tree-builder-exhibit',1,'2015-02-19 14:35:08','https://www.youtube.com/watch?feature=player_embedded&amp;v=CWl-31XtKh4','',7),(8,'BioMap',1,'http://tidal.northwestern.edu/biomap','BioMap is an interactive visualization of all of life on earth. BioMap uses a Voronoi Treemap algorithm to organize hundreds of thousands of species into nested clades. Users can drill down into nested levels to learn more about the diversity of life on earth.','images/projects/thumbs/Screen_Shot_2014-03-19_at_9.jpg','0,0,172,172','biomap',1,'2015-02-19 14:38:46','https://vimeo.com/119612060','0,34,172,137',8),(9,'NetTango',1,'http://tidal.northwestern.edu/nettango/','NetTango, an agent-based modeling environment designed for use on a multi-touch tabletop surface. NetTango is based on the popular agent-based modeling environment, NetLogo developed by the Center for Connected Learning and Computer-Based Modeling at Northwestern University. The NetTango project seeks to broaden the accessibility and use of NetLogo for a younger audience. \r\n\r\nNSF grant number DRL-1109834.','images/projects/thumbs/IMG_9925_1.jpg','','nettango',1,'2015-02-19 14:40:44','','',9),(10,'Sickle Cell Station',1,'http://zeina.cardboardshanty.com/research/sickle-cell-station/','This research focuses on the development of educational material for children in waiting areas at clinics for Sickle Cell Disease treatment. Our current research aims to better understand the behaviors of patients as they wait in the clinic; their expectations and understandings of Sickle Cell Disease and its treatment; the educational material currently available; and preliminary methods for developing interactive technologies for these environments. We have developed a variety of educational material including a augmented reality of hemoglobin structure inside red blood cells, a virtual model of blood flow, and an oversized tangible replica of a blood vessel.','images/projects/thumbs/IMG_9781.jpg','','sickle-cell-station',1,'2015-02-19 14:42:33','','',10),(11,'TopCodes',1,'http://users.eecs.northwestern.edu/~mhorn/topcodes/','The TopCode computer vision library is designed to quickly and easily identify and track tangible objects on a flat surface. Just tag any physical object with a TopCode (a circular black and white symbol) and the system will return an ID number, the location of the tag, the angular orientation of the tag, and the diameter of the tag.','images/projects/thumbs/topcodes_1.png','','topcodes',1,'2015-02-19 14:44:51','','',11);
+/*!40000 ALTER TABLE `tidalweb_project` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tidalweb_project_tags`
+--
+
+DROP TABLE IF EXISTS `tidalweb_project_tags`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tidalweb_project_tags` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `project_id` int(11) NOT NULL,
+  `tag_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `tidalweb_project_tags_project_id_5190871f63492688_uniq` (`project_id`,`tag_id`),
+  KEY `tidalweb_project_tags_37952554` (`project_id`),
+  KEY `tidalweb_project_tags_5659cca2` (`tag_id`),
+  CONSTRAINT `project_id_refs_id_e373e8f3` FOREIGN KEY (`project_id`) REFERENCES `tidalweb_project` (`id`),
+  CONSTRAINT `tag_id_refs_id_0911371a` FOREIGN KEY (`tag_id`) REFERENCES `tidalweb_tag` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tidalweb_project_tags`
+--
+
+LOCK TABLES `tidalweb_project_tags` WRITE;
+/*!40000 ALTER TABLE `tidalweb_project_tags` DISABLE KEYS */;
+INSERT INTO `tidalweb_project_tags` VALUES (59,1,1),(60,1,2),(61,1,3),(14,2,3),(15,2,4),(11,3,1),(12,3,2),(13,3,3),(35,4,5),(36,4,6),(37,4,7),(32,5,2),(33,5,5),(34,5,6),(28,6,1),(29,6,2),(30,6,3),(31,6,5),(38,7,5),(39,7,6),(40,7,7),(45,8,4),(46,8,5),(47,8,6),(48,8,7),(49,9,1),(50,9,2),(51,9,6),(52,10,8),(54,11,1),(55,11,5),(53,11,8);
+/*!40000 ALTER TABLE `tidalweb_project_tags` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tidalweb_publication`
+--
+
+DROP TABLE IF EXISTS `tidalweb_publication`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tidalweb_publication` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `authors` varchar(255) NOT NULL,
+  `year` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `journal` varchar(255) NOT NULL,
+  `pages` varchar(255) NOT NULL,
+  `award` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `viewable` tinyint(1) NOT NULL,
+  `created` datetime NOT NULL,
+  `localCopy` varchar(100) NOT NULL,
+  `weblink` varchar(200) NOT NULL,
+  `pubType` varchar(255) NOT NULL,
+  `pubAffil` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tidalweb_publication`
+--
+
+LOCK TABLES `tidalweb_publication` WRITE;
+/*!40000 ALTER TABLE `tidalweb_publication` DISABLE KEYS */;
+INSERT INTO `tidalweb_publication` VALUES (1,'Beheshti, E., Weintrop, D., Orton, K., Horn, M. S., Jona, K., Trouille, L., Wilensky, U.','2015','Bringing Expert Computational Practices into High School Science Classrooms','NARST Annual International Conference (NARST 2015)','','','beheshti-narst-2015',1,'2015-02-18 13:00:00','','','','lab'),(2,'Block, F., Hammerman, J., Horn, M., Spiegel, A., Christiansen, J., Phillips, B., Diamond, J., Evans, E.M., Shen, C.','2015','Fluid Grouping: Quantifying Group Engagement around Interactive Tabletop Exhibits in the Wild','ACM Conference on Human Factors in Computing Systems (CHI\'15)','','','block-chi-2015',1,'2015-02-18 13:00:00','','','','lab'),(3,'Horn, M., Phillips, B., Evans, E.M., Block, F., Diamond, J., Shen, C.','2015','Visualizing the tree of life: Learning around an interactive visualization of biological data in museums','NARST Annual International Conference (NARST 2015)','','','horn-narst-2015',1,'2015-02-18 13:00:00','','','','lab'),(4,'Horn, M.S., Weintrop, D., and Routman, E.','2014','Programming in the Pond: A Tabletop Computer Programming Exhibit','Proceedings ACM Human Factors in Computing Systems (CHI\'14 extended abstracts)','','','horn-chi-2014',1,'2015-02-18 13:00:00','','','','lab'),(5,'Brady, C., Banerjee, A., Hjorth, A., Horn, M.S., Wagh, A., Wilensky, U.','2014','Getting your driftâ€”activity designs for grappling with evolution','Poster presented at the International Conference of the Learning Sciences (ICLS\'14)','','','brady-icls-2015',1,'2015-02-18 13:00:00','','','','lab'),(6,'Horn, M.S.','2014','Beyond video games for social change','ACM Interactions, 21(2)','66-68','','horn-interactions-2015',1,'2015-02-18 13:00:00','','','','lab'),(7,'Banerjee, A., and Horn, M.S.','2014','Ghost Hunter: Parents and children playing together to learn about energy consumption','Proceedings of Tangible, Embedded, and Embodied Interaction (TEI\'14)','','','banerjee-tei-2014',1,'2015-02-18 13:00:00','','','','lab'),(8,'Solomon, C., Banerjee, A., Horn, M.S.','2014','Ultimate trainer: Instructional feedback for Ultimate Frisbee players','Proceedings of Tangible, Embedded, and Embodied Interaction (TEI\'14)','','','solomon-tei-2014',1,'2015-02-18 13:00:00','','','','lab'),(9,'Weintrop, D., Beheshti, E., Horn, M. S., Orton, K., Jona, K., Trouille, L., Wilensky, U.','2014','Defining Computational Thinking for Science, Technology, Engineering, and Math','Poster presented at the annual meeting of the American Education Research Association (AERA\'14)','','','weintrop-aera-2014',1,'2015-02-18 13:00:00','','','','lab'),(10,'Leong, Z.A. and Horn, M.S.','2014','Waiting for Learning: Designing Interactive Education Materials for Patient Waiting Areas','Proceedings Interaction Design and Children (IDC\'14)','','Best Paper Award','leong-idc-2014',1,'2015-02-18 13:00:00','','','','lab'),(11,'Horn, M.S., Brady, C., Hjorth, A., Wagh, A., Wilensky, U.','2014','Frog Pond: A Code-First Learning Environment on Evolution and Natural Selection','Proceedings of Interaction Design and Children (IDCâ€™14)','','Best Short Paper Award','horn-idc-2014',1,'2015-02-18 13:00:00','','','','lab'),(12,'Weintrop, D., Beheshti, E., Horn, M.S., Orton, K., Trouille, L., Jona, K., Wilensky, U.','2014','Interactive Assessment Tools for Computational Thinking in High School STEM Classrooms','Proceedings of INTETAIN 2014, Chicago IL','','','weintrop-intetain-2014',1,'2015-02-18 13:00:00','','','','lab'),(13,'Villanosa, K., Block, F., Horn, M.S., Shen, C.','2014','Build-a-Tree: Parent-child gaming to learn about evolution in museum settings','Games, Learning, and Society (GLS\'14)','','','villanosa-gls-2014',1,'2015-02-18 13:00:00','','','','lab'),(14,'Horn, M.S., Banerjee, A., D\'Angelo, S., Kuo, P-Y., Pollock, D.H., Stevens, R.','2014','Turn Up the Heat! Board games, environmental sustainability, and cultural forms','Games, Learning, and Society (GLS\'14)','','','horn-gls-2014',1,'2015-02-18 13:00:00','','','','lab'),(15,'Horn, M.S., Banerjee, A., D\'Angelo, S., Kuo, P-Y, Pollock, D.H., Stevens, R.','2014','Game Arcade: Turn Up the Heat!','Games, Learning, and Society Demo Track (GLS\'14)','','Second Place GLS Showcase Award','horn-gls-demo-2014',1,'2015-02-18 13:00:00','','','','lab'),(16,'Villanosa, K., Block, F., Hosford, A., Horn, M.S., Shen, C.','2014','Game Arcade: Build-a-Tree','Games, Learning, and Society Demo Track (GLS\'14)','','','villanosa-gls-demo-2014',1,'2015-02-18 13:00:00','','','','lab'),(17,'Beheshti, E., Aljuhani, A., Horn, M.S.','2014','Electrons to Light Bulbs: Understanding Electricity with a Multi-Level Simulation Environment','Proceedings of IEEE Frontiers in Education (FIE\'14)','','','beheshti-fie-2014',1,'2015-02-18 13:00:00','','','','lab'),(18,'Kuo, P-Y. &amp; Horn, M.S.','2014','Energy Diet: Energy feedback on a bathroom scale','ACM International Joint Conference on Pervasive and Ubiquitous Computing (UbiComp\'14)','','','kuo-ubicomp-2014',1,'2015-02-18 13:00:00','','','','lab'),(19,'Wilensky, U., Brady, C., and Horn, M.S.','2014','Fostering computational literacy in science classrooms','Communications of the ACM, 57(8)','17-21','','wilensky-cacm-2014',1,'2015-02-18 13:00:00','','','','lab'),(20,'Horn, M.S.','2013','The role of cultural forms in tangible interaction design','Proceedings of Tangible, Embedded, and Embodied Interaction (TEI\'13)','','','horn-tei-2013',1,'2015-02-18 13:00:00','','','','lab'),(21,'Davis, P., Horn, M.S., &amp; Sherin, B.L.','2013','The right kind of wrong: A knowledge-in-pieces approach to science learning in museums','Curator, 56(1)','31-46','','davis-curator-2013',1,'2015-02-18 13:00:00','','','','lab'),(22,'Horn, M.S., AlSulaiman, S., Koh, J.','2013','Translating Roberto to Omar: Computational literacy, stickerbooks, and cultural forms','Proceedings Interaction Design and Children (IDCâ€™13)','120-127','','horn-idc-2013',1,'2015-02-18 13:00:00','','','','lab'),(23,'Davis, P., Horn, M.S., Schrementi, L., Block, F., Phillips, B., Evans, E.M., Diamond, J., Shen, C.','2013','Going Deep: Supporting collaborative exploration of evolution in natural history museums','Proceedings of Conference on Computer Supported Collaborative Learning (CSCLâ€™13), Madison, Wisconsin','','Best Design Paper Award','davis-cscl-2013',1,'2015-02-18 13:00:00','','','','lab'),(24,'Friedman, J. and Horn, M.S.','2013','StallTalk: Graffiti, toilets, and anonymous location-based micro-blogging','Proceedings of the ACM Conference on Human Factors in Computing Systems (CHIâ€™13, extended abstracts)','2179-2188','','friedman-chi-2013',1,'2015-02-18 13:00:00','','','','lab'),(25,'Evans, E.M., Phillips, B., Horn, M., Block, F., Diamond, J., Shen, C.','2013','Active Prolonged Engagement: When does it become active prolonged learning?','Paper presented at the 2013 Society for Research in Child Development Biennial Meeting','','','evans-srcd-2013',1,'2015-02-18 13:00:00','','','','lab'),(26,'Phillips, B., Evans, E.M., Horn, M., Block, F., Diamond, J., Shen, C.','2013','How is a human like a banana? Conceptions of humans as part of the natural world','Poster presented at The 2013 Society for Research in Child Development Biennial Meeting','','','phillips-srcd-2013',1,'2015-02-18 13:00:00','','','','lab'),(27,'Horn, M.S.','2013','Interaction Design, books, and cultural forms','Workshop paper presented at Interaction Design and Children (IDCâ€™13)','','Best Workshop Paper','horn-idc-work-2013',1,'2015-02-18 13:00:00','','','','lab'),(28,'Block, F., Horn, M.S., Phillips, B.C., Diamond, J., Evans, E.M., Shen, C.','2012','The DeepTree exhibit: Visualizing the tree of life to facilitate informal learning','IEEE Transactions on Visualization and Computer Graphics, 18(12)','2789-2798','','block-vis-2012',1,'2015-02-18 13:00:00','','','','lab'),(29,'Block, F., Wigdor, D., Phillips, B.C., Horn, M.S., Shen, C.','2012','FlowBlocks: A Multi-Touch UI for crowd interaction','Procedings ACM Symposium on User Interface Software and Technology (UISTâ€™12)','497-508','','block-uist-2012',1,'2015-02-18 13:00:00','','','','lab'),(30,'Beheshti, E., Van Devender, A., Horn, M.S.','2012','Touch, click, navigate: Comparing tabletop and desktop interaction for map navigation tasks','Proceedings ACM Interactive Tabletops and Surfaces (ITSâ€™12)','','','beheshti-its-2012',1,'2015-02-18 13:00:00','','','','lab'),(31,'Horn, M.S., Leong, Z.A., Block, F., Diamond, J., Evans, E.M., Phillips, B., Shen, C.','2012','Of BATs and APEs: An interactive tabletop game for natural history museums','Proceedings of the ACM Conference on Human Factors in Computing Systems (CHIâ€™12)','','','horn-chi-2012',1,'2015-02-18 13:00:00','','','','lab'),(32,'Bao, P., Hecht, B., Carton, S., Quaderi, M., Horn, M.S., Gergle, D.','2012','Omnipedia: Bridging the Wikipedia Language Gap','Proceedings of the ACM Conference on Human Factors in Computing Systems (CHIâ€™12)','','','bao-chi-2012',1,'2015-02-18 13:00:00','','','','lab'),(33,'Evans, M.A., Rick, J., Horn, M.S., Shen, C., Mercier, E., McNaughton, J., Higgins, S., Tissenbaum, M., Lui, M., and Slotta, J.D.','2012','Interactive Surfaces and Spaces: A Learning Sciences Agenda','Symposium presented at the International Conference of the Learning Sciences','','','evans-icls-2012',1,'2015-02-18 13:00:00','','','','lab'),(34,'Beheshti, E., Horn, M.S.','2012','Learning flow-of-control with FlipLogic:A game-based approach','Poster presented at the 2012 Frontiers in Education Conference','','','beheshti-fie-2012',1,'2015-02-18 13:00:00','','','','lab'),(35,'Weintrop, D., Holbert, H., Wilensky, U., Horn, M.S.','2012','Redefining constructionist video games: Marrying constructionism and video game design','Proceedings Constructionism, 2012, Athens, Greece','','','weintrop-const-2012',1,'2015-02-18 13:00:00','','','','lab'),(36,'Horn, M.S., Wilensky, U.','2012','NetTango: A mash-up of NetLogo and Tern','In Moher, T. (chair) and Pinkard, N. (discussant), When systems collide: Challenges and opportunities in learning technology mash-ups. Symposium presented at the annual meeting of the American Education Research Association','Vancouver, British Columbia','','horn-aera-2012',1,'2015-02-18 13:00:00','','','','lab'),(37,'Horn, M.S., Weintrop, D., Beheshti, E., Olson, I.D.','2012','Spinners, Dice, and Pawns: Using board games to prepare learners for agent-based modeling activities','In M. Berland (chair) and Kafai, Y. (discussant), Fiddling on the fly: thinking, learning, and designing using board games. Symposium presented at the annual meeting of the American Education Research Association','Vancouver, British Columbia','','horn-aera2-2012',1,'2015-02-18 13:00:00','','','','lab'),(38,'Horn, M.S., Crouser, R.J., Bers, M.U.','2011','Tangible interaction and learning: The case for a hybrid approach','Personal and Ubiquitous Computing, 16(4)','379-389','','horn-puc-2011',1,'2015-02-18 13:00:00','','','','lab'),(39,'Horn, M. S., Davis, P., Hubbard, A., Keifert, D., Leong, Z.A., Olson, I.C.','2011','Learning Sustainability: Children, learning, and the next generation eco-feedback technology','Proceedings of Interaction Design and Children (IDCâ€™11)','161-164','','horn-idc-2011',1,'2015-02-18 13:00:00','','','','lab'),(40,'Olson, I.C., Horn, M.','2011','Modeling on the table: Agent-based modeling in elementary school with NetTango','Proceedings of Interaction Design and Children (IDCâ€™11)','189-192','','olson-idc-2011',1,'2015-02-18 13:00:00','','','','lab'),(41,'Leong, Z.A. and Horn, M.S.','2011','Representing Equality: A Tangible Balance Beam for Early Algebra Education','Proceedings of Interaction Design and Children (IDCâ€™11)','','','leong-idc-2011',1,'2015-02-18 13:00:00','','','','lab'),(42,'Olson, I.C., Leong, Z.A., Wilensky, U., Horn, M.S.','2011','Itâ€™s just a toolbar! Using Tangibles to Help Children Manage Conflict Around a Multi-Touch Tabletop','Proceedings Tangible, Embedded, and Embodied Interaction (TEIâ€™11)','29-36','','olson-tei-2011',1,'2015-02-18 13:00:00','','','','lab'),(43,'Boxerman, J.Z., Horn, M.S','2011','Helping learners comprehend changes over time and space on a geological scale','Presented at the Geological Society of American Annual Meeting, Minneapolis','','','boxerman-gsa-2011',1,'2015-02-18 13:00:00','','','','lab'),(44,'Blikstein, P., Buechley, L., Horn, M.S., Raffle, H.','2010','A new age in tangible computational interfaces for learning','Proceedings International Conference of the Learning Sciences (ICLSâ€™10), Chicago, IL','','','blikstein-icls-2010',1,'2015-02-18 13:00:00','','','','lab'),(45,'Leong, Z.A., Horn, M.S.','2010','The BEAM: a digitally enhanced balance beam for mathematics education','Proceedings Interaction Design and Children (demo presentation)\"','','','leong-idc-2010',1,'2015-02-18 13:00:00','','','','lab'),(46,'Olson, I.C., Horn. M.S., Wilensky, U.','2010','NetLogo Tango: Scaffolding student programming with tangible objects and multi-touch tabletop displays','Workshop paper presented at the 9th International Conference of the Learning Sciences','','','olson-icls-2010',1,'2015-02-18 13:00:00','','','','lab'),(47,'Atrash, Z. and Horn, M.S.','2010','Adopting Montessori Traditions in the Design of Tangible Learning Objects','Workshop paper presented at the ACM Conference on Human Factors in Computing Systems (CHIâ€™10)','','','atrash-chi-2010',1,'2015-02-18 13:00:00','','','','lab'),(48,'Shaer, O., Horn, M.S., Jacob, R.J.K.','2009','Tangible user interface laboratory: Teaching tangible interaction design in practice','AI in Engineering Design and Manufacturing Special Issue on Tangible Interaction for Design, 23(2)','251-261','','shaer-aiedm-2009',1,'2015-02-18 13:00:00','','','','lab'),(49,'Bers, M.U., Horn, M.S.','2009','Tangible programming in early childhood: Revisiting developmental assumptions through new technologies.','In I.R. Berson and M.J. Berson (Eds.), High-tech tots: Childhood in a digital world','Greenwich, CT: Information Age Publishing','','bers-tots-2009',1,'2015-02-18 13:00:00','','','','lab'),(50,'Horn, M.S., Solovey, E.T., Crouser, J.R., Jacob, R.J.K.','2009','Comparing Tangible and Graphical Programming Interfaces for use in Informal Science Education','Proceedings ACM Conference on Human Factors in Computing Systems (CHIâ€™09)','975-984','','horn-chi-2009',1,'2015-02-18 13:00:00','','','','lab'),(51,'Horn, M.S., Tobiasz, M., Shen, C.','2009','Visualizing Biodiversity with Voronoi Treemaps','Proceedings International Symposium on Voronoi Diagrams in Science and Engineering (ISVDâ€™09), Copenhagen, Denmark','','','horn-isvd-2009',1,'2015-02-18 13:00:00','','','','lab'),(52,'Horn, M.S., Shen, C.','2009','Frogs and Toads Memory: A Voronoi Twist on the Classic Childrenâ€™s Game','Proceedings Intl. Symposium on Voronoi Diagrams in Science and Engineering (ISVDâ€™09), Copenhagen, Denmark','','','horn-isvd2-2009',1,'2015-02-18 13:00:00','','','','lab'),(54,'Horn, M.S., Solovey, E.T., and Jacob, R.J.K.','2008','Tangible programming and informal science learning: making TUIs work for museums','Proceedings Interaction Design and Children (IDCâ€™08)','194-201','','horn-idc-2008',1,'2015-02-18 13:00:00','','','','lab'),(55,'Jacob, R.J.K., Girouard, A., Hirshfield, L.M., Horn, M.S., Shaer, O., Treacy, E.S., and Zigelbaum, J.','2008','Reality-Based Interaction: A Framework for Post-WIMP Interfaces','Proceedings ACM Conference on Human Factors in Computing Systems (CHIâ€™08)','201-210','','jacob-chi-2008',1,'2015-02-18 13:00:00','','','','lab'),(56,'Horn, M.S., Jacob, R.J.K.','2007','Designing Tangible Programming Languages for Classroom Use','Proceedings Tangible and Embedded Interaction (TEIâ€™07)','159-162','','horn-tei-2007',1,'2015-02-18 13:00:00','','','','lab'),(57,'Zigelbaum, J., Horn, M.S., Shaer, O., Jacob, R.J.K.','2007','The Tangible Video Editor: Collaborative Video Editing with Active Tokens','Proceedings Tangible and Embedded Interaction (TEIâ€™07)','43-46','','zigelbaum-tei-2007',1,'2015-02-18 13:00:00','','','','lab'),(58,'Horn, M.S., Jacob, R.J.K.','2007','Tangible Programming in the Classroom with Tern','Proceedings Human Factors in Computing Systems (CHIâ€™07 Trends Interactivity)','','','horn-chi-2007',1,'2015-02-18 13:00:00','','','','lab'),(59,'Jacob, R.J.K., Girouard, A., Hirshfield, L.M., Horn, M.S., Shaer, O., Solovey, E.T., Zigelbaum, J.','2007','Reality-Based Interation: Unifying the New Generation of Interaction Styles','Proceedings Human Factors in Computing Systems (extended abstracts CHIâ€™07)','','','jacob-chi-2007',1,'2015-02-18 13:00:00','','','','lab'),(60,'Jacob, R.J.K., Girouard, A., Hirshfield, L.M., Horn, M.S., Shaer, O., Solovey, E.T., Zigelbaum, J.','2007','What is the Next Generation of Human-Computer Interaction?','Interactions, 14(3)','53-58','','jacob-interactions-2007',1,'2015-02-18 13:00:00','','','','lab');
+/*!40000 ALTER TABLE `tidalweb_publication` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tidalweb_rinterests`
+--
+
+DROP TABLE IF EXISTS `tidalweb_rinterests`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tidalweb_rinterests` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `interests` varchar(255) NOT NULL,
+  `people_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `tidalweb_rinterests_3cff102f` (`people_id`),
+  CONSTRAINT `people_id_refs_id_ad173fa5` FOREIGN KEY (`people_id`) REFERENCES `tidalweb_people` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tidalweb_rinterests`
+--
+
+LOCK TABLES `tidalweb_rinterests` WRITE;
+/*!40000 ALTER TABLE `tidalweb_rinterests` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tidalweb_rinterests` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tidalweb_tag`
+--
+
+DROP TABLE IF EXISTS `tidalweb_tag`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tidalweb_tag` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `word` varchar(35) NOT NULL,
+  `slug` varchar(250) NOT NULL,
+  `created` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tidalweb_tag`
+--
+
+LOCK TABLES `tidalweb_tag` WRITE;
+/*!40000 ALTER TABLE `tidalweb_tag` DISABLE KEYS */;
+INSERT INTO `tidalweb_tag` VALUES (1,'Tangible Programming','tangible-programming','2015-02-19 14:12:34'),(2,'Computational Literacy','computational-literacy','2015-02-19 14:13:21'),(3,'Cultural Forms','cultural-forms','2015-02-19 14:13:56'),(4,'Environmental Sustainability','environmental-sustainability','2015-02-19 14:15:39'),(5,'Museums','museums','2015-02-19 14:26:16'),(6,'Interactive Tabletops','tabletops','2015-02-19 14:26:34'),(7,'Evolution','evolution','2015-02-19 14:26:46'),(8,'Tangible Interaction','tangible-interaction','2015-02-19 14:42:17');
+/*!40000 ALTER TABLE `tidalweb_tag` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-02-20 15:48:19
