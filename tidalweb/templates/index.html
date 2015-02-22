@@ -5,11 +5,20 @@
   {% load staticfiles %}
   {% load cropping %}
   
+  <script src="{% static 'js/jquery.bxslider.min.js' %}"></script>
+  
+  
   <!-- SPLASH IMAGES -->
   <div class="column one">
-    <img src="{% static 'images/tern_banner.jpg' %}" style="width: 100%;">
+    <ul class="bxslider">
+      {% for image in frontimages %}
+      <li>
+        <img src="{% cropped_thumbnail image "cropping" scale=1.0 %}" title="{{image.description|safe}}">
+      </li>
+      {% endfor %}
+    </ul>
       
-    <p id="welcome">
+    <p id="welcome" style="padding-top: 30px;">
       The TIDAL Lab is a team of designers, artists, learning scientists, and
       computer scientists at Northwestern University. Our research creates
       innovative learning experiences using new forms of interactive technology.
@@ -17,26 +26,6 @@
       couples learning, research, and design.
     </p>
   </div>
-  <!--
-  <div class="container gallery clearfix">
-    <div class="sixteen columns">
-      <div class="flex-container">
-        <div class="flexslider">
-          <ul class="slides">
-            {% for image in frontimages %}
-            <li style = "float:center">
-              <img src="{% cropped_thumbnail image "cropping" scale=1.0 %}">
-              {% if image.description != "" %}
-              <p class="flex-caption"> <span>{{name}}</span> {{image.description|safe}}</p>
-              {% endif %}
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  -->
 
 
   <!-- PROJECTS -->    
@@ -141,5 +130,17 @@
   </div>      
 
   <div class="column one" style="height: 40px;"></div>
+  
+  <script>
+    $(document).ready(function(){
+      $('.bxslider').bxSlider({
+        captions : true,
+        minSlides : 1,
+        maxSlides : 1,
+        slideMargin: 0
+      });
+    });
+  </script>
+  
 
 {% endblock %}
