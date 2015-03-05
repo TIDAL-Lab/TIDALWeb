@@ -9,7 +9,7 @@
   
   
   <!-- SPLASH IMAGES -->
-  <div class="column one">
+  <div class="column one" style="margin-bottom: 20px;">
     <ul class="bxslider">
       {% for image in frontimages %}
       <li>
@@ -137,7 +137,10 @@
         captions : true,
         minSlides : 1,
         maxSlides : 1,
-        slideMargin: 0
+        slideMargin: 0,
+        auto: true,
+        speed: 1000,
+        pause: 6000
       });
     });
   </script>

@@ -102,12 +102,14 @@ ul.bxslider {
 
 /* DIRECTION CONTROLS (NEXT / PREV) */
 .bx-wrapper .bx-prev {
-	left: -40px;
+  display: none;
+	left: 8px;
 	background: url(images/controls.png) no-repeat 0 -32px;
 }
 
 .bx-wrapper .bx-next {
-	right: -40px;
+  display: none;
+	right: 8px;
 	background: url(images/controls.png) no-repeat -43px -32px;
 }
 
