@@ -5,6 +5,7 @@ from django.contrib import staticfiles
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 import views
+import views.courses
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -22,6 +23,16 @@ urlpatterns = patterns('',
     url(r'^reese', views.reese, name = 'reese'),
     url(r'^nettango', views.nettango, name = 'nettango'),
     url(r'^teaching', views.teaching, name = 'teaching'),
+
+    #---------------------------------------------------------------------
+    # COURSES 
+    #---------------------------------------------------------------------
+    url(r'^courses/$', views.courses.index, name = 'teaching'),
+    url(r'^courses/eecs395/$', views.courses.tidal, name = 'tidal'),
+    url(r'^courses/eecs495/$', views.courses.tidal, name = 'tidal'),
+    url(r'^courses/ls451/$', views.courses.tidal, name = 'tidal'),
+    url(r'^courses/tidal/$', views.courses.tidal, name = 'tidal'),
+
 #   url(r'^$', 'blog.views.index'),
 #   url(r'^$', 'people.views.index'),
     url(r'^news/(?P<slug>[^/]+)/$', views.post),
