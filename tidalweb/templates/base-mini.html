@@ -9,6 +9,7 @@
     
   {% load static %}
   {% load staticfiles %}
+  {% load cropping %}
   
   <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
   <link rel="stylesheet" href="{% static 'css/tidal.css' %}">
@@ -39,18 +40,18 @@
       
       <!-- LOGO -->
       <div class="logo wide-screen">
-        <a href="{% url 'index' %}">Tangible Interaction Design<br> and Learning Lab</a>
+        Tangible Interaction Design<br> and Learning Lab
       </div>
       
       <!-- NAVIGATION BAR -->
       <nav>
         <ul>
           <li><a href="{% url 'index' %}" class="wide-only">Home</a></li>
-          <li><a href="{% url 'portfolio' %}">Projects</a></li>
+          <li><a href="/index#projects">Projects</a></li>
+          <li><a href="/index#news">News</a></li>
           <li><a href="{% url 'people' %}">People</a></li>
           <li><a href="{% url 'publications' %}">Publications</a></li>
-          <li><a href="{% url 'teaching' %}">Courses</a></li>
-          <!-- <li><a href="{% url 'news' %}">News</a></li> -->
+          <!-- <li><a href="{% url 'teaching' %}" class="wide-only">Courses</a></li> -->
           <li><a href="{% url 'contact' %}" class="wide-only">Contact</a></li>
         </ul>
       </nav>
@@ -59,7 +60,7 @@
   </header>
 
   <!-- CONTENT -->  
-  <div class="content" style="clear: both;">
+  <div class="content">
     {% block primary %}{% endblock %}
   </div>     
 
@@ -70,7 +71,7 @@
     <div class="foot">
       
       <div class="column three">
-        Copyright &copy; 2014 TIDAL Lab<br><br>
+        Copyright &copy; 2015 TIDAL Lab<br><br>
         Northwestern University<br>
         2120 Campus Drive<br>
         Evanston, Illinois 60208<br>
