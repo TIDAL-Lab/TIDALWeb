@@ -4,16 +4,16 @@
   {% load static %}
   {% load staticfiles %}
   
-  <div class="column one">
-    <h1>Publications</h1>
+  <div class="column one" style="margin: 70px 0;">
+    <h2>Publications</h2>
     
-    <div style="width: 85%;">
+    <div style="width: 90%; padding-left: 0.4in;">
     {% block content %}
   
       {% for pubs in year %}
               
         {% ifchanged pubs.year %}
-        <h2>{{pubs.year}}</h2>
+        <h3>{{pubs.year}}</h3>
         {% endifchanged %}
   
         {% if pubs.award != '' and pubs.award != None %}
