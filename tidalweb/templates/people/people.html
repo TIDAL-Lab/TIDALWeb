@@ -5,14 +5,14 @@
   {% load static %}
   {% load staticfiles %}
 
-  <div class="column one">
-    <h1>Our Team</h1>
+  <div class="column one" style="margin: 70px 0;">
+    <h2>Our Team</h2>
     
     {% for person in peeps %}             
 
-    <div class="column four" style="text-align: left;">
+    <div class="column four" style="text-align: left; padding: 25px 25px 0 0;">
       <a href="{{person.get_absolute_url}}">
-      <img src="{% cropped_thumbnail person "cropping" scale=1.0 %}" style="width: 100%;" alt="{{person.name}}" class="hover-image"> 
+      <img src="{% cropped_thumbnail person 'cropping' scale=1.0 %}" style="width: 100%;" alt="{{person.name}}" class="hover-image"> 
       {{person.name}}</a><br>
       {{person.status}}
     </div>
