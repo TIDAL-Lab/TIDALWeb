@@ -3,6 +3,7 @@ from django.core.urlresolvers import reverse
 from image_cropping import ImageRatioField
 from datetime import date
 
+
 class Publication(models.Model):
     authors = models.CharField(max_length=255)
     year = models.CharField(max_length=255)
@@ -34,11 +35,16 @@ class Tag(models.Model):
     def __unicode__(self):
         return self.word
 
+
+#-----------------------------------------------------------------------------
+# PROJECTS 
+#-----------------------------------------------------------------------------
 class Project(models.Model):
     name = models.CharField(max_length=255)
     active = models.BooleanField(default=True)
     website = models.URLField(blank = True)
     about = models.TextField()
+    grants = models.CharField(max_length=255, blank = True)
     videoURL = models.URLField(blank=True)
     thumb = models.ImageField(upload_to='images/projects/thumbs/')
     cropping = ImageRatioField('thumb', '172x172')
@@ -48,7 +54,6 @@ class Project(models.Model):
     vieworder = models.IntegerField(default=100)
     created = models.DateTimeField(auto_now_add=True)
 
-
     tags = models.ManyToManyField(Tag)
 
     def tagFilter(self):
@@ -56,7 +61,6 @@ class Project(models.Model):
 
     def photoFilter(self):
         return Photos.objects.filter(myproject=self)
-
 
     def photoThumb(self):
         return list(Photos.objects.filter(myproject=self))[:1]
