@@ -1,15 +1,14 @@
 {% extends 'base-mini.html' %}
 {% block primary %}
 
-  {% load static %}
-  {% load staticfiles %}
-  {% load cropping %}
-  
-  <script src="{% static 'js/jquery.bxslider.min.js' %}"></script>
-  
-  
+{% load static %}
+{% load staticfiles %}
+{% load cropping %}
   <!-- SPLASH IMAGES -->
-  <div class="column one" style="margin-bottom: 20px;">
+  <div class="column one" style="margin: 85px 0 20px 0;">
+    <img src="{% static 'images/frogpond_banner.png' %}" style="width: 960px;">
+    <!--
+    {% comment %}
     <ul class="bxslider">
       {% for image in frontimages %}
       <li>
@@ -17,67 +16,65 @@
       </li>
       {% endfor %}
     </ul>
-      
-    <p id="welcome" style="padding-top: 30px;">
-      The TIDAL Lab is a team of designers, artists, learning scientists, and
+    {% endcomment %}
+    -->
+    <p id="welcome">
+      TIDAL Lab is a team of designers, artists, learning scientists, and
       computer scientists at Northwestern University. Our research creates
-      innovative learning experiences using new forms of technology.
-      We take a cautious but optimistic stance towards technology that tightly
-      couples learning, research, and design.
+      and studies innovative technology-based learning experiences. We take a cautious but 
+      optimistic stance towards technology in a process that tightly couples 
+      research and design.
     </p>
   </div>
 
 
+
   <!-- PROJECTS -->    
-  <div class="column one">
-    <h3 class="title">Current Projects</h3>
+  <div class="column one" id="projects">
+    <h1 class="title">Recent Projects</h1>
     {% for project in projects %}
       {% if forloop.counter < 11 %}
-      <div class="column five" style="padding: 6px;">
-        <a href="{{project.website}}"><img src="{% cropped_thumbnail project "cropping" scale=1.0 %}" class="pic" style="width: 100%; max-width: 172px;"></a>
-        <h4 style="margin: 0 0 10px 0; text-align: left;"><a href="{{project.website}}">{{project.name}}</a></h4>
+      <div style="height: 190px;">
+      <img src="{% cropped_thumbnail project 'projectCrop' scale=1.0 %}" class="project-thumb">
+      <div class="project-title"><a href="{{project.website}}">{{project.name}}</a></div>
+      <p style="margin: 5px;">{{project.about|safe}}</p>
+      {% if project.grants != '' %}
+      <div class="project-grants">Grant: {{project.grants}}</div>
+      {% endif %}
       </div>
+
+<!--
+      <div class="column three" style="padding: 6px;">
+        <a href="{{project.website}}"><img src="{% cropped_thumbnail project "cropping" scale=1.0 %}" class="pic" style="width: 100%;"></a>
+      </div>
+-->
       {% endif %}
     {% endfor %}
   </div>
-  
-  
 
+  
   <!-- NEWS -->    
-  <div class="column one">
-    <h3 class="title">Recent News</h3>
+  <div class="column one" id="news">
+    <h1 class="title">Recent News</h1>
     
-    <div style="width: 100%;">
     {% for post in posts %}
-      <div class="column three news-post">
-        <div class="news-title">
-          {% if post.weblink == "" %}{{post.title}}{% else %}<a href="{{post.weblink}}" target="_blank">{{post.title}}</a>{% endif %}
-        </div>
-        <div class="news-content">
-          <span class="news-date">{{post.pubdate|date:"F Y"}}</span> &mdash;
-          {{post.content}}
-          {% if post.weblink != "" %}
-          <div class="news-more">
-            <a href="{{post.weblink}}">Read More</a>
-          </div>
-          {% endif %}
-        </div>
+    <div class="news-post">
+      <div class="news-title">{{post.title}}</div>
+      <div class="news-content">
+        <span class="news-date">{{post.pubdate|date:"F Y"}}</span> &mdash;
+        {{post.content}}
+        {% if post.weblink != "" %}
+        <a href="{{post.weblink}}" class="news-more">Read More</a>
+        {% endif %}
       </div>
-      {% if forloop.counter|divisibleby:3 %}
     </div>
-    <div style="width: 100%;">
-      {% endif %}
     {% endfor %}
-    </div>
   </div>
 
   
   <!-- AFFILIATED RESEARCH LABS -->
-  <style>
-
-  </style>
   <div class="column one">
-    <h3 class="title">Affiliated Research Labs</h3>
+    <h1>Affiliated Research Labs</h1>
     <div class="column two affiliated">
       <img src="{% static 'images/collaborators/ccl.png' %}" style="float: left; height: 60px; opacity: 0.6;">
       Center for Connected Learning and Computer-Based Modeling (CCL)<br>
@@ -91,7 +88,7 @@
     </div>
     <div class="column two affiliated">
       <img src="{% static 'images/collaborators/lime.png' %}" style="float: left; height: 60px;">
-      Learning, Interaction, and Media in the Everyday (LIME) Lab<br>
+      Learning, Interaction, and Media in the Everyday (LIME)<br>
       Northwestern University
     </div>
     <div class="column two affiliated">
@@ -112,13 +109,12 @@
       Northwestern University<br>
       <a href="http://osep.northwestern.edu">http://osep.northwestern.edu</a>
     </div>
-  </div>      
-    
-  
+  </div>
+
   
   <!-- MUSEUM COLLABORATORS -->
-  <div class="column one">
-    <h3 class="title">Museum Collaborators</h3>
+  <div class="column one" style="margin-top: 30px;">
+    <h1>Museum Collaborators</h1>
     <div style="text-align: center;">
       <a href="http://www.fieldmuseum.org"><img src="{% static 'images/collaborators/field.png' %}" style="height: 70px;"></a>
       <a href="http://www.calacademy.org"><img src="{% static 'images/collaborators/cas.png' %}" style="height: 70px;"></a>
@@ -144,6 +140,7 @@
       });
     });
   </script>
-  
 
 {% endblock %}
+
+
