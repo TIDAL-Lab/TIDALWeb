@@ -148,7 +148,7 @@ class Post(models.Model):
 class FrontImage(models.Model):
     name = models.CharField(max_length=255)
     image = models.ImageField(upload_to = 'images/frontpage/')
-    cropping = ImageRatioField('image', '900x350')
+    cropping = ImageRatioField('image', '910x350')
     slug = models.SlugField(unique=True, max_length=255)
     description = models.CharField(max_length=255, blank = True)
     published = models.BooleanField(default=True)
