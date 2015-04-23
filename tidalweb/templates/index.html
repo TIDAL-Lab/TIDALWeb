@@ -8,19 +8,18 @@
 
   <!-- SPLASH IMAGES -->
   <div class="column one" style="margin: 15px 0 20px 0;">
+  <!--
     <img src="{% static 'images/frogpond_banner.png' %}" style="width: 100%; max-width: 960px;">
-    <!--
-    {% comment %}
+  -->
     <ul class="bxslider">
       {% for image in frontimages %}
       <li>
-        <img src="{% cropped_thumbnail image "cropping" scale=1.0 %}" title="{{image.description|safe}}">
+        <img src="{% cropped_thumbnail image 'cropping' scale=1.0 %}" title="{{image.description|safe}}">
       </li>
       {% endfor %}
     </ul>
-    {% endcomment %}
-    -->
-    <p id="welcome">
+
+    <p id="welcome" style="margin-top: 40px;">
       TIDAL Lab is a team of designers, artists, learning scientists, and
       computer scientists at Northwestern University. Our research creates
       and studies innovative technology-based learning experiences. We take a cautious but 
