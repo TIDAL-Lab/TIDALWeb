@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 from django.views.generic import TemplateView
 import views
 import views.courses
+import views.blog
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -23,6 +24,11 @@ urlpatterns = patterns('',
     url(r'^reese', views.reese, name = 'reese'),
     url(r'^nettango', views.nettango, name = 'nettango'),
     url(r'^teaching', views.teaching, name = 'teaching'),
+
+    #---------------------------------------------------------------------
+    # BLOG POSTS
+    #---------------------------------------------------------------------
+    url(r'^blog/bat', views.blog.bat, name = 'bat'),
 
     #---------------------------------------------------------------------
     # COURSES 
