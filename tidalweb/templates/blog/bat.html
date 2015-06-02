@@ -1,0 +1,93 @@
+{% extends 'base-blog.html' %}
+{% block primary %}
+
+  {% load static %}
+  {% load staticfiles %}
+
+
+<div class="column one">
+  <span class="icon-twitter2" style="font-size: 30px;"></span>
+  <span class="icon-facebook" style="font-size: 30px;"></span>
+  <span class="icon-googleplus2" style="font-size: 30px;"></span>
+  <span class="icon-mail" style="font-size: 30px;"></span>
+  <span class="icon-github" style="font-size: 30px;"></span>
+
+  <h1>Build-a-Tree: An Evolution Puzzle Game</h1>
+  <p>
+    May 25, 2015<br>
+    by Michael Horn
+  </p>
+  <p>
+    Over the past few years I've been working with Florian Block, Chia Shen, and the Life on Earth 
+    team to create an evolution puzzle game called Build-a-Tree (BAT). This has been a fun and challenging
+    project. Fun because I'm really happy with the way BAT turned out. The game debuted as part of a Tree of Life exhibit
+    at the California Academy of Sciences, and a web-based version was just featured as part of a PBS NOVA Lab 
+    on evolution. We're also working to make BAT into a flexible web-based tool that anyone can use to illustrate
+    evolution concepts. 
+  </p>
+  <p>
+  In fact, you can play a version of BAT right here! Just drag the species circles in the green window together to start building a tree... 
+  </p>
+
+  <!-- game canvas -->
+  <div class="bat-game-container">
+    <canvas id="game" width="850" height="560" style="background-color: #ccc;"></canvas>
+
+    <!-- game buttons -->
+    <!--
+    <div class="bat-button-bar">
+      <button id="bat-mute-button" class="bat-round-button"><span id="audio-button-icon" class="icon-volume-medium"></span></button>
+      <button id="bat-levels-button" class="bat-round-button"><span class="icon-list"></span></button>
+      <button id="bat-restart-button" class="bat-round-button"><span class="icon-spinner2"></span></button>
+      <button id="bat-info-button" class="bat-round-button" style="font-size: 40px;">i</button>
+    </div>
+    -->
+  </div>
+
+  <p>
+  But what I want to talk about here are the challenging parts and how our design changed over time as we struggled to find
+  the right balance of fun, playability, and value as a learning experience. 
+  <h2>Learning Goals</h2>
+  As we were putting BAT together, we had a few big-picture
+  learning goals in mind. The first is that <b>all life on earth is related</b>. In other words, if you could travel far
+  enough back in time, you could find a common, genetic ancestor for just about any two living organisms on the planet. So, just like 
+  you and your Aunt Marge share a common ancestor (a grandparent), you and the banana you ate for breakfast also share a distant,
+  distant ancestor. Unlike your grandparent, this ancestor was a primoridal Eukariotic organisms that carried genetic information 
+  that is still shared by green plants and animals even hundreds of millions of years later.
+  </p>
+  <p>
+  The second big idea that we wanted to get across with the game is that there are <b>key evolutionary landmarks</b> that define 
+  major groups of life. These landmarks are shared genetic traits that emerged from processes like natural selection and mutation,
+  and allowed organisms to take advantage of new ecological niches. One of my favorite examples is the <i>amniotic egg sac</i> that
+  helped the common ancestor of modern-day squamata and mammals to lay eggs away from water and colonize newly available inland 
+  habitats. Amphibians don't have this trait, which means that they must return to the water to lay eggs and reproduce. 
+  </p>
+  <p>
+  The last big idea relates to something called <b>tree-thinking skills</b>. One of the most important representations of modern
+  biology is called a cladogram or a phylogenetic tree. These diagrams depict hypothesized relationships and traits of organisms,
+  genes, or even proteins. Baum, Smith, and Donovan published an influential paper in the journal, Science, arguing that everyone
+  should learn basic tree-thinking skills as a matter of basic biology education. These skills relate to being able to read and
+  understand trees without <b>mis</b>interpreting their meaning. Common misconceptions include assuming that the left-to-right 
+  ordering of a tree is important or that the organisms on the far right is the most <i>evolved</i>. For example, a misunderstanding
+  of the tree below is that giraffes are the most complex or evolved species (which is not true), and that butterflies and birds are
+  more closely related than birds and giraffes (also not true).
+  </p>
+  <img src="{% static 'images/blog/bat-figure1.png' %}" style="width: 450px; margin: 0 50px;" alt="a phylgenetic tree showing the relationships of spiders, butterflies, birds, dinosaurs, bats, and giraffes.">
+  <p>
+  We had lots of other, less important learning goals. For example, lizards and humans are more closely related than than lizards and 
+  frogs. But these goals were more like facts and surprising trivia. It was nice if people learned them, but they weren't on the same
+  level as our big-picture conceptual goals. 
+  </p>
+
+  <h2>Design Principles</h2>
+  Our game design was guided by principles of <i>intrinsic integration</i>. This is an idea developed by Yasmin Kafai and then 
+  refined by Habgood &amp; Ainsorth in an influential paper in the Journal of the Learning Sciences [CITE]. Intrinsic integration 
+  is meant to contrast the <i>extrinsic motivation</i> of the gamification movement.  
+
+</div>
+
+
+<br>
+<br>
+  
+{% endblock %}
