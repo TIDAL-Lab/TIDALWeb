@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.urlresolvers import reverse
+from django.utils.timezone import now
 from image_cropping import ImageRatioField
 from datetime import date
 
@@ -133,7 +134,7 @@ class Post(models.Model):
     description = models.CharField(max_length=255)
     content = models.TextField()
     published = models.BooleanField(default=True)
-    pubdate = models.DateField(default=date.today())
+    pubdate = models.DateField(auto_now_add=True)
     created = models.DateTimeField(auto_now_add=True)
  
     class Meta:
