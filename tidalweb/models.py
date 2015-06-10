@@ -120,7 +120,7 @@ class People(models.Model):
         return u'%s' % self.name
  
     def get_absolute_url(self):
-        return reverse('tidalweb.views.personal', args=[str(self.slug)])
+        return reverse('personal', args=[str(self.slug)])
 
 class rInterests(models.Model):
     interests = models.CharField(max_length = 255)
