@@ -15,44 +15,17 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-# Local time zone for this installation. Choices can be found here:
-# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
-# although not all choices may be available on all operating systems.
-# On Unix systems, a value of None will cause Django to use the same
-# timezone as the operating system.
-# If running in a Windows environment this must be set to the same as your
-# system time zone.
-TIME_ZONE = 'UTC'
-
-# Language code for this installation. All choices can be found here:
-# http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
 
-SITE_ID = 1
+TIME_ZONE = 'America/Chicago'
 
-# If you set this to False, Django will make some optimizations so as not
-# to load the internationalization machinery.
 USE_I18N = True
 
-# If you set this to False, Django will not format dates, numbers and
-# calendars according to the current locale.
 USE_L10N = True
 
-# If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
-MEDIA_URL = '/media/'
-
-MEDIA_ROOT = os.path.join(PROJECT_DIR, 'public/media/')
-
-STATIC_URL = '/static/'
-
-STATIC_ROOT = os.path.join(PROJECT_DIR, '../static')
-
-# Additional locations of static files
-STATICFILES_DIRS = (
-    os.path.join(PROJECT_DIR, '../../bat2/build'),
-)
+SITE_ID = 1
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -97,24 +70,27 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.media',
     'django.core.context_processors.static',
     'django.core.context_processors.request',
+    #'django.core.context_processors.version',
 )
 
 FIXTURE_DIRS = (
-    os.path.join(PROJECT_DIR, 'fixtures'),
 )
 
 INSTALLED_APPS = (
     'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
+    'django.contrib.admin',
     'django.contrib.sites',
+    'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.admin',
+    'django.contrib.contenttypes',
+    'django_comments',
+    'mptt',
+    'tagging',
     'tidalweb',
-    'south',
     'easy_thumbnails',
     'image_cropping',
+    'zinnia'
 )
 
 
@@ -172,4 +148,17 @@ SECRET_KEY = 'e4=-^n&5m79)=^t**fd%gr9&3nidt+%5m+a&4-qq9v0m4u!m0y'
 if DEBUG:
     # Show emails in the console during developement.
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(PROJECT_DIR, 'public/media/')
+
+STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+
+# Additional locations of static files
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_DIR, '../../bat2/build'),
+)
 
