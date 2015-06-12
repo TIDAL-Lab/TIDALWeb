@@ -7,3 +7,6 @@ tidalweb/public/media
 tidalweb/media
 tidalweb/migrations
 apache
+tidalweb/static/bat2
+tidalweb/static/zinnia
+tidalweb/static/admin
