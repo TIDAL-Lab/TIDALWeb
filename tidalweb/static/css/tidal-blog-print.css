@@ -1,0 +1,26 @@
+/*
+ * Tangible Interaction Design and Learning Lab
+ * tidal.northwestern.edu
+ */
+    
+/*
+ * BODY ELEMENTS
+ */
+body {
+  font-size: 14px;
+  color: black;
+  background-color: transparent;
+}
+
+
+.content {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+header { display: none; }
+nav { display: none; }
+#splash { display: none; }
