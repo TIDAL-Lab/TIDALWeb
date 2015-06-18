@@ -1,0 +1,69 @@
+{% extends 'base-blog.html' %}
+{% block primary %}
+
+  {% load static %}
+  {% load staticfiles %}
+
+  <style>
+  #splash {
+    height: 180px;
+    max-width: 1500px;
+    background-image: url("{% static 'images/blog/fishing-banner.png' %}");
+    background-position: bottom right;
+  }
+  #splash .photo-credit {
+    display: none;
+  }
+  </style>
+
+<div class="column one">
+
+  <h1>Fishing with Friends</h1>
+  <p class="print-only">
+    Tangible Interaction Design and Learning Lab<br>
+    http://tidal.northwestern.edu/blog/bat
+  </p>
+  <p>
+
+    Fishing with Friends is a multiplayer tablet game about the damaging impact of overfishing on marine ecosystems.
+
+    In the game players compete to earn money by catching fish.
+
+    But as the game progresses, overzealous fishing results in damage to a simulated ocean ecosystem. 
+
+    The game is designed to illustrate an example of a tragedy of the commons situation and challenge players to 
+    devise sustainable strategies to preserve shared ocean resources. 
+
+  </p>
+  <p style="text-align: center;">
+  <a href="https://itunes.apple.com/us/app/fishing-with-friends/id1001352389" target="_blank">
+  <img src="{% static 'images/app-store-badge.svg' %}" style="width: 150px;"></a>
+  </p>
+
+  <h1>About Us</h1>
+
+  <p>
+  <table>
+  <tr>
+    <td style="font-weight: bold; width: 2.5in; vertial-align: top;">Game Design:</td>
+    <td>Sarah D’Angelo, D. Harmon Pollock, and Michael Horn</td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold; vertial-align: top;">Software:</td>
+    <td>D. Harmon Pollock and Felix Hu</td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold; vertial-align: top;">Graphics and Sounds:</td>
+    <td>Ed Enriquez, EJ Lee, and Katelyn Muller</td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold; vertical-align: top;">Funding:</td>
+    <td>
+      This work was supported by the National Science Foundation under grant DGE-1324585 and the Dr. Scholl Foundation. Any opinions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the NSF or the Dr. Scholl Foundation. 
+    </td>
+  </tr>
+  </table>
+  </p>
+</div>
+  
+{% endblock %}
