@@ -3,8 +3,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="Tangible Interaction Design and Learning Lab at Northwestern University">
-  <meta name="author" content="Michael Horn">
+  <meta name="description" content="{{ description }}">
+  <meta name="author" content="{{ author }}">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">  
     
   {% load static %}
@@ -27,7 +27,6 @@
   
     ga('create', 'UA-31793954-1', 'northwestern.edu');
     ga('send', 'pageview');
-  
   </script>
   <title>TIDAL Lab | {{ title }}</title>
 </head>
@@ -66,8 +65,12 @@
       <div id="social-media-bar">
         <a class="social-media-button" href="/">
         <span class="icon-twitter"></span></a>
-        <a class="social-media-button" href="http://www.facebook.com/sharer/sharer.php?u=//tidal.northwestern.edu/blog/bat&title=Build-a-Tree Game">
+
+        <!-- FACEBOOK -->        
+        <a class="social-media-button" href="https://www.facebook.com/dialog/feed?app_id=837023386333695&display=popup&caption=FishingwithFriends&link=http%3A%2F%2Ftidal.northwestern.edu%2Fblog%2Ffishing&redirect_uri=http%3A%2F%2Ftidal.northwestern.edu%2Fblog%2Ffishing">
         <span class="icon-facebook2"></span></a>
+
+        <!-- GOOGLE PLUS -->
         <a class="social-media-button" href="/">
         <span class="icon-googleplus"></span></a>
         <!--
