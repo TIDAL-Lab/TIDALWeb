@@ -29,8 +29,7 @@
     ga('send', 'pageview');
   
   </script>
-  
-  <title>TIDAL Lab | Northwestern University</title>
+  <title>TIDAL Lab | {{ title }}</title>
 </head>
 
 <body>
@@ -40,9 +39,9 @@
       
     <!-- NAVIGATION BAR -->
     <nav>
+      <div class="lab-name">Tangible Interaction Design<br>and Learning Laboratory</div>
       <ul>
         <li><a href="{% url 'index' %}" class="wide-only">Home</a></li>
-        <li><a href="/blog">Blog</a></li>
         <li><a href="/index#projects">Projects</a></li>
         <li><a href="/index#news">News</a></li>
         <li><a href="{% url 'people' %}">People</a></li>
@@ -60,10 +59,27 @@
   </div>
 
   <!-- CONTENT -->  
-  <div class="content">
-    {% block primary %}{% endblock %}
-  </div>     
+  <div class="main">
+    <div class="content">
 
+      <!-- SOCIAL MEDIA -->
+      <div id="social-media-bar">
+        <a class="social-media-button" href="/">
+        <span class="icon-twitter"></span></a>
+        <a class="social-media-button" href="http://www.facebook.com/sharer/sharer.php?u=//tidal.northwestern.edu/blog/bat&title=Build-a-Tree Game">
+        <span class="icon-facebook2"></span></a>
+        <a class="social-media-button" href="/">
+        <span class="icon-googleplus"></span></a>
+        <!--
+        <span class="icon-mail" style="font-size: 30px;"></span>
+        <span class="icon-github" style="font-size: 30px;"></span>
+        -->
+      </div>
+
+
+      {% block primary %}{% endblock %}
+    </div>     
+  </div>
   
   
   <!-- FOOTER -->  
