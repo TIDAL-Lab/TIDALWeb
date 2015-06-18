@@ -135,11 +135,9 @@ nav a:hover {
 }
 
 #social-media-bar {
-  width: 250px;
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  text-align: right;
+  width: 100%;
+  text-align: center;
+  padding: 15px;
 }
 
 a.social-media-button {

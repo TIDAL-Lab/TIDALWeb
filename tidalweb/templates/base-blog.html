@@ -28,10 +28,21 @@
     ga('create', 'UA-31793954-1', 'northwestern.edu');
     ga('send', 'pageview');
   </script>
-  <title>TIDAL Lab | {{ title }}</title>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <title>{{ title }}</title>
 </head>
 
 <body>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=837023386333695";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
   <!-- HEADER -->
   <header>
@@ -61,26 +72,25 @@
   <div class="main">
     <div class="content">
 
-      <!-- SOCIAL MEDIA -->
-      <div id="social-media-bar">
-        <a class="social-media-button" href="/">
-        <span class="icon-twitter"></span></a>
-
-        <!-- FACEBOOK -->        
-        <a class="social-media-button" href="https://www.facebook.com/dialog/feed?app_id=837023386333695&display=popup&caption=FishingwithFriends&link=http%3A%2F%2Ftidal.northwestern.edu%2Fblog%2Ffishing&redirect_uri=http%3A%2F%2Ftidal.northwestern.edu%2Fblog%2Ffishing">
-        <span class="icon-facebook2"></span></a>
-
-        <!-- GOOGLE PLUS -->
-        <a class="social-media-button" href="/">
-        <span class="icon-googleplus"></span></a>
-        <!--
-        <span class="icon-mail" style="font-size: 30px;"></span>
-        <span class="icon-github" style="font-size: 30px;"></span>
-        -->
-      </div>
-
 
       {% block primary %}{% endblock %}
+
+      <!-- SOCIAL MEDIA -->
+      <div id="social-media-bar">
+
+        <!-- TWITTER -->
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://tidal.northwestern.edu/blog/fishing" data-count="none">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+        <!-- FACEBOOK -->
+        <div class="fb-share-button" style="position: relative; top: -8px;" data-href="http://tidal.northwestern.edu/blog/fishing" data-layout="button"></div>
+
+
+        <!-- GOOGLE PLUS -->
+        <div class="g-plus" data-action="share" data-annotation="none" data-href="http://tidal.northwestern.edu/blog/fishing"></div>
+
+      </div>
+
     </div>     
   </div>
   
