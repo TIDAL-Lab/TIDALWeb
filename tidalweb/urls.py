@@ -29,6 +29,7 @@ urlpatterns = patterns('',
     # BLOG POSTS
     #---------------------------------------------------------------------
     url(r'^blog/bat', views.blog.bat, name = 'bat'),
+    url(r'^blog/fishing', views.blog.fishing, name = 'fishing with friends'),
     url(r'^weblog/', include('zinnia.urls', namespace='zinnia')),
     url(r'^comments/', include('django_comments.urls')),
 
