@@ -12,6 +12,9 @@ body {
   background-color: transparent;
 }
 
+.print-only {
+  display: inherit;
+}
 
 .content {
   width: 100%;
