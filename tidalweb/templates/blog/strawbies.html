@@ -1,0 +1,74 @@
+{% extends 'base-blog.html' %}
+{% block primary %}
+
+  {% load static %}
+  {% load staticfiles %}
+
+  <style>
+  #splash {
+    height: 180px;
+    max-width: 1500px;
+    background-image: url("{% static 'images/blog/strawbies-banner.png' %}");
+    background-position: bottom right;
+  }
+  #splash .photo-credit {
+    display: none;
+  }
+  </style>
+
+  <div class="column one">
+
+
+
+  <p>
+
+    Strawbies is an innovative project from inventor/programmer Felix Hu, with designers Ariel Zekelman and Eric Uchalik. 
+
+    Players use handheld pieces with scannable TopCodes to program instructions for an on-screen character “Awbie.” 
+
+    Older players discover complexity, strategy, logic and looping within Hu’s programming features. 
+
+    Current iterations use an Osmo stand and reflector with iPad for digital/tangible interactions.
+
+  </p>
+
+  <p style="text-align: center;">  
+  <img src="{% static 'images/blog/strawbies-figure1.jpg' %}" style="width: 80%;" alt="Strawbies tangible programming game">
+  </p>
+
+
+  <h1>Credits</h1>
+
+  <p>
+  <table>
+  <tr>
+    <td style="font-weight: bold; width: 1.5in; vertial-align: top;">Game Design:</td>
+    <td>Felix Hu and Ariel Zekelman</td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold; vertial-align: top;">Software:</td>
+    <td>Felix Hu</td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold; vertial-align: top;">Graphic Design:</td>
+    <td>Eric Uchalik</td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold; vertial-align: top;">Video:</td>
+    <td>Rhoderick Magsino and Felix Hu</td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold; vertical-align: top;">Advising:</td>
+    <td>Mike Horn and Frances Judd (<a href="http://www.tangitech.org" target="_blank">Tangible Tech Collaborative</a>)</td>
+  </tr>
+  </table>
+  </p>
+
+  <p style="text-align: center;">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/k79aB_qILdw" frameborder="0" allowfullscreen></iframe>
+  </p>
+
+
+</div>
+<br clear="all">
+{% endblock %}
