@@ -1,22 +1,59 @@
-{% extends 'base-mini.html' %}
+{% extends 'base.html' %}
 {% block primary %}
 
 {% load static %}
 {% load staticfiles %}
+{% load cropping %}
 
 
-<div class="column one">
-  <h1 class="title">{{person.name}}</h1>
-</div>
+<div class="column one" style="padding-top: 40px;">
 
+  <h1 style="margin: 0;">{{person.name}}</h1>
 
-<div class="column two-thirds">
+  <h3>{{person.status}}</h3>
+
+  <img src="{{person.photo.url}}" alt="{{person.name}}" style="width: 40%; float: right; margin: 5px;">
   
-  <!-- PHOTO -->
-  <img src="{{person.photo.url}}" alt="{{person.name}}" style="width: 50%; float: left; margin: 0 30px 10px 0;">
-    
-  <!-- BIO -->
-  <p style="padding-right: 8px; text-align: left;">{{person.biography|safe }}</p>
+  <p>{{person.biography|safe }}</p>
+
+
+  <h3>Contact</h3>
+  <table>
+  <tr>
+    <td style="padding-right: 10px;"><b>Email:</b></td>
+    <td>{{person.emailuser}}&nbsp;at&nbsp;{{person.emaildomain}}</td>
+  </tr>
+  {% if person.website != "" %}
+  <tr>
+    <td><b>Web:</b></td>
+    <td><a href="{{person.website}}">{{person.website}}</a></td>
+  </tr>
+  {% endif %}
+  {% if person.cv != "" %}
+  <tr>
+    <td><b>CV:</b></td>
+    <td><a href="{{person.cv.url}}">PDF</a></td>
+  </tr>
+  {% endif %}
+  </table>
+  <br>
+
+
+  <!-- PROJECTS -->
+  {% if person.projects.all %}
+  <h3>Projects</h3>
+  <ul>
+  {% for project in person.projects.all %}
+    {% if project.website != '' %}
+    <li><a href="{{project.website}}">{{project.name}}</a></li>
+    {% else %} 
+    <li><a href="{{project.get_absolute_url}}">{{project.name}}</a></li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+  {% endif %}
+  
+
   
   <!-- PUBLICATIONS -->
   {% if person.publications.all %}
@@ -47,44 +84,11 @@
 </div>
 
   
-<div class="column three" style="padding-left: 40px;">
+<div class="column three">
   
-  <!-- CONTACT ME -->
-  <h3>Contact Me!</h3>
-  <p style="text-align: left; margin-bottom: 30px;">{{person.emailuser}} at {{person.emaildomain}}</p>
-  
-     
-  <!-- CV / RESUME --> 
-  {% if person.cv != "" %}
-  <h3>CV/Resume</h3>
-  <a href="{{person.cv.url}}" class="blue-button">PDF</a>
-  <br><br>
-  {% endif %}
-
-  
-  <!-- PERSONAL WEBSITE -->
-  {% if person.website != "" %}
-  <h3>Personal Website</h3>
-  <a href="{{person.website}}" class="blue-button">Click Here</a>
-  <br><br>
-  {% endif %}
-  
-  <!-- PROJECTS -->
-  {% if person.projects.all %}
-  <h3>Projects</h3>
-  <ul>
-  {% for project in person.projects.all %}
-    {% if project.website != '' %}
-    <li><a href="{{project.website}}">{{project.name}}</a></li>
-    {% else %} 
-    <li><a href="{{project.get_absolute_url}}">{{project.name}}</a></li>
-    {% endif %}
-  {% endfor %}
-  </ul>
-  {% endif %}
   
 </div>
-
+<br clear="all">
         
 {% endblock %}
   
