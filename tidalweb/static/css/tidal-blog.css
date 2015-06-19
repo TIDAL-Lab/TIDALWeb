@@ -135,8 +135,12 @@ nav a:hover {
 }
 
 #social-media-bar {
-  width: 100%;
-  text-align: center;
+  width: 300px;
+  height: 50px;
+  position: absolute;
+  top: 25px;
+  right: 20px;
+  text-align: right;
   padding: 15px;
 }
 
