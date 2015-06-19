@@ -74,7 +74,9 @@
 
   <!-- SPLASH IMAGE -->
   <div id="splash">
-    <div class="photo-credit">flickr: Luke Andrew Scowen. Some rights reserved.</div>
+  {% if photo_credit != '' %}
+    <div class="photo-credit">{{ photo_credit }}</div>
+  {% endif %}
   </div>
 
   <!-- CONTENT -->  
