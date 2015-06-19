@@ -1,3 +1,7 @@
+{% load static %}
+{% load staticfiles %}
+{% load cropping %}
+  
 <!DOCTYPE html>
 
 <html>
@@ -6,11 +10,6 @@
   <meta name="description" content="{{ description }}">
   <meta name="author" content="{{ author }}">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">  
-    
-  {% load static %}
-  {% load staticfiles %}
-  {% load cropping %}
-  
   <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
   <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
   <link rel="stylesheet" href="{% static 'css/tidal-blog.css' %}">
@@ -28,21 +27,31 @@
     ga('create', 'UA-31793954-1', 'northwestern.edu');
     ga('send', 'pageview');
   </script>
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
 
-  <title>{{ title }}</title>
+  <title>{{ title }} | TIDAL Lab</title>
 </head>
 
 <body>
+<!-- GOOGLE PLUS -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<!-- FACEBOOK -->
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=837023386333695";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- TWITTER -->
+<script>
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+</script>
 
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=837023386333695";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 
   <!-- HEADER -->
   <header>
@@ -71,30 +80,37 @@
   <!-- CONTENT -->  
   <div class="main">
     <div class="content">
+      <div class="column one">
 
+        <h1>{{ title }}</h1>
+
+        <!-- SOCIAL MEDIA -->
+        <div id="social-media-bar">
+
+          <!-- FACEBOOK -->
+          <div class="fb-share-button" style="position: relative; top: -8px;" data-href="http://tidal.northwestern.edu{{ request.path }}" data-layout="button"></div>
+
+          <!-- TWITTER -->
+          <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://tidal.northwestern.edu{{ request.path }}" data-count="none">Tweet</a>
+
+          <!-- GOOGLE PLUS -->
+          <div class="g-plus" data-action="share" data-annotation="none" data-href="http://tidal.northwestern.edu{{ request.path }}"></div>
+
+        </div>
+
+        <p class="print-only">
+          Tangible Interaction Design and Learning Lab<br>
+          http://tidal.northwestern.edu/blog/bat
+        </p>
+      </div>
 
       {% block primary %}{% endblock %}
-
-      <!-- SOCIAL MEDIA -->
-      <div id="social-media-bar">
-
-        <!-- TWITTER -->
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://tidal.northwestern.edu/blog/fishing" data-count="none">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
-        <!-- FACEBOOK -->
-        <div class="fb-share-button" style="position: relative; top: -8px;" data-href="http://tidal.northwestern.edu/blog/fishing" data-layout="button"></div>
-
-
-        <!-- GOOGLE PLUS -->
-        <div class="g-plus" data-action="share" data-annotation="none" data-href="http://tidal.northwestern.edu/blog/fishing"></div>
-
-      </div>
+      <br clear="all">
 
     </div>     
   </div>
   
-  
+
   <!-- FOOTER -->  
   <footer>
     <div class="foot">
