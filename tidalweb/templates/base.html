@@ -1,66 +1,21 @@
+{% load static %}
+{% load staticfiles %}
+{% load cropping %}
+  
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<html>
 <head>
-
-  <!-- Basic Page Needs -->
   <meta charset="utf-8">
-  <title>TIDAL Lab | Northwestern University</title>
-  <meta name="description" content="">
-  <meta name="author" content="">
-  
-  <!-- Mobile Specific Metas -->
+  <meta name="description" content="Tangible Interaction Design and Learning Lab at Northwestern University">
+  <meta name="author" content="TIDAL Lab">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  {% load static %}
-  {% load staticfiles %}
-  
-  <!-- CSS Style -->
-  <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
-  
-  <!-- Color Skins -->
-  <link rel="stylesheet" href="{% static 'css/skins/blue.css' %}" name="skins"> 
-  
-  <!-- Layout Style -->
-  <link rel="stylesheet" href="{% static 'css/layout/wide.css' %}" name="layout"> 
-  
-  <!-- Style Switcher Box -->
-  <link rel="stylesheet" href="{% static 'css/layout/switcher.css' %}">
-  
-  <!-- Small Icons -->
-  <link rel="stylesheet" href="{% static 'css/icons.css'%}">  
-  
-  <!-- Start JavaScript -->
-  
-  <script src="{% static 'js/jquery-1.7.2.min.js' %}"></script> <!-- jQuery library -->
-  <script src="{% static 'js/jquery.easing.1.3.min.js' %}"></script> <!-- jQuery Easing --> 
-  <script src="{% static 'js/jquery-ui.min.js' %}"></script> <!-- jQuery Ui --> 
-  <script src="{% static 'js/jquery.cookie.js' %}"></script> <!-- jQuery cookie --> 
-  <script src="{% static 'js/jquery.uniform.min.js' %}"></script> <!-- jQuery Uniform -->
-  <script src="{% static 'js/ddsmoothmenu.js' %}"></script> <!-- Nav Menu ddsmoothmenu -->
-  <script src="{% static 'js/jquery.flexslider.js' %}"></script> <!-- Flex Slider  -->
-  <script src="{% static 'js/jquery.eislideshow.js' %}"></script> <!-- Elastic Slider  -->
-  <script src="{% static 'js/jquery.iconmenu.js' %}"></script> <!-- Sliding Text and Icon Menu Style  -->
-  <script src="{% static 'js/colortip.js' %}"></script> <!-- Colortip Tooltip Plugin  -->
-  <script src="{% static 'js/tytabs.js' %}"></script> <!-- jQuery Plugin tytabs  -->
-  <script src="{% static 'js/carousel.js' %}"></script> <!-- jQuery Carousel  -->
-  <script src="{% static 'js/jquery.prettyPhoto.js' %}"></script> <!-- jQuery Prettyphoto  -->
-  <script src="{% static 'js/jquery.isotope.min.js' %}"></script> <!-- Isotope Filtering  -->
-  <script src="{% static 'js/selectnav.js' %}"></script> <!-- Responsive Navigation Menu by SelectNav -->
-  <script src="{% static 'js/jquery.ui.totop.js' %}"></script> <!-- UItoTop plugin  -->
-  <script src="{% static 'js/custom.js' %}"></script> <!-- Custom Js file for javascript in html -->
-  <script src="{% static 'js/jquery.tweet.js' %}"></script> <!-- jQuery Tweets -->
-  <script src="{% static 'js/jflickrfeed.min.js' %}"></script> <!-- jQuery Flickr -->
-  <script src="{% static 'js/twitter-flickr-options.js' %}"></script> <!-- jQuery Tweets Options -->
-  <script src="{% static 'js/styleswitch.js' %}"></script> <!-- Style Switcher -->
-  
-  <!-- End JavaScript -->
-  
-  <!--[if lt IE 9]>
-  <script src="js/html5.js"></script>
-  <![endif]-->
+    
+  <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+  <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
+  <link rel="stylesheet" href="{% static 'css/tidal-blog.css' %}">
+  <link rel="stylesheet" href="{% static 'css/tidal-blog-print.css' %}" media="print">
+  <link rel="shortcut icon" href="{% static 'images/favicon/favicon.ico' %}">
+  <script src="{% static 'js/jquery-1.7.2.min.js' %}"></script>
   
   <!-- GOOGLE ANALYTICS -->
   <script>
@@ -71,91 +26,74 @@
   
     ga('create', 'UA-31793954-1', 'northwestern.edu');
     ga('send', 'pageview');
-  
   </script>
-  
 
-  <!-- Favicons -->
-  <link rel="shortcut icon" href="{% static 'images/favicon/favicon.ico' %}">
-  <link rel="apple-touch-icon" href="{% static 'images/favicon/apple-touch-icon.png' %}">
-  <link rel="apple-touch-icon" sizes="72x72" href="{% static 'images/favicon/apple-touch-icon-72x72.png' %}">
-  <link rel="apple-touch-icon" sizes="114x114" href="{% static 'images/favicon/apple-touch-icon-114x114.png' %}">
-
+  <title>TIDAL Lab</title>
 </head>
+
 <body>
 
-  <div id="wrap" class="boxed">
-
+  <!-- HEADER -->
   <header>
-    <div class="container clearfix">
-    
-      <!-- TIDAL LOGO -->
-      <div class="seven columns">
-        <div class="logo">
-        <a href="{% url 'index' %}">
-          <img src="{% static 'images/logo_grey.png' %}" style="float: left;">
-        <div class="logo-text">
-          Tangible Interaction Design <br> and Learning Lab <br>
-          <span class="logo-nu">Northwestern University</span>
-          <br>
-        </div>
-        </a>
-        </div>
-      </div><!-- End Logo -->
-
-
-      <!-- TOP NAV MENU -->      
-      <div class="nine columns">
-        <nav id="menu" class="navigation">
-          <ul id="nav">
-            <!-- <li><a href="{% url 'index' %}" class="active">Home</a></li> -->
-            <li><a href="{% url 'index' %}">Home</a></li>
-            <li><a href="{% url 'publications' %}">Publications</a></li>
-            <li><a href="{% url 'people' %}">People</a></li>
-            <li><a href="{% url 'portfolio' %}">Projects</a></li>
-            <!-- <li><a href="{% url 'news' %}">News</a></li> -->
-            <li><a href="{% url 'contact' %}">Contact</a></li>
-          </ul>
-        </nav>
-      </div><!-- End Menu -->
       
-      
-    </div><!-- End Container -->
-  </header><!-- <<< End Header >>> -->
+    <!-- NAVIGATION BAR -->
+    <nav>
+      <div class="lab-name">Tangible Interaction Design<br>and Learning Laboratory</div>
+      <ul>
+        <li><a href="{% url 'index' %}" class="wide-only">Home</a></li>
+        <li><a href="/index#projects">Projects</a></li>
+        <li><a href="/index#news">News</a></li>
+        <li><a href="{% url 'people' %}">People</a></li>
+        <li><a href="{% url 'publications' %}">Publications</a></li>
+        <!-- <li><a href="{% url 'teaching' %}" class="wide-only">Courses</a></li> -->
+        <li><a href="{% url 'contact' %}" class="wide-only">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-     {% block primary %}{% endblock %}
 
-     <footer>
-
-	    <div class="container">
-          
-          <div class="five columns">
-            Copyright &copy; 2014 TIDAL Lab<br><br>
-            Northwestern University<br>
-            2120 Campus Drive<br>
-            Evanston, Illinois 60208<br>
-            michael-horn@northwestern.edu<br>
-            http://tidal.northwestern.edu
-          </div>
-    
-    
-          <div class="seven columns">
-            Computer Science <br>
-            McCormick School of Engineering and Applied Sciences<br>
-            <a href="http://eecs.northwestern.edu">http://eecs.northwestern.edu</a><br><br>
-            
-            Learning Sciences <br>
-            School of Education and Social Policy<br>
-            <a href="http://sesp.northwestern.edu/learning-sciences">http://sesp.northwestern.edu/learning-sciences</a>
-          </div>
-          
-          <div class="four columns">
-            <img src="{% static 'images/nu-logo.png' %}" style="float: right;" alt="Northwestern University">
-          </div>
-          
-        </div>
-
-    </footer>
+  <!-- SPLASH IMAGE -->
+  <!--
+  <div id="splash">
+    <div class="photo-credit">flickr: Luke Andrew Scowen. Some rights reserved.</div>
   </div>
+  -->
+
+  <!-- CONTENT -->  
+  <div class="main">
+    <div class="content" style="padding-top: 60px;">
+
+      {% block primary %}{% endblock %}
+
+    </div>     
+  </div>
+  
+  
+  <!-- FOOTER -->  
+  <footer>
+    <div class="foot">
+      
+      <div class="column three">
+        Copyright &copy; 2015 TIDAL Lab<br><br>
+        Northwestern University<br>
+        2120 Campus Drive<br>
+        Evanston, Illinois 60208<br>
+        <a href="mailto:michael-horn@northwestern.edu">michael-horn@northwestern.edu</a><br>
+        <a href="http://tidal.northwestern.edu">http://tidal.northwestern.edu</a>
+      </div>
+  
+      <div class="column three wide-only">
+        Computer Science <br>
+        McCormick School of Engineering<br>
+        <a href="http://eecs.northwestern.edu">http://eecs.northwestern.edu</a><br><br>
+        
+        Learning Sciences <br>
+        School of Education and Social Policy<br>
+        <a href="http://sesp.northwestern.edu">http://sesp.northwestern.edu</a>
+      </div>
+      
+    </div>
+  </footer>
+
 </body>
 </html>
