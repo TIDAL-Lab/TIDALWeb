@@ -1,11 +1,11 @@
-{% extends 'base-mini.html' %}
+{% extends 'base.html' %}
 {% block primary %}
 
   {% load static %}
   {% load staticfiles %}
   
   <div class="column one" style="margin: 5px 0;">
-    <h2>Publications</h2>
+    <h1>Publications</h1>
     
     <div style="width: 90%; padding-left: 0.4in;">
     {% block content %}
@@ -41,5 +41,6 @@
     {% endblock %}
     </div>  
   </div> 
+  <br clear="all">
   
 {% endblock %}

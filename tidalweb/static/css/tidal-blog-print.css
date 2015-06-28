@@ -16,6 +16,11 @@ body {
   display: inherit;
 }
 
+.main {
+  width: 100%;
+  background-color: transparent;
+}
+
 .content {
   width: 100%;
   height: auto;
@@ -27,3 +32,4 @@ body {
 header { display: none; }
 nav { display: none; }
 #splash { display: none; }
+#social-media-bar { display: none; }

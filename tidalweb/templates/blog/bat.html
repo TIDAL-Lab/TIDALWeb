@@ -18,23 +18,32 @@
     Over the past few years I've been working with <a href="http://florianblock.net/" target="_blank">Florian Block</a>, 
     <a href="http://www.seas.harvard.edu/directory/cshen" target="_blank">Chia Shen</a>, and the 
     <a href="http://lifeonearth.seas.harvard.edu" target="_blank">Life on Earth team</a> 
-    to create an evolution puzzle game that could be used in museums and other informal learning spaces. 
+    to create an evolution puzzle game for natural history museums and other informal learning spaces. 
 
-    This has been a challenging project from the beginning. It's hard to motivate people to voluntarily engage in difficult 
-    science thinking when they could be doing something else. 
+    This has been a challenging project from the beginning. 
 
-    It took a long time, but I'm happy with the way the game turned out. 
+    Striking the right balance between fun and learning is always a delicate balancing act, 
 
-    The game, called Build-a-Tree (or BAT), debuted as part of the 
-    <a href="https://vimeo.com/51581735" target="_blank">Tree of Life exhibit</a> at the California Academy of Sciences in 2013. 
+    and even though evolution is a fascinating topic, it's still hard to get people to voluntarily engage in difficult 
+    science thinking.
+  </p>
 
-    A web-based version of BAT was also just released as part of a 
+  <p>
+    The design process took a long time, but I'm very happy with the way the game (called Build-a-Tree or BAT for short) 
+    turned out. 
+
+    Build-a-Tree debuted as part of the <a href="https://vimeo.com/51581735" target="_blank">Tree of Life exhibit</a> at the 
+    California Academy of Sciences in October 2013. 
+
+    Florian and Chia followed that up with a web-based version of BAT that was just released as part of a 
     <a href="http://www.pbs.org/wgbh/nova/labs/lab/evolution/" target="_blank">PBS NOVA Lab</a> on evolution. 
 
-    Eventually we'd like to make BAT available as a web-based tool that anyone could use to illustrate evolution concepts. 
+    Eventually we'd like to make BAT available as a web-based tool that anyone can use to illustrate evolution concepts. 
 
-    The idea is that you could embed custom BAT levels into your blogs, web pages, or even apps. 
-    So, for example, you can play a version of BAT right here as part of this blog post. 
+    The idea is that custom BAT levels could be embedded in blogs, web pages, or mobile apps. 
+
+    To give a sense for what this would be like, you can try the game as part of this post, right here.
+
     Just drag the species circles in the green window together to start building a tree... 
   </p>
 
@@ -164,22 +173,22 @@
   <p>
   As we were putting BAT together, we had a few big-picture
   learning goals in mind. The first is that <b>all life on earth is related</b>. In other words, if you could travel far
-  enough back in time, you could find a common, genetic ancestor for any two organisms on the planet, no matter how different they
+  enough back in time, you could find a common genetic ancestor for any two organisms on the planet, no matter how different they
   might seem. 
 
   So, just like you and your cousin share an ancestor in common (a grandparent), 
   you and the banana you ate for breakfast also share a distant, distant ancestor. 
 
   The difference is that unlike your grandparent, this ancestor was a primoridal Eukaryotic organisms that carried 
-  genetic information that is shared by all plants and animals hundreds of millions of years later.
+  genetic information that is still shared by all plants and animals hundreds of millions of years later.
   </p>
   <p>
-  The second big idea that we wanted to get across with the game is that there are <b>key evolutionary landmarks</b> that define 
+  The second big idea is that there are <b>key evolutionary landmarks</b> that define 
   major groups of life. These landmarks are shared genetic traits that emerged from evolutionary processes (like natural selection,
   genetic drift, and mutation), and allowed organisms to take advantage of new ecological niches. 
 
-  One of my favorite examples is the <i>amniotic egg sac</i> that helped the common ancestor of modern-day birds, mammals, 
-  and reptiles to lay eggs away from water and colonize newly accessible inland habitats. 
+  One of my favorite examples is the <i>amniotic egg sac</i> that made it possible for the common ancestors of modern-day 
+  birds, mammals, and reptiles to lay eggs away from water and colonize newly accessible inland habitats. 
 
   Amphibians don't have this trait, which means that they have to return to the water in order to lay eggs and reproduce. 
   </p>
@@ -187,7 +196,7 @@
   <img src="{% static 'images/blog/bat-figure1.png' %}" style="width: 45%; float: right; margin: 0 50px;" alt="a phylgenetic tree showing the relationships of spiders, butterflies, birds, dinosaurs, bats, and giraffes.">
   The last big idea relates to something called <b>tree-thinking skills</b>. 
 
-  One of the most important representations of modern biology are called a cladograms or a phylogenetic trees. 
+  One of the most important representations of modern biology are called <i>cladograms</i> or <i>phylogenetic trees</i>. 
 
   These diagrams depict hypothesized relationships and traits of organisms,genes, or even proteins. 
 
@@ -203,88 +212,136 @@
   For example, a misunderstanding of the tree shown here is that giraffes are the most complex or evolved species 
   (which is not true), and that butterflies and birds are more closely related than birds and giraffes (also not true).
   </p>
+
   <p>
-  We had lots of other less important learning goals. For example, it might be nice if visitors learn that lizards and humans 
-  are more closely related than than lizards and frogs. But goals like these are more factual than conceptual and aren't as 
-  important for us.
+  We had lots of other learning goals that were more factual in nature. For example, it might be nice if visitors learned 
+  that lizards and humans are more closely related than than lizards and frogs. But this kind of factual knowledge is less 
+  important to us than the big-picture conceptual goals that support a deeper understanding of evolution.
   </p>
 
   <h2>Design Principles</h2>
   <p>
-  We had a few principles that guided our design, mostly taken from research on learning, games, and museums. For us, one of the most influential ideas is a notion called <i>intrinsic integration</i> that was originally proposed by Yasmin Kafai and then 
-  elaborated on by Habgood &amp; Ainsorth in an influential <a href="http://dl.acm.org/citation.cfm?id=2215096">paper</a> in the
-  Journal of the Learning Sciences. 
+  To get at these learning objectives, our design was guided by a number of design principles mostly taken from research 
+  on learning, games, and museums. 
 
-  Intrinsic integration is meant to contrast the <i>extrinsic motivation</i> of the edutainment movement in which game-like elements
-  and incentives are set up to motivate people to do something that they would otherwise be less interested in. In other words, in the 
-  case of gamified learning environments, you're not trying to make learning fun as much as you're tying to make it more 
-  palatable. 
+  One of the most important ideas for us is called <i>intrinsic integration</i>. 
 
-  So how is intrinsic integration any different? With intrinsic integration, you're trying to achieve three goals. First and most
-  important, the game should be fun. This doesn't mean that it has to be easy (in fact quite the opposite), but the game shouldn't 
-  feel like drudge work or an obligation, or homework (unless your homework happens to be fun). My friend 
-  <a href="http://www.snowdaylearninglab.org/">Nathan Holbert</a> thinks a lot about this in his reasearch. 
+  This term was originally proposed by Yasmin Kafai and then elaborated on by Habgood &amp; Ainsorth in an 
+  influential <a href="http://dl.acm.org/citation.cfm?id=2215096">paper</a> in the Journal of the Learning Sciences. 
 
-  Second, the fun parts of the game should be the same as the learning parts. This is what the word <i>integration</i> refers to. 
+  Intrinsic integration is meant to contrast the edutainment movement of the 1990s in which game-like elements
+  and incentives were set up to motivate people to do something that they would otherwise be less interested in. 
 
-  You want the best part of the game to be the part where players are engaging with your learning objectives. 
+  In other words, in the case of gamified learning environments, you're not trying to make learning fun as much 
+  as you're tying to make it more palatable. 
 
-  Lastly, the core mechanics of the game should involve the manipulation of external representations of the learning content.
-  This last part is jargony, but for us it just means that you play the game by building phylogenetic trees (external representations
-  used by scientists).
+  The difference with intrinsic integration is that the goal is not to use games as <i>extrinsic</i> motivators. 
+
+  Instead you're trying more tightly integrate games and learning in three ways:
   </p>
 
   <p>
-  There was one really important goal for us that was a priority, because we had initially designed BAT as a museum exhibit. That was 
-  the importance of the first 30 seconds of the experience. Sue Allen, who was writing about exhibit design at the Exploratorium in 
-  San Francisco called this <i>immediate apprehendability</i>. The same idea has also been referred to as <i>early assured success</i>
-  by people at the Minnisota Science Museum. I just call this the 30-second rule. If visitors can't figure out what's going on with 
-  your exhibit in the first 30 seconds, they're going to walk away and find something else to do. This doesn't mean that they have to 
-  understand everything about the exhibit from top to bottom, but they at least need to get what they're supposed to be doing with
-  it from an interaction design perspective. Scott Snibbe and Hayes Raffle have a great paper from the CHI conference in 2009 called 
+  First and most important, games should be fun. This doesn't mean that they have to be easy (in fact quite the 
+  opposite). But games shouldn't feel like drudge work or homework (unless your homework happens to be fun). 
+  My friend <a href="http://www.snowdaylearninglab.org/">Nathan Holbert</a> thinks a lot about the fun factor in his 
+  dissertation reasearch with Uri Wilensky. 
+  </p>
+
+  <p>
+  Second, the fun parts of the game should be the same as the learning parts. This is what the word <i>integration</i> refers to. 
+
+  You want the most exciting and interesting aspects of the game to be the part where players are engaging with your 
+  learning objectives. 
+  </p>
+
+  <p>
+  Lastly, the core mechanics of the game should involve the manipulation of external representations of the learning content.
+  This last part is jargony, but for us it just means that you play the game by building phylogenetic trees. These trees
+  are the same kinds of representations that real scientists use to describe evolutionary relationships in their research.
+  </p>
+
+  <p>
+  There was one other really important goal for us. Because we had initially designed BAT as a museum exhibit, the first 30 
+  seconds of visitors' experience with the game is crucial. Sue Allen, who was writing about exhibit design at the Exploratorium in 
+  San Francisco, called this principle <i>immediate apprehendability</i>. 
+
+  The same idea has also been referred to as <i>early assured success</i> by people at the Minnesota Science Museum. 
+
+  I just call this the 30-second rule. If visitors can't figure out what's going on with your exhibit in the first 30 seconds, 
+  they're going to walk away and find something else to do. This doesn't mean that they have to understand everything about 
+  the exhibit from top to bottom, but they at least need to get how they're supposed to play the game and get some positive 
+  reinforcement around their actions. Scott Snibbe and Hayes Raffle have a great paper from the CHI conference in 2009 called 
   Social Immersive Media that discusses these design principles in more detail.
   </p>
 
 <h2>First Iteration</h2>
 <p>
 <img src="{% static 'images/blog/bat-figure3.png' %}" alt="Visitor holding times" style="width: 45%; float: right;">
-For the first iteraction of BAT, you would drag species tokens together to build a tree. The order in which you put the tokens together determined the structure of the tree. The left-to-right order was not important, but the order in which you assembled the pieces was.
-For example, if I dragged Bats and Birds together first, and then dragged humans on, I would get the tree on the left side. If, on the
-other hand, I dragged humans and bats together first, I would get the tree on the right. If you were correct, the tree was white. If
-you were wrong the tree was grey. You couldn't drag traits. The tree just appeared. There was no flow from the bottom of the tree to 
-the top of the tree. Here we made some conscious tradeoffs in favor of simplicity of interaction over control of how the tree was 
-assembled.
+I started work on the design and programming for the first version of BAT in late 2010. For this first pass, I was preoccupied 
+with playfulness and simplicity. To build trees, all you had to do was drag species tokens together on the touch screen.
+
+The order in which tokens were assembled would determine how the tree appeared. 
+
+So, for example, if I dragged bats and birds together first, followed by humans, I would get the tree on the left side. 
+
+But, if I dragged humans and bats together first, I would get the tree on the right. 
+
+If the tree you created was correct, it would appear white, and you would earn stars. 
+
+If it was incorrect, the tree would appear greyed out. 
+
+With this design, the tree just appeared automatically with traits drawn in place, and there was no animated flow from the bottom 
+of the tree to the top of the tree that you get with the current design. 
 </p>
 <img src="{% static 'images/blog/bat-figure4.png' %}" alt="Screenshot from the first iteration of BAT" style="width: 45%; float: right;">
 <p>
-In some ways the first version of BAT seemed successful. We observed X visitors at the Harvard Museum of Natural History in 2011. 
-People generally seemed engaged, they were reasonably good at figuring out the basic game mechanics in a short amount of time, and 
-a lot of people stuck around to try to finish all of the seven levels that we offered. This shows the distribution of holding times.
-Some X% of the visitors stuck around longer than one minute, and Y% longer than three minutes, which about what you want for an
-interactive exhibit. Shorter than that is an indication that people are struggling to figure out what they're supposed to do or that
-the activity is really shallow. Longer than that, and you risk causing a backup in the flow of visitors or distracting people from 
-all of the other amazing objects on display at the museum. 
+In some ways this first version of BAT seemed successful. Over the summer of 2011, we observed 188 visitors at the 
+Harvard Museum of Natural History.
+
+Based on our observations, visitors generally seemed engaged, they were reasonably good at figuring out the game mechanics 
+in a short amount of time, and lots of people stuck around to try to finish all seven levels that we offered. 
+
+This shows the distribution of holding times.
+
+Around 70% of the visitors stuck around for at least a minute, and 28% longer than four minutes, which about what you want for an
+interactive museum exhibit. 
+
+Shorter than that is an indication that people are struggling to figure out what they're supposed to do or that
+the activity is too shallow. 
+
+Longer than that, and you risk causing a backup in the flow of visitors or distracting people from all of the other 
+amazing things to see and do at the museum. 
 <img src="{% static 'images/blog/bat-htimes2.png' %}" alt="Visitor holding times" style="width: 45%; float: right;">
 </p>
-FIGURE
+
 <p>
-The multi-touch tabletop seemed like it provided decent support for collaboration. Visitors often worked together and crowded around all
-sides of the table, participating together in a variety of ways, both expected and unexpected. And, they even talked about evolution,
-although maybe not in the depth that we were hoping for. So all of this was pretty good, but there were some big problems as well:
+The multi-touch tabletop also seemed to provide decent support for collaboration. 
+
+Visitors worked together and crowded around all sides of the table, collaborating in ways both expected and unexpected. 
+
+They even talked about evolution, although maybe not in the depth that we were hoping for. 
+
+So all of this was pretty good, but there were some big problems as well:
 </p>
 <ol>
-<li>People were only indirectly manipulating the tree. The tree just appeared when you dragged species together.</li>
-<li>There was a lack of direct control over the placement of the tips in the tree. Both for simplicity (30 second rule) and for the 
-sake of playfullness.</li>
-<li>Traits, which were one of our critical learning objectives, just appeared. So people were having a difficult time connecting traits
-to their corresponding species, which also impacted tree thinking skills.</li>
-<li>People weren't using the help function for the most part. And, when they did use it, it didn't really tell you anything useful about
-the traits.</li>
+<li>Because of our emphasis on simplicity, people were only indirectly manipulating the tree. 
+The tree just appeared when you dragged species together. 
+This meant that there was a lack of direct control over the placement of the tips in the tree. 
+To try different combinations, you had to drag the tree apart and start over.</li>
+
+<li>People also had difficulty connecting traits to their corresponding species. Since common traits were one of our 
+most important learning objectives, this seemed like a big shortcoming. 
+This also seemed to impact their tree thinking skills.</li>
+
+<li>People weren't using the help function for the most part. 
+And, when they did use it, it didn't really tell you anything useful about the traits.</li>
 </ol>
 <p>
-All of this was evident as we watched people play. A lot of visitors were determined to finish the entire game. But, you saw a shift
-as they advanced to the harder levels. It's like they started to get what was going on after the first few levels, but then they gave
-up and reverted to trying random combinations without thinking. Some early thrashing like this is good, but they weren't able to 
+All of this was evident as we watched people play. Even though lots of people were determined to finish the entire game, 
+you saw a shift as they advanced to the harder levels. 
+They would start to understand what was going on after the first few levels, but as the levels got harder, they would 
+give up and revert to trying random combinations without much thinking. 
+Some early thrashing like this is good, but they weren't able to 
 use what they had learned in early levels to systemmatically solve the harder levels. 
 
 FIGURE WITH upsidedown U-SHAPED CURVE. Trial and error versus systemmatic thinking | Levels increasing on the X-axis. 
