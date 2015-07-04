@@ -33,3 +33,7 @@ header { display: none; }
 nav { display: none; }
 #splash { display: none; }
 #social-media-bar { display: none; }
+
+.content a {
+  text-decoration: underline;
+}
