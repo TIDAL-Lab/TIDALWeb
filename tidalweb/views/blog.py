@@ -32,7 +32,7 @@ def strawbies(request):
       'title' : 'Strawbies Tangible Programming',
       'author' : 'Felix Hu',
       'description' : 'Strawbies tangible programming game',
-      'photo_credit' : 'flickr: Fried Dough. Some rights reserved.'
+      'photo_credit' : ''
     },
     context_instance=RequestContext(request))
 
