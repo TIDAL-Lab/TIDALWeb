@@ -1,70 +1,55 @@
-{% extends 'base-blog.html' %}
+{% extends 'base-mini.html' %}
 {% block primary %}
 
   {% load static %}
   {% load staticfiles %}
 
-  <style>
-  #splash {
-    height: 180px;
-    max-width: 1500px;
-    background-image: url("{% static 'images/blog/strawbies-banner.jpg' %}");
-    background-position: bottom right;
-  }
-  </style>
+    <div class="column two">
+      <h1>Strawbies! &mdash; A Tangible Programming Game</h1>
+      <p>
+        Strawbies is an educational iPad game designed for children ages 5 and up. Players use wooden coding blocks and an <a href="https://www.playosmo.com" target="_blank">Osmo</a> to guide Awbie through a rich and infinitely expanding world.
+      </p>
+      <p>
+        Players are free to play the game however they wish. Strawbies' open world is filled with fun and interactive objects that support simple and complex problem solving. Physical coding blocks allow for groups of children to play on an iPad at the same time. Strawbies has been played by children over a wide range of ages and settings.
+      </p>
+      <p style="text-align: center;">
+        <img src="{% static 'blog/strawbies-pile.jpg' %}" style="margin-bottom: 20px;" alt="Pile of Coding Blocks">
+      </p>
+    </div>
 
-  <div class="column one">
+    <div class="column two">
+      <img src="{% static 'blog/strawbies-figure1.jpg' %}" style="float: right; margin-top: 40px;" alt="iPad, Osmo, and Coding BLocks">
+    </div>   
 
+    <div class="column two">
+      <h1>Want to try Strawbies?</h1>
+      <p>
+        We are interested in exploring long term uses for Strawbies. If you are an educator, and are interested in using Strawbies in your space, we would love to hear from you! Contact <a href="mailto:felixhu12@gmail.com?Subject=Interest%20in%20Strawbies" target="_top">felixhu12@gmail.com</a> for more information. Strawbies requires an iPad and <a href="https://www.playosmo.com" target="_blank">Osmo</a> to be played. 
+    </div>
 
+    <div class="column two">
+      <h1>Credits</h1>
+      <p>
+        <b>Game Design:</b> Felix Hu, Ariel Zekelman
+      </p>
+      <p>
+        <b>Software:</b> Felix Hu
+      </p>
+      <p>
+        <b>Graphic Design:</b> Eric Uchalik (<a href="http://www.euchalik.com/" target="_blank">www.euchalik.com</a>)
+      </p>
+      <p>
+        <b>Advising:</b> <a href="/people/mikehorn">Mike Horn</a> and Frances Judd (<a href="http://www.tangitech.org" target="_blank">Tangible Tech Collaborative</a>)
+      </p>
+    </div>
 
-  <p>
+    <div class="column one">
+      <h1>Demo Video</h1>
+        <br>
+        <p style="text-align: center;">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/k79aB_qILdw" frameborder="0" allowfullscreen></iframe>
+        </p>
+    </div>
 
-    Strawbies is a tangible programming game designed by Felix Hu, Ariel Zekelman, and Eric Uchalik. 
-
-    Players physical tiles to program instructions for an on-screen character called “Awbie.” 
-
-    Our current implementation uses an <a href="www.playosmos.com">Osmo game system</a> with an iPad for 
-    fluid tangible interaction.
-
-  </p>
-
-  <p style="text-align: center;">  
-  <img src="{% static 'images/blog/strawbies-figure1.jpg' %}" style="width: 80%;" alt="Strawbies tangible programming game">
-  </p>
-
-
-  <h1>Credits</h1>
-
-  <p>
-  <table>
-  <tr>
-    <td style="font-weight: bold; width: 1.5in; vertial-align: top;">Game Design:</td>
-    <td>Felix Hu and Ariel Zekelman</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold; vertial-align: top;">Software:</td>
-    <td>Felix Hu</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold; vertial-align: top;">Graphic Design:</td>
-    <td>Eric Uchalik</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold; vertial-align: top;">Video:</td>
-    <td>Rhoderick Magsino and Felix Hu</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold; vertical-align: top;">Advising:</td>
-    <td><a href="/people/mikehorn">Mike Horn</a> and Frances Judd (<a href="http://www.tangitech.org" target="_blank">Tangible Tech Collaborative</a>)</td>
-  </tr>
-  </table>
-  </p>
-
-  <p style="text-align: center;">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/k79aB_qILdw" frameborder="0" allowfullscreen></iframe>
-  </p>
-
-
-</div>
 <br clear="all">
 {% endblock %}
