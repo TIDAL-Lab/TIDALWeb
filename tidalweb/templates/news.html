@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block primary %}
+
+  {% load static %}
+  {% load staticfiles %}
+  
+  <div class="column one" style="margin: 5px 0;">
+    <h1>Recent News</h1>
+    
+    <div style="width: 90%;">
+    {% block content %}
+    <ul>
+      {% for post in posts %}
+              
+    <li class="news-post">
+      <div class="news-title">{{post.title}}</div>
+      <div class="news-content">
+        <span class="news-date">{{post.pubdate|date:"F Y"}}</span> &mdash;
+        {{post.content}}
+        {% if post.weblink != "" %}
+        <a href="{{post.weblink}}" class="news-more">Read More</a>
+        {% endif %}
+      </div>
+    </li>
+
+
+      {% endfor %} 
+    </ul>
+    {% endblock %}
+    </div>  
+  </div> 
+  <br clear="all">
+  
+{% endblock %}
