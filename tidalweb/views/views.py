@@ -23,7 +23,7 @@ def news(request):
   return render_to_response('news.html', {'posts': posts})
 
 def pubs(request):
-  publist = Publication.objects.filter(pubAffil = 'lab', viewable = True)
+  publist = Publication.objects.filter(pubAffil = 'lab', viewable = True).order_by('-year', '-created')
   return render_to_response('publications.html', {'pubs':publist})
 
 def greenhomegames(request):
