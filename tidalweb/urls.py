@@ -46,7 +46,7 @@ urlpatterns = patterns('',
 
 #   url(r'^$', 'blog.views.index'),
 #   url(r'^$', 'people.views.index'),
-    url(r'^news/(?P<slug>[^/]+)/$', views.post),
+#    url(r'^news/(?P<slug>[^/]+)/$', views.post),
     url(r'^people/(?P<slug>[\w\-]+)/$', views.personal, name = 'personal'),
     url(r'^portfolio/(?P<slug>[\w\-]+)/$', views.project),
     (r'^media/(?P<path>.*)$', 'django.views.static.serve',
