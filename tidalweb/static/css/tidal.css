@@ -281,10 +281,10 @@ footer a:hover {
 }
 
 .news-title {
-  font-size: 15px;
+  /* font-size: 15px; */
   font-weight: 700;
   text-align: left;
-  color: #666;
+  color: black;
 }
 
 .news-date {
