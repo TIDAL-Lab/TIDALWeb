@@ -17,6 +17,9 @@ def index(request):
 	frontPageBlurb = FrontPageBlurb.objects.all
 	return render_to_response('index.html', {'projects': projects, 'posts':posts,'labs': labs, 'depts': depts, 'oustideLabs': oustideLabs, 'orgs': orgs,'frontimages': frontimages, 'frontPageBlurb':frontPageBlurb})
 
+def news(request):
+  posts = Post.objects.filter(published=True)
+  return render_to_response('news.html', {'posts': posts})
 
 def greenhomegames(request):
   return render_to_response('greenhomegames.html')
