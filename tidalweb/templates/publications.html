@@ -10,31 +10,33 @@
     <div style="width: 90%; padding-left: 0.4in;">
     {% block content %}
   
-      {% for pubs in year %}
+      {% for pub in pubs %}
               
-        {% ifchanged pubs.year %}
-        <h3>{{pubs.year}}</h3>
+        {% ifchanged pub.year %}
+        <h3>{{pub.year}}</h3>
         {% endifchanged %}
   
-        {% if pubs.award != '' and pubs.award != None %}
-        <img src="{% static 'images/icons/award_small.png' %}" style="width: 30px; height: 30px; opacity: 0.2; position: relative; left: -40px; float: left;" alt="{{pubs.award}}">
+        {% if pub.award != '' and pub.award != None %}
+        <img src="{% static 'images/icons/award_small.png' %}" style="width: 30px; height: 30px; opacity: 0.2; position: relative; left: -40px; float: left;" alt="{{pub.award}}">
         {% endif %}
         <p class="publication">
           
-        <span class="pub-authors">{{pubs.authors}}</span>
-        (<span class="pub-year">{{pubs.year}}</span>).
-        {% if pubs.localCopy != ''%}
-        <a href = "{{pubs.localCopy.url}}"><span class="pub-title">{{pubs.title}}</span>.</a>
+        <span class="pub-authors">{{pub.authors}}</span>
+        (<span class="pub-year">{{pub.year}}</span>).
+        {% if pub.localCopy != ''%}
+        <a href = "{{pub.localCopy.url}}"><span class="pub-title">{{pub.title}}</span>.</a>
+        {% elif pub.weblink != '' and pub.weblink != None %}
+        <a href = "{{pub.weblink}}"><span class="pub-title">{{pub.title}}</span>.</a>
         {% else %}
-        <span class="pub-title">{{pubs.title}}</span>.
+        <span class="pub-title">{{pub.title}}</span>.
         {% endif %}
-        {% if pubs.pages != '' %}
-        <i><span class="pub-journal">{{pubs.journal}}</span></i>, <span class="pub-pages">{{pubs.pages}}</span>.
+        {% if pub.pages != '' %}
+        <i><span class="pub-journal">{{pub.journal}}</span></i>, <span class="pub-pages">{{pub.pages}}</span>.
         {% else %}
-        <i><span class="pub-journal">{{pubs.journal}}</span></i>.
+        <i><span class="pub-journal">{{pub.journal}}</span></i>.
         {% endif %}
-        {% if pubs.award != '' and pubs.award != None %}
-        <br><b><span class="pub-award">{{pubs.award}}</span></b>
+        {% if pub.award != '' and pub.award != None %}
+        <br><b><span class="pub-award">{{pub.award}}</span></b>
         {% endif %}
         </p>
       {% endfor %} 
