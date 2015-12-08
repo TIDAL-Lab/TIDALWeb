@@ -4,6 +4,7 @@ from django.template import RequestContext
 from tidalweb.models import Project
 from tidalweb.models import Post
 from tidalweb.models import Partner
+from tidalweb.models import Publication
 from tidalweb.models import FrontImage, FrontPageBlurb
 
 def index(request):
@@ -20,6 +21,10 @@ def index(request):
 def news(request):
   posts = Post.objects.filter(published=True)
   return render_to_response('news.html', {'posts': posts})
+
+def pubs(request):
+  publist = Publication.objects.filter(pubAffil = 'lab', viewable = True).order_by('-year')
+  return render_to_response('publications.html', {'pubs':publist})
 
 def greenhomegames(request):
   return render_to_response('greenhomegames.html')
