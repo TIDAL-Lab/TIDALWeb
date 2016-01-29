@@ -93,8 +93,20 @@ class Photos(models.Model):
 
 class People(models.Model):
     name = models.CharField(max_length=255)
-    netID = models.CharField(max_length = 255, blank = True)
-    status = models.CharField(max_length = 255, choices = [('Director', 'Director'), ('Affiliated Faculty', 'Affiliated Faculty'), ('Postdoc', 'Postdoc'), ('PhD Student', 'PhD Student'), ('Masters Student', 'Masters Student'), ('Undergraduate', 'Undergraduate Student'), ('Graphic Designer', 'Graphic Designer')])
+    title = models.CharField(max_length = 255)
+    program = models.CharField(max_length = 255, blank = True)
+    status = models.CharField(max_length = 255, choices = [
+            ('Director', 'Director'),
+            ('Affiliated Faculty', 'Affiliated Faculty'),
+            ('Postdoc', 'Postdoc'),
+            ('PhD Student', 'PhD Student'),
+            ('PhD Student, Learning Sciences', 'PhD Student, Learning Sciences'),
+            ('PhD Student, Computer Science', 'PhD Student, Computer Science'),
+            ('PhD Student, Technology and Social Behavior', 'PhD Student, Technology and Social Behavior'),
+            ('Curriculum Specialist', 'Curriculum Specialist'),
+            ('Masters Student', 'Masters Student'), 
+            ('Undergraduate', 'Undergraduate Student'), 
+            ('Graphic Designer', 'Graphic Designer')])
     biography = models.TextField()
     website = models.URLField(blank = True)
     linkedin = models.URLField(blank = True)
