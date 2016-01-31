@@ -10,15 +10,17 @@
     
     {% for person in peeps %}             
 
-    <div class="column four" style="text-align: left; padding: 25px 25px 0 0;">
+    <div class="column four" style="text-align: left; padding: 25px 25px 0 0; line-height: 110%;">
       <a href="{{person.get_absolute_url}}">
       <img src="{% cropped_thumbnail person 'cropping' scale=1.0 %}" style="width: 100%;" alt="{{person.name}}" class="hover-image"> 
       {{person.name}}</a><br>
+      <span class="people-program">
       {{person.title}}
       {% if person.program != '' and person.program != None %}
-      <br>
+      <br />
       {{person.program}}
       {% endif %}
+      </span>
     </div>
     
     {% endfor %} 
