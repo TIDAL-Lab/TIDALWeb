@@ -44,6 +44,14 @@ def teaching(request):
 def reese(request):
   return render_to_response('reese.html', { 'logId': request.GET['logId'], 'logData' : request.GET['logData'] })
 
+def frogpond(request):
+  return render_to_response('frogpond/intro.html')
+
+def frogpondChallenge(request):
+  challenge = int(request.get_full_path()[-1:]) # get the challenge number from the url path
+  return render_to_response('frogpond/challenge.html', { 'challenge' : challenge })
+
+
 # def publications(request):
 #     return render_to_response('publications.html')
 
