@@ -22,6 +22,8 @@ urlpatterns = patterns('',
     url(r'^roberto', views.roberto, name = 'roberto'),
     url(r'^biomap', views.biomap, name = 'biomap'),
     url(r'^reese', views.reese, name = 'reese'),
+    url(r'^frogpond/$', views.frogpond, name = 'frogpond'),
+    url(r'^frogpond/challenge[0-9]$', views.frogpondChallenge, name = 'frogpondChallenge'),
     url(r'^nettango', views.nettango, name = 'nettango'),
     url(r'^teaching', views.teaching, name = 'teaching'),
 
