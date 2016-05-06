@@ -24,7 +24,7 @@ urlpatterns = patterns('',
     url(r'^reese', views.reese, name = 'reese'),
     url(r'^frogpond/$', views.frogpond, name = 'frogpond'),
     url(r'^frogpond/challenge[0-9]$', views.frogpondChallenge, name = 'frogpondChallenge'),
-    url(r'^nettango', views.nettango, name = 'nettango'),
+    url(r'^nettango', views.frogpond, name = 'nettango'),
     url(r'^teaching', views.teaching, name = 'teaching'),
 
     #---------------------------------------------------------------------
