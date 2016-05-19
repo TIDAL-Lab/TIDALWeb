@@ -1,6 +1,7 @@
-{% load static %}
 {% load staticfiles %}
-{% load cropping %}
+{% comment %}
+load cropping 
+{% endcomment %}
   
 <!DOCTYPE html>
 <html>
@@ -11,23 +12,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
   <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
-  <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
-  <link rel="stylesheet" href="{% static 'css/tidal-blog.css' %}">
-  <link rel="stylesheet" href="{% static 'css/tidal-blog-print.css' %}" media="print">
-  <link rel="shortcut icon" href="{% static 'images/favicon/favicon.ico' %}">
+  <link rel="stylesheet" href="{% static 'css/tidal.css' %}">
+  <link rel="stylesheet" href="{% static 'css/tidal-print.css' %}" media="print">
+  <link rel="stylesheet" href="{% static 'css/jquery.bxslider.css' %}">
+  <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
   <script src="{% static 'js/jquery-1.7.2.min.js' %}"></script>
+  <script src="{% static 'js/jquery.bxslider.min.js' %}"></script>
   
-  <!-- GOOGLE ANALYTICS -->
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  
-    ga('create', 'UA-31793954-1', 'northwestern.edu');
-    ga('send', 'pageview');
-  </script>
-
   <title>TIDAL Lab</title>
 </head>
 
@@ -38,33 +29,23 @@
       
     <!-- NAVIGATION BAR -->
     <nav>
-      <div class="lab-name">Tangible Interaction Design<br>and Learning Laboratory</div>
+      <div id="lab-name"><a href="/" class="wide-only">Tangible Interaction Design<br>and Learning Laboratory</a></div>
       <ul>
-        <li><a href="{% url 'index' %}" class="wide-only">Home</a></li>
-        <li><a href="/index#projects">Projects</a></li>
-        <li><a href="{% url 'news' %}">News</a></li>
-        <li><a href="{% url 'people' %}">People</a></li>
-        <li><a href="{% url 'publications' %}">Publications</a></li>
-        <!-- <li><a href="{% url 'teaching' %}" class="wide-only">Courses</a></li> -->
-        <li><a href="{% url 'contact' %}" class="wide-only">Contact</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/news">News</a></li>
+        <li><a href="/people">People</a></li>
+        <li><a href="/publications">Publications</a></li>
+        <li><a href="/contact">Contact</a></li>
       </ul>
     </nav>
   </header>
 
 
-  <!-- SPLASH IMAGE -->
-  <!--
-  <div id="splash">
-    <div class="photo-credit">flickr: Luke Andrew Scowen. Some rights reserved.</div>
-  </div>
-  -->
-
   <!-- CONTENT -->  
   <div class="main">
-    <div class="content" style="padding-top: 60px;">
-
+    <div class="content">
       {% block primary %}{% endblock %}
-
     </div>     
   </div>
   
@@ -82,7 +63,7 @@
         <a href="http://tidal.northwestern.edu">http://tidal.northwestern.edu</a>
       </div>
   
-      <div class="column three wide-only">
+      <div class="column two wide-only">
         Computer Science <br>
         McCormick School of Engineering<br>
         <a href="http://eecs.northwestern.edu">http://eecs.northwestern.edu</a><br><br>
@@ -91,9 +72,8 @@
         School of Education and Social Policy<br>
         <a href="http://sesp.northwestern.edu">http://sesp.northwestern.edu</a>
       </div>
-      
+
     </div>
   </footer>
-
 </body>
 </html>

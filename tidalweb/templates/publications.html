@@ -1,42 +1,38 @@
 {% extends 'base.html' %}
 {% block primary %}
-
-  {% load static %}
-  {% load staticfiles %}
+{% load staticfiles %}
   
   <div class="column one" style="margin: 5px 0;">
-    <h1>Publications</h1>
+    <h1 class="title">Publications</h1>
     
-    <div style="width: 90%; padding-left: 0.4in;">
+    <div class="publication-list">
     {% block content %}
-  
       {% for pub in pubs %}
               
         {% ifchanged pub.year %}
-        <h3>{{pub.year}}</h3>
+        <h2>{{pub.year}}</h2>
         {% endifchanged %}
   
         {% if pub.award != '' and pub.award != None %}
-        <img src="{% static 'images/icons/award_small.png' %}" style="width: 30px; height: 30px; opacity: 0.2; position: relative; left: -40px; float: left;" alt="{{pub.award}}">
+        <img src="{% static 'images/award_small.png' %}" style="width: 30px; height: 30px; opacity: 0.2; position: relative; left: -40px; float: left;" alt="{{pub.award}}">
         {% endif %}
         <p class="publication">
-          
-        <span class="pub-authors">{{pub.authors}}</span>
-        (<span class="pub-year">{{pub.year}}</span>).
+        {{pub.authors}}
+        ({{pub.year}}).
         {% if pub.localCopy != ''%}
-        <a href = "{{pub.localCopy.url}}"><span class="pub-title">{{pub.title}}</span>.</a>
+        <a href="{{pub.localCopy.url}}">{{pub.title}}.</a>
         {% elif pub.weblink != '' and pub.weblink != None %}
-        <a href = "{{pub.weblink}}"><span class="pub-title">{{pub.title}}</span>.</a>
+        <a href="{{pub.weblink}}">{{pub.title}}.</a>
         {% else %}
-        <span class="pub-title">{{pub.title}}</span>.
+        {{pub.title}}.
         {% endif %}
         {% if pub.pages != '' %}
-        <i><span class="pub-journal">{{pub.journal}}</span></i>, <span class="pub-pages">{{pub.pages}}</span>.
+        <i>{{pub.journal}}</i>, {{pub.pages}}.
         {% else %}
-        <i><span class="pub-journal">{{pub.journal}}</span></i>.
+        <i>{{pub.journal}}</i>.
         {% endif %}
         {% if pub.award != '' and pub.award != None %}
-        <br><b><span class="pub-award">{{pub.award}}</span></b>
+        <br><b>{{pub.award}}</b>
         {% endif %}
         </p>
       {% endfor %} 

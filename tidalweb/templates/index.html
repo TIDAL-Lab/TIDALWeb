@@ -1,20 +1,15 @@
-{% extends 'base-mini.html' %}
+{% extends 'base.html' %}
 {% block primary %}
-
-{% load static %}
 {% load staticfiles %}
 {% load cropping %}
 
 
   <!-- SPLASH IMAGES -->
   <div class="column one" style="margin: 15px 0 20px 0;">
-  <!--
-    <img src="{% static 'images/frogpond_banner.png' %}" style="width: 100%; max-width: 960px;">
-  -->
     <ul class="bxslider">
       {% for image in frontimages %}
       <li>
-        <img src="{% cropped_thumbnail image 'cropping' scale=1.0 %}" title="{{image.description|safe}}">
+        <img src="{% cropped_thumbnail image 'cropping' scale=1.0 %}" title="{{image.description|safe}}" style="width: 100%;">
       </li>
       {% endfor %}
     </ul>
@@ -29,57 +24,37 @@
   </div>
 
 
-
   <!-- PROJECTS -->    
-  <div class="column one" id="projects">
+  <div class="column one" id="projects-list">
     <h1 class="title">Recent Projects</h1>
     <table>
-    {% for project in projects %}
-      {% if forloop.counter < 15 %}
-    <tr>
-      <td style="vertical-align: top;">
-      <div style="height: 190px;">
-      <img src="{% cropped_thumbnail project 'projectCrop' scale=1.0 %}" class="project-thumb">
-      </td>
-      <td style="vertical-align: top;">
-      <div class="project-title"><a href="{{project.website}}">{{project.name}}</a></div>
-      <p class="project-description">{{project.about|safe}}</p>
-      {% if project.grants != '' %}
-      <div class="project-grants">Grant: {{project.grants}}</div>
+      {% block content %}
+      {% for project in projects %}
+      {% if forloop.counter < 8 %}
+      <tr>
+        <td style="vertical-align: top;">
+          <img src="{% cropped_thumbnail project 'projectCrop' scale=1.0 %}" class="project-thumb">
+        </td>
+        <td style="vertical-align: top;">
+          <div class="project-title"><a href="{{project.website}}">{{project.name}}</a></div>
+          <p class="project-description">{{project.about|safe}}</p>
+          {% if project.grants != '' %}
+          <div class="project-grants">Grant: {{project.grants}}</div>
+          {% endif %}
+        </td>
+      </tr>
       {% endif %}
-      </div>
-      </td>
-    </tr>
-      {% endif %}
-    {% endfor %}
+      {% endfor %}
+      {% endblock %}
     </table>
   </div>
+  <br clear="all">
 
-  
-  <!-- NEWS -->
-  <!--
-  <div class="column one" id="news">
-    <h1 class="title">Recent News</h1>
-    
-    {% for post in posts %}
-    <div class="news-post">
-      <div class="news-title">{{post.title}}</div>
-      <div class="news-content">
-        <span class="news-date">{{post.pubdate|date:"F Y"}}</span> &mdash;
-        {{post.content}}
-        {% if post.weblink != "" %}
-        <a href="{{post.weblink}}" class="news-more">Read More</a>
-        {% endif %}
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-  -->
 
   
   <!-- AFFILIATED RESEARCH LABS -->
   <div class="column one">
-    <h1>Affiliated Research Labs</h1>
+    <h1 class="title">Affiliated Research Labs</h1>
     <div class="column two affiliated">
       <img src="{% static 'images/collaborators/ccl.png' %}" style="float: left; height: 60px; opacity: 0.6;">
       Center for Connected Learning and Computer-Based Modeling (CCL)<br>
@@ -115,11 +90,12 @@
       <a href="http://osep.northwestern.edu">http://osep.northwestern.edu</a>
     </div>
   </div>
+  <br clear="all">
 
   
   <!-- MUSEUM COLLABORATORS -->
-  <div class="column one" style="margin-top: 30px;">
-    <h1>Museum Collaborators</h1>
+  <div class="column one" style="margin-top: 30px; margin-bottom: 40px;">
+    <h1 class="title">Museum Collaborators</h1>
     <div style="text-align: center;">
       <a href="http://www.fieldmuseum.org"><img src="{% static 'images/collaborators/field.png' %}" style="height: 70px;"></a>
       <a href="http://www.calacademy.org"><img src="{% static 'images/collaborators/cas.png' %}" style="height: 70px;"></a>
@@ -129,9 +105,9 @@
       <a href="http://mos.org"><img src="{% static 'images/collaborators/mos.png' %}" style="height: 70px;"></a>
     </div>
   </div>      
+  <br clear="all">
 
-  <div class="column one" style="height: 40px;"></div>
-  
+
   <script>
     $(document).ready(function(){
       $('.bxslider').bxSlider({
