@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block primary %}
+{% load staticfiles %}
+{% load cropping %}
+
+
+<div class="column one" style="margin: 5px 0;">
+
+  <h1 style="margin: 0;">{{person.name}}</h1>
+
+  <h3 style="margin-bottom: 0;">{{person.status}}</h3>
+
+  <img src="{{person.photo.url}}" alt="{{person.name}}" style="width: 40%; float: right; margin: 5px;">
+  
+  <p style="margin-top: 5px;">{{person.biography|safe }}</p>
+
+
+  <h3 style="margin-bottom: 0;">Contact</h3>
+  <table>
+  <tr>
+    <td style="padding-right: 10px;"><b>Email:</b></td>
+    <td>{{person.emailuser}}&nbsp;at&nbsp;{{person.emaildomain}}</td>
+  </tr>
+  {% if person.website != "" %}
+  <tr>
+    <td><b>Web:</b></td>
+    <td><a href="{{person.website}}">{{person.website}}</a></td>
+  </tr>
+  {% endif %}
+  {% if person.cv != "" %}
+  <tr>
+    <td><b>CV:</b></td>
+    <td><a href="{{person.cv.url}}">PDF</a></td>
+  </tr>
+  {% endif %}
+  </table>
+  <br>
+</div>
+<br clear="all">
+        
+{% endblock %}
+  

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block primary %}
+{% load staticfiles %}
+{% load cropping %}
+
+  
+    <!-- PROJECTS -->    
+    <div class="column one" id="projects-list">
+        <h1 class="title">Recent Projects</h1>
+        <table>
+        {% block content %}
+        {% for project in projects %}
+        {% if forloop.counter < 15 %}
+        <tr>
+            <td style="vertical-align: top;">
+                <a href="{{project.website}}">
+                <img src="{% cropped_thumbnail project 'projectCrop' scale=1.0 %}" class="project-thumb hover-image"></a>
+            </td>
+            <td style="vertical-align: top;">
+                <div class="project-title"><a href="{{project.website}}">{{project.name}}</a></div>
+                <p class="project-description">{{project.about|safe}}</p>
+                {% if project.grants != '' %}
+                <div class="project-grants">Grant: {{project.grants}}</div>
+                {% endif %}
+            </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+        {% endblock %}
+        </table>
+    </div>
+    <br clear="all">
+  
+{% endblock %}

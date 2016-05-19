@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block primary %}
+{% load staticfiles %}
+
+<!--
+  <style>
+  #splash {
+    height: 180px;
+    max-width: 1300px;
+    background-image: url("{% static 'images/projects/spark-banner.png' %}");
+    background-position: bottom right;
+  }
+  </style>
+-->
+<div class="column one">
+  <h1 class="title">Spark Electric Circuit Exhibit</h1>
+
+  <div class="column two">
+  <p>
+  Spark is an interactive museum exhibit that lets visitors build simple circuits and inspect computational models of electrons moving through these components. The goal is to familiarize children with fundamental concepts of electricity such as current and resistance.
+  </p>
+  </div>
+
+  <div class="column two">
+  <img src="{% static 'images/projects/spark-figure1.png' %}" style="margin-top: 15px;" alt="Spark Electric Circuit Exhibit">
+  </div>
+  
+  <br clear="all">
+
+  <h1>Credits</h1>
+
+  <p>
+  <table>
+  <tr>
+    <td style="font-weight: bold; width: 1.5in; vertial-align: top;">Design:</td>
+    <td>Elham Beheshti</td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold; vertial-align: top;">Software:</td>
+    <td>Elham Beheshti and Mmachi Obiorah</td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold; vertical-align: top;">Advising:</td>
+    <td>Mike Horn</td>
+  </tr>
+  </table>
+  </p>
+
+  <p style="text-align: center;">
+
+<iframe src="https://player.vimeo.com/video/85048338" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
+  </p>
+
+
+</div>
+<br clear="all">
+{% endblock %}
