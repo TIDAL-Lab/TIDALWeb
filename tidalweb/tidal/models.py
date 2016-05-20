@@ -57,28 +57,29 @@ class Post(models.Model):
 
 # Projects
 class Project(models.Model):
-    name = models.CharField(max_length=255)
-    active = models.BooleanField(default=True)
-    website = models.URLField(blank = True)
-    about = models.TextField()
-    grants = models.CharField(max_length=255, blank = True)
-    videoURL = models.URLField(blank=True)
-    thumb = models.ImageField(upload_to='images/projects/thumbs/')
-    cropping = ImageRatioField('thumb', '172x172')
-    projectCrop = ImageRatioField('thumb', '250x150')
-    slug = models.SlugField(unique=True, max_length=255)
-    viewable = models.BooleanField(default=True)
-    vieworder = models.IntegerField(default=100)
-    created = models.DateTimeField(auto_now_add=True)
+   name = models.CharField(max_length=255)
+   active = models.BooleanField(default=True)
+   website = models.URLField(blank = True)
+   about = models.TextField()
+   grants = models.CharField(max_length=255, blank = True)
+   videoURL = models.URLField(blank=True)
+   thumb = models.ImageField(upload_to='images/projects/thumbs/')
+   cropping = ImageRatioField('thumb', '172x172')
+   projectCrop = ImageRatioField('thumb', '250x150')
+   slug = models.SlugField(unique=True, max_length=255)
+   exhibit = models.BooleanField(default=False)
+   viewable = models.BooleanField(default=True)
+   vieworder = models.IntegerField(default=100)
+   created = models.DateTimeField(auto_now_add=True)
 
-    class Meta:
-        ordering = ['vieworder']
+   class Meta:
+      ordering = ['vieworder']
  
-    def __unicode__(self):
-        return u'%s' % self.name
+   def __unicode__(self):
+      return u'%s' % self.name
  
-    def get_absolute_url(self):
-        return reverse('tidal.views.project', args=[self.slug])
+   def get_absolute_url(self):
+      return reverse('tidal.views.project', args=[self.slug])
 
 
 # Publications
