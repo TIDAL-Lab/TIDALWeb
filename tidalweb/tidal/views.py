@@ -3,9 +3,10 @@ from tidal.models import People, Post, Project, Publication, FrontImage
 
 
 def index(request):
-  projects = Project.objects.filter(viewable=True, active=True)
+  projects = Project.objects.filter(viewable=True, active=True, exhibit=False)
+  exhibits = Project.objects.filter(viewable=True, active=True, exhibit=True)
   frontimages = FrontImage.objects.filter(published = True)
-  return render_to_response('index.html', {'projects' : projects, 'frontimages' : frontimages})
+  return render_to_response('index.html', {'exhibits' : exhibits, 'projects' : projects, 'frontimages' : frontimages})
 
 def contact(request):
     return render_to_response('contact.html')
