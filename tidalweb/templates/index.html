@@ -24,13 +24,34 @@
   </div>
 
 
+  <!-- EXHIBITS -->
+  <div class="column one" id="exhibit-list">
+    <h1 class="title">Museum Exhibits</h1>
+    <table>
+      {% for project in exhibits %}
+      <tr>
+        <td style="vertical-align: top;">
+          <img src="{% cropped_thumbnail project 'projectCrop' scale=1.0 %}" class="project-thumb">
+        </td>
+        <td style="vertical-align: top;">
+          <div class="project-title"><a href="{{project.website}}">{{project.name}}</a></div>
+          <p class="project-description">{{project.about|safe}}</p>
+          {% if project.grants != '' %}
+          <div class="project-grants">Grant: {{project.grants}}</div>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+
   <!-- PROJECTS -->    
   <div class="column one" id="projects-list">
-    <h1 class="title">Recent Projects</h1>
+    <h1 class="title">Recent Research Projects</h1>
     <table>
-      {% block content %}
       {% for project in projects %}
-      {% if forloop.counter < 8 %}
+      {% if forloop.counter < 9 %}
       <tr>
         <td style="vertical-align: top;">
           <img src="{% cropped_thumbnail project 'projectCrop' scale=1.0 %}" class="project-thumb">
@@ -45,7 +66,6 @@
       </tr>
       {% endif %}
       {% endfor %}
-      {% endblock %}
     </table>
   </div>
   <br clear="all">
