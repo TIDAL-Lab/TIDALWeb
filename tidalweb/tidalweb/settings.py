@@ -1,4 +1,3 @@
-
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -79,7 +78,7 @@ WSGI_APPLICATION = 'tidalweb.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tidal',
+        'NAME': 'tidal2',
         'USER': 'root',
         'PASSWORD': 't0k3n',
         'HOST': 'localhost',
