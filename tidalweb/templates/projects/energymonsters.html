@@ -1,0 +1,73 @@
+{% load staticfiles %}
+
+<html>
+<head>
+  <title>Energy Monters: Wizard of Oz</title>
+  <script src="{% static 'js/jquery-1.7.2.min.js' %}"></script>
+  <style>
+
+#status {
+  border: 2px solid #ccc;
+  background-color: #eee;
+  font-family: sans-serif;
+  font-size: 14pt;
+  margin: 8px;
+  padding: 3px;
+  width: 330px;
+  height: 50px;
+  display: block;
+}
+
+button {
+  outline: none;
+  color: none;
+  width: 160px;
+  height: 60px;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+  background-color: #f0f5ff;
+  color: black;
+  font: sans-serif;
+  display: inline-block;
+  margin: 8px;
+  font-size: 14pt;
+}
+
+button:active {
+  background-color: #ccc;
+}
+
+  </style>
+</head>
+<body>
+<div id="status">0 watts</div>
+<button>+5</button><button>-5</button> <br>
+<button>+10</button><button>-10</button> <br>
+<button>+50</button><button>-50</button> <br>
+<button>+100</button><button>-100</button> <br>
+<button>+500</button><button>-500</button>
+<br>
+</body>
+<script>
+var watts = 0;
+
+$("button").prop("disabled", false);
+
+$("button").click(function() {
+  $("button").prop("disabled", true);
+  console.log($(this).text());
+  watts += parseInt($(this).text());
+  updateWatts(watts);
+});
+
+
+function updateWatts(watts) {
+  var interval = Math.round((1.0 * 1000 * 60 * 60) / watts);
+  var data = { "meter" : 100, "interval" : interval, "Kt" : 1.0 };
+  $.post('/energymeter/', JSON.stringify(data))
+  .done(function() { $('#status').text(interval + " ms, " + watts + " watts" ); })
+  .fail(function(jqXHR, textStatus ) { $('#status').text(textStatus); })
+  .always(function() { $('button').prop("disabled", false); });
+}
+</script>
+</html>
