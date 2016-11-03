@@ -1,6 +1,11 @@
 from django.shortcuts import render, render_to_response, get_object_or_404
-from tidal.models import People, Post, Project, Publication, FrontImage
-
+from django.http import HttpResponse, HttpResponseBadRequest
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.renderers import JSONRenderer
+from rest_framework.parsers import JSONParser
+from tidal.models import *
+from tidal.serializers import *
+import datetime
 
 def index(request):
   projects = Project.objects.filter(viewable=True, active=True, exhibit=False)
@@ -31,8 +36,6 @@ def pubs(request):
    publist = Publication.objects.filter(pubAffil = 'lab', viewable = True).order_by('-year', '-created')
    return render_to_response('publications.html', {'pubs' : publist})
 
-
-
 def bat(request):
   return render_to_response('projects/bat.html')
 
@@ -61,5 +64,29 @@ def spark(request):
 def strawbies(request):
   return render_to_response('projects/strawbies.html')
 
+def energyMonsters(request):
+  return render_to_response('projects/energymonsters.html')
 
 
+
+@csrf_exempt
+def energyMeter(request):
+  if request.method == 'GET':
+    meter = 100
+    if 'meter' in request.GET.keys():
+      meter = request.GET['meter']
+    meters = GHGEnergyMeter.objects.filter(meter=meter).order_by('-timestamp')[:10]
+    serializer = GHGEnergyMeterSerializer(meters, many=True)
+    content = JSONRenderer().render(serializer.data)
+    return HttpResponse(content, content_type="application/json")
+
+  elif request.method == 'POST':
+    data = JSONParser().parse(request)
+    serializer = GHGEnergyMeterSerializer(data=data)
+    if serializer.is_valid():
+      serializer.save()
+      return HttpResponse('{ "result" : "success" }', status=201, content_type="application/json")
+    return HttpResponse(serializer.errors, status=400, content_type="application/json")
+
+  else:
+    return HttpResponse("Invalid request", status=500)
