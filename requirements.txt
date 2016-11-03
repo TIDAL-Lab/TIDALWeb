@@ -1,0 +1,10 @@
+Django==1.9.6
+django-appconf==1.0.1
+django-filter==0.15.3
+django-image-cropping==1.0.3
+djangorestframework==3.5.2
+easy-thumbnails==2.3
+Markdown==2.6.7
+MySQL-python==1.2.5
+Pillow==3.2.0
+six==1.10.0
