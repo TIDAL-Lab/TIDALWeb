@@ -15,6 +15,8 @@ urlpatterns = [
    url(r'^people/(?P<slug>[\w\-]+)/$', views.personal, name = 'personal'),
    url(r'^projects/$', views.projects, name = 'projects'),
    url(r'^publications/$', views.pubs, name = 'publications'),
+   url(r'^energymeter/$', views.energyMeter, name = 'energymeter'),
+   url(r'^energymonsters/$', views.energyMonsters, name = 'gnergymonsters'),
 
    #-----------------------------------------------------------------
    # projects
