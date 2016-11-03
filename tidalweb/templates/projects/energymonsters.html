@@ -65,7 +65,7 @@ function updateWatts(watts) {
   var interval = Math.round((1.0 * 1000 * 60 * 60) / watts);
   var data = { "meter" : 100, "interval" : interval, "Kt" : 1.0 };
   $.post('/energymeter/', JSON.stringify(data))
-  .done(function() { $('#status').text(interval + " ms, " + watts + " watts" ); })
+  .done(function() { $('#status').text(watts + " watts" ); })
   .fail(function(jqXHR, textStatus ) { $('#status').text(textStatus); })
   .always(function() { $('button').prop("disabled", false); });
 }
