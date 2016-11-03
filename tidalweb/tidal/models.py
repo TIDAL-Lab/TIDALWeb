@@ -122,3 +122,10 @@ class FrontImage(models.Model):
  
    def get_absolute_url(self):
       return reverse('tidal.views.images', args=[self.slug])
+
+
+class GHGEnergyMeter(models.Model):
+   timestamp = models.DateTimeField(auto_now_add=True)
+   meter = models.IntegerField(default=100)
+   interval = models.IntegerField()
+   Kt = models.FloatField(default=1.0)
