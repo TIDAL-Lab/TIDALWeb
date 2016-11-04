@@ -78,7 +78,9 @@ def energyMeter(request):
     meters = GHGEnergyMeter.objects.filter(meter=meter).order_by('-timestamp')[:10]
     serializer = GHGEnergyMeterSerializer(meters, many=True)
     content = JSONRenderer().render(serializer.data)
-    return HttpResponse(content, content_type="application/json")
+    response = HttpResponse(content, content_type="application/json")
+    response.__setitem__("Access-Control-Allow-Origin", "*")
+    return response
 
   elif request.method == 'POST':
     data = JSONParser().parse(request)
