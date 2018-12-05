@@ -16,7 +16,7 @@ urlpatterns = [
    url(r'^projects/$', views.projects, name = 'projects'),
    url(r'^publications/$', views.pubs, name = 'publications'),
    url(r'^energymeter/$', views.energyMeter, name = 'energymeter'),
-   url(r'^energymonsters/$', views.energyMonsters, name = 'gnergymonsters'),
+   url(r'^energymonsters/$', views.energyMonsters, name = 'energymonsters'),
 
    #-----------------------------------------------------------------
    # projects
