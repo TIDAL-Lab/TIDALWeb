@@ -11,14 +11,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')xe4r7!h5!)uwvzy9gexqe$2g4pn5qqep2q%hfdah_l(!9$zgu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False 
 
 ALLOWED_HOSTS = [ 
    'tidal.northwestern.edu',
    'tidal.sesp.northwestern.edu',
-   'localhost'
+   'localhost',
+   '65.52.30.10'
 ]
-
 
 # Application definition
 
@@ -34,16 +34,18 @@ INSTALLED_APPS = [
     'image_cropping',
 ]
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# append trailing slashes to URLs
+APPEND_SLASH = True
 
 ROOT_URLCONF = 'tidalweb.urls'
 
@@ -78,9 +80,9 @@ WSGI_APPLICATION = 'tidalweb.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tidal2',
-        'USER': 'root',
-        'PASSWORD': 't0k3n',
+        'NAME': 'tidal',
+        'USER': 'tidal',
+        'PASSWORD': 't1d@ll@bU$er',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -124,7 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, '../staticroot')
+STATIC_ROOT = '/srv/projects/TIDALWeb/tidalweb/static/'
 #print(STATIC_ROOT)
 
 # Additional locations of static files
@@ -133,5 +135,4 @@ STATICFILES_DIRS = (
 )
 
 MEDIA_URL = '/media/'
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = '/srv/projects/TIDALWeb/tidalweb/media/'

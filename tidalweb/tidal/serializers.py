@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from models import GHGEnergyMeter
+from .models import GHGEnergyMeter
 
 class GHGEnergyMeterSerializer(serializers.Serializer):
   meter = serializers.IntegerField()

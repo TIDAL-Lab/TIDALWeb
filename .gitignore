@@ -10,3 +10,13 @@ apache
 tidalweb/static/admin
 aws
 todo.txt
+env
+env*
+dist
+*.egg
+*.egg-info
+_mailinglist
+.tox
+.cache/
+.idea/
+*.sock
