@@ -51,44 +51,167 @@
     <img src="{% static 'images/northwestern.jpg' %}" style="width: 100%; margin-top: 45px;" alt="Northwestern University">
     <img src="{% static 'images/nu-arch.jpg' %}" style="width: 100%; margin-top: 30px;" alt="Northwestern University">
   </div>
-  
-
-
 </div>
 <br clear="all">
-
   <div class="column one">
     <h2>Our Location</h2>
-   
-   
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-<script>
-$( document ).ready(function() {
-var map;
-function initialize() {
-  var myLatlng = new google.maps.LatLng(42.056225, -87.674484);
-  var mapOptions = {
-    zoom: 17,
-    scrollwheel: false,
-    center: myLatlng
-
-  };
-
-
-  map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
-
-  var marker = new google.maps.Marker({
-    position: myLatlng,
-    map: map,
-});
-}
-google.maps.event.addDomListener(window, 'load', initialize);
-});
-</script>
-
-
+    
     <div id="map-canvas" style = "width:100%;height:500px;margin:20px 0px;padding:0px;"></div>
+
+    <!-- Custom styling for Apple MapKit JS callout: https://developer.apple.com/maps/mapkitjs/ -->
+    <style>
+      a:link, a:visited {
+          color: #2aaef5;
+          outline: none;
+          text-decoration: none;
+      }
+        
+      .landmark {
+          width: 250px;
+          padding: 7px 0 0 0;
+          background: rgba(247, 247, 247, 0.75);
+          border-radius: 5px;
+          box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.29);
+          font-family: Helvetica, Arial, sans-serif;
+          -webkit-transform-origin: 0 10px;
+          transform-origin: 0 10px;
+      }
+      
+      .landmark h1 {
+          margin-top: 0;
+          padding: 5px 15px;
+          background: #2aaef5;
+          color: rgba(255, 255, 255, 0.9);
+          font-size: 16px;
+          font-weight: 300;
+      }
+      
+      .landmark section {
+          padding: 0 15px 5px;
+          font-size: 14px;
+      }
+      
+      .landmark section p {
+          margin: 5px 0;
+      }
+      
+      .landmark:after {
+          content: "";
+          position: absolute;
+          top: 7px;
+          left: -13px;
+          width: 0;
+          height: 0;
+          margin-bottom: -13px;
+          border-right: 13px solid #2aaef5;
+          border-top: 13px solid rgba(0, 0, 0, 0);
+          border-bottom: 13px solid rgba(0, 0, 0, 0);
+      }
+      
+      @-webkit-keyframes scale-and-fadein {
+          0% {
+              -webkit-transform: scale(0.2);
+              opacity: 0;
+          }
+      
+          100% {
+              -webkit-transform: scale(1);
+              opacity: 1;
+          }
+      }
+      
+      @keyframes scale-and-fadein {
+          0% {
+              transform: scale(0.2);
+              opacity: 0;
+          }
+      
+          100% {
+              transform: scale(1);
+              opacity: 1;
+          }
+      }
+    </style>
+
+    <!-- using Apple MapKit JS -->
+    <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
+
+    <script>
+      var tidalLab = new mapkit.Coordinate(42.056225, -87.674484);
+      
+      mapkit.init({
+        authorizationCallback: function(done) {
+          done("eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjlKNlBYVFlHRjcifQ.eyJpc3MiOiJITDdTMkVVTTNBIiwiaWF0IjoxNTQ1MTk2ODI4LjQ5ODU0OCwiZXhwIjoyNDYwOTc1NjI4LjQ5ODU0OH0.NHXzS0W_vjvPui9IGe6Z7B4DlI47KkkSpcPzXCK-_y6vM3NF2RH4RfPuipAb7V1G5bcxhGSHwnqQY6gW_hs1DA");
+        },
+        language: "en"
+      });
+
+      var map = new mapkit.Map("map-canvas");
+
+      var span = new mapkit.CoordinateSpan(0.008, 0.008);
+      var region = new mapkit.CoordinateRegion(tidalLab, span); //map centered around the lab
+      map.showsMapTypeControl = true;
+
+      //callout delegate
+      var CALLOUT_OFFSET = new DOMPoint(-148, -138);
+      var landmarkAnnotationCallout = {
+          calloutElementForAnnotation: function(annotation) {
+              return calloutForLandmarkAnnotation(annotation);
+          },
+      
+          calloutAnchorOffsetForAnnotation: function(annotation, element) {
+              return CALLOUT_OFFSET;
+          },
+      
+          calloutAppearanceAnimationForAnnotation: function(annotation) {
+              return "scale-and-fadein .4s 0 1 normal cubic-bezier(0.4, 0, 0, 1.5)";
+          }
+      };
+
+      var tidalLabAnnotation = new mapkit.MarkerAnnotation(
+          tidalLab,
+          {
+              callout: landmarkAnnotationCallout,
+              title: "TIDAL Lab",
+              color: "#01AEC8",
+              subtitle: "Northwestern University",
+              selected: false,
+              data: {
+                  address: "Room G14, Annenberg Hall",
+                  website: "http://tidal.northwestern.edu" 
+              }   
+          }
+      );
+
+      // Landmark annotation custom callout
+      function calloutForLandmarkAnnotation(annotation) {
+          var div = document.createElement("div");
+          div.className = "landmark";
+      
+          var title = div.appendChild(document.createElement("h1"));
+          title.textContent = annotation.title;
+
+          var section = div.appendChild(document.createElement("section"));
+          
+          var subtitle = section.appendChild(document.createElement("p"));
+          subtitle.textContent = annotation.subtitle;
+          
+          var address = section.appendChild(document.createElement("p"));
+          address.textContent = annotation.data.address;
+
+          var section = div.appendChild(document.createElement("section"));
+
+          var link = section.appendChild(document.createElement("p"));
+          link.className = "homepage";
+          var a = link.appendChild(document.createElement("a"));
+          a.href = annotation.data.website;
+          a.textContent = "website";
+      
+          return div;
+      }
+
+      map.showItems([tidalLabAnnotation],{minimumSpan: span});
+    </script>
   </div>
 <br clear="all">
 {% endblock %}
