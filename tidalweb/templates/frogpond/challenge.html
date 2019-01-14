@@ -25,7 +25,7 @@
 </style>
   <div class="chapter">
 
-    {% if challenge = 1 %}
+    {% if challenge == 1 %}
     <!-- CHALLENGE 1 -->
     <h1>Challenge {{ challenge }}: Population Explosion!</h1>
     <p>
@@ -39,7 +39,7 @@
     </p>
 
 
-    {% elif challenge = 2 %}
+    {% elif challenge == 2 %}
     <!-- CHALLENGE 2 -->
     <h1>Challenge 2: Little Frogs</h1>
     <p>
@@ -47,7 +47,7 @@
     </p>
 
 
-    {% elif challenge = 3 %}
+    {% elif challenge == 3 %}
     <!-- CHALLENGE 3 -->
     <h1>Challenge 3: Big Frogs</h1>
     <p>
@@ -55,7 +55,7 @@
     </p>
 
 
-    {% elif challenge = 4 %}
+    {% elif challenge == 4 %}
     <!-- CHALLENGE 4 -->
     <h1>Challenge 4: Stabilizing Selection</h1>
     <p>
@@ -63,7 +63,7 @@
     </p>
 
 
-    {% elif challenge = 5 %}
+    {% elif challenge == 5 %}
     <!-- CHALLENGE 5 -->
     <h1>Challenge 5: Disruptive Selection!</h1>
     <p>
@@ -239,7 +239,7 @@
         </param>
       </block>
     </menu>
-    {% if challenge = 1 %}
+    {% if challenge == 1 %}
     <defaultProgram>hop(1);spin();hunt(7s);if(full?);hatch(size-variation);end;</defaultProgram>
     {% else %}
     <defaultProgram>hop(1);spin();</defaultProgram>
