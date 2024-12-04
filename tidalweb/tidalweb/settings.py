@@ -11,13 +11,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')xe4r7!h5!)uwvzy9gexqe$2g4pn5qqep2q%hfdah_l(!9$zgu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False 
+DEBUG = True 
 
 ALLOWED_HOSTS = [ 
-   'tidal.northwestern.edu',
-   'tidal.sesp.northwestern.edu',
+   'tidal-lab.online',
    'localhost',
-   '65.52.30.10'
+   '129.105.254.100'
 ]
 
 # Application definition
@@ -53,6 +52,9 @@ from easy_thumbnails.conf import Settings as thumbnail_settings
 THUMBNAIL_PROCESSORS = (
     'image_cropping.thumbnail_processors.crop_corners',
 ) + thumbnail_settings.THUMBNAIL_PROCESSORS
+
+IMAGE_CROPPING_BACKEND = 'image_cropping.backends.easy_thumbs.EasyThumbnailsBackend'
+IMAGE_CROPPING_BACKEND_PARAMS = {}
 
 TEMPLATES = [
     {
@@ -126,7 +128,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/srv/projects/TIDALWeb/tidalweb/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#STATIC_ROOT = '/home/tadmin/projects/TIDALWeb/tidalweb/static/'
 #print(STATIC_ROOT)
 
 # Additional locations of static files
@@ -135,4 +138,4 @@ STATICFILES_DIRS = (
 )
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/srv/projects/TIDALWeb/tidalweb/media/'
+MEDIA_ROOT = '/home/tadmin/projects/TIDALWeb/tidalweb/media/'

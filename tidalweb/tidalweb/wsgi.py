@@ -10,7 +10,7 @@ https://docs.djangoproject.com/en/1.9/howto/deployment/wsgi/
 import os, sys
 from django.core.wsgi import get_wsgi_application
 
-sys.path.append('/srv/projects/TIDALWeb/tidalweb')
+sys.path.append('/home/tadmin/projects/TIDALWeb/tidalweb')
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "tidalweb.settings")
 

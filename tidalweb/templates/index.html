@@ -1,9 +1,7 @@
 {% extends 'base.html' %}
 {% block primary %}
-{% load staticfiles %}
+{% load static %}
 {% load cropping %}
-
-
   <!-- SPLASH IMAGES -->
   <div class="column one" style="margin: 15px 0 20px 0;">
     <ul class="bxslider">
@@ -17,12 +15,11 @@
     <p id="welcome" style="margin-top: 40px;">
       TIDAL Lab is a team of designers, artists, learning scientists, and
       computer scientists at Northwestern University. Our research creates
-      and studies innovative technology-based learning experiences. We take a cautious but 
-      optimistic stance towards technology in a process that tightly couples 
+      and studies innovative technology-based learning experiences. We take a cautious but
+      optimistic stance towards technology in a process that tightly couples
       research and design.
     </p>
   </div>
-
 
   <!-- EXHIBITS -->
   <div class="column one" id="exhibit-list">
@@ -44,7 +41,6 @@
       {% endfor %}
     </table>
   </div>
-
 
   <!-- PROJECTS -->    
   <div class="column one" id="projects-list">
@@ -70,9 +66,7 @@
   </div>
   <br clear="all">
 
-
-  
-  <!-- AFFILIATED RESEARCH LABS -->
+ <!-- AFFILIATED RESEARCH LABS -->
   <div class="column one">
     <h1 class="title">Affiliated Research Labs</h1>
     <div class="column two affiliated">
@@ -112,7 +106,7 @@
   </div>
   <br clear="all">
 
-  
+
   <!-- MUSEUM COLLABORATORS -->
   <div class="column one" style="margin-top: 30px; margin-bottom: 40px;">
     <h1 class="title">Museum Collaborators</h1>
@@ -124,9 +118,8 @@
       <a href="http://museum.unl.edu"><img src="{% static 'images/collaborators/unl.png' %}" style="height: 70px;"></a>
       <a href="http://mos.org"><img src="{% static 'images/collaborators/mos.png' %}" style="height: 70px;"></a>
     </div>
-  </div>      
+  </div>
   <br clear="all">
-
 
   <script>
     $(document).ready(function(){
@@ -141,7 +134,4 @@
       });
     });
   </script>
-
 {% endblock %}
-
-

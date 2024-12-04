@@ -1,4 +1,4 @@
-from django.shortcuts import render, render_to_response, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
@@ -11,14 +11,14 @@ def index(request):
   projects = Project.objects.filter(viewable=True, active=True, exhibit=False)
   exhibits = Project.objects.filter(viewable=True, active=True, exhibit=True)
   frontimages = FrontImage.objects.filter(published = True)
-  return render_to_response('index.html', {'exhibits' : exhibits, 'projects' : projects, 'frontimages' : frontimages})
+  return render(request,'index.html', {'exhibits' : exhibits, 'projects' : projects, 'frontimages' : frontimages})
 
 def contact(request):
-    return render_to_response('contact.html')
+    return render(request,'contact.html')
 
 def news(request):
   posts = Post.objects.filter(published=True)
-  return render_to_response('news.html', {'posts': posts})
+  return render(request,'news.html', {'posts': posts})
 
 def people(request):
    peeps = People.objects.filter(viewable=True)
@@ -34,38 +34,38 @@ def projects(request):
 
 def pubs(request):
    publist = Publication.objects.filter(pubAffil = 'lab', viewable = True).order_by('-year', '-created')
-   return render_to_response('publications.html', {'pubs' : publist})
+   return render(request,'publications.html', {'pubs' : publist})
 
 def bat(request):
-  return render_to_response('projects/bat.html')
+  return render(request,'projects/bat.html')
 
 def biomap(request):
-  return render_to_response('projects/biomap.html')
+  return render(request,'projects/biomap.html')
 
 def fishing(request):
-  return render_to_response('projects/fishing.html')
+  return render(request,'projects/fishing.html')
 
 def frogpond(request):
-  return render_to_response('frogpond/intro.html')
+  return render(request,'frogpond/intro.html')
 
 def frogpondChallenge(request):
   challenge = int(request.get_full_path()[-1:]) # get the challenge number from the url path
-  return render_to_response('frogpond/challenge.html', { 'challenge' : challenge })
+  return render(request,'frogpond/challenge.html', { 'challenge' : challenge })
 
 def greenhomegames(request):
-  return render_to_response('projects/greenhomegames.html')
+  return render(request,'projects/greenhomegames.html')
 
 def roberto(request):
-  return render_to_response('projects/roberto.html')
+  return render(request,'projects/roberto.html')
 
 def spark(request):
-  return  render_to_response('projects/spark.html')
+  return  render(request,'projects/spark.html')
 
 def strawbies(request):
-  return render_to_response('projects/strawbies.html')
+  return render(request,'projects/strawbies.html')
 
 def energyMonsters(request):
-  return render_to_response('projects/energymonsters.html')
+  return render(request,'projects/energymonsters.html')
 
 
 
