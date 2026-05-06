@@ -11,7 +11,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')xe4r7!h5!)uwvzy9gexqe$2g4pn5qqep2q%hfdah_l(!9$zgu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True 
+# DEBUG = True
 
 ALLOWED_HOSTS = [ 
    'tidal-lab.online',
@@ -25,6 +25,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    "unfold",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -142,3 +143,10 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+UNFOLD = {
+    "SITE_TITLE": "TIDAL Admin",
+    "SITE_HEADER": "Project Dashboard",
+    "SHOW_HISTORY": True, # Adds a history button to model pages
+    "DARK_MODE": True,    # Enables theme toggling
+}
