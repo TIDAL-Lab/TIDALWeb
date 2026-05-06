@@ -16,7 +16,8 @@ DEBUG = True
 ALLOWED_HOSTS = [ 
    'tidal-lab.online',
    'localhost',
-   '129.105.254.100'
+   '129.105.254.100',
+   '127.0.0.1'
 ]
 
 # Application definition
@@ -138,4 +139,4 @@ STATICFILES_DIRS = (
 )
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/home/tadmin/projects/TIDALWeb/tidalweb/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

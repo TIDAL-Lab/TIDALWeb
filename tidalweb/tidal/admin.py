@@ -11,7 +11,19 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'slug', 'pubdate')
     list_display_links = ('title',)
 
-admin.site.register(Project)
-admin.site.register(Publication)
-admin.site.register(FrontImage)
+@admin.register(Project)
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('name', 'slug', 'created')
+    list_display_links = ('name', 'slug')
+
+
+@admin.register(Publication)
+class PublicationAdmin(admin.ModelAdmin):
+    list_display = ('title', 'year', 'authors')
+    list_display_links = ('title',)
+
+@admin.register(FrontImage)
+class FrontImageAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description', 'published')
+    list_display_links = ('name', 'description')
 
