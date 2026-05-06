@@ -12,12 +12,12 @@
  * BODY ELEMENTS
  */
 body {
-  font-family: 'Nunito', 'Open Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 300;
+  font-family: 'Jost', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
   line-height: 150%;
-  background-color: #444;
-  color: #555;
+  background-color: #f8fafc;
+  color: #1e293b;
   padding: 0;
   margin: 0;
 }
@@ -34,7 +34,6 @@ body {
 
 .content {
   max-width: 960px;
-  min-width: 600px;
   margin: 0 auto;
   padding: 70px 0px 30px 0px;
   min-height: 600px;
@@ -46,11 +45,17 @@ body {
  * LINKS
  */
 .content a {
-  color: rgb(0, 130, 160);
+  color: #5469d4;
   text-decoration: none;
 }
-.content a:hover { color: #900; }
+.content a:hover { color: #0a2540; }
 
+
+h1, h2 {
+  font-family: 'Syne', Georgia, serif;
+  font-weight: 600;
+  color: #0a2540;
+}
 
 h1 {
   font-size: 1.5em;
@@ -58,14 +63,17 @@ h1 {
 }
 
 h1.title {
-  font-size: 18px;
-  font-weight: normal;
-  margin-bottom: 20pt;
+  font-size: 1.15em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #5469d4;
+  border-left: 4px solid #5469d4;
+  padding: 2px 0 2px 12px;
+  margin-bottom: 20px;
   line-height: 110%;
-  background-color: rgb(0, 174, 200);
-  color: white;
-  padding: 8px 16px;
-  border-radius: 12px;
+  background: none;
+  border-radius: 0;
 }
 
 h2 {
@@ -83,11 +91,11 @@ header {
   margin: 0px;
   padding: 0px;
   /*background-color: #222;*/
-  background-color: rgb(0, 174, 200);
+  background: #ffffff;
+  box-shadow: 0 1px 0 #e2e8f0;
   color: #fff;
   position: fixed;
   z-index: 10;
-  box-shadow: 0px 1px 2px #ccc;
 }
 
 
@@ -95,16 +103,17 @@ header {
  * NAVIGATION BAR
  */
 nav {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   max-width: 960px;
-  min-width: 600px;
   height: 56px;
   margin: 0 auto;
-  position: relative;
+  padding: 0 16px;
 }
 
 #lab-name {
-  background-image: url('/static/images/logo-white.svg');
+  background-image: url('/static/images/logo-blue-300x300.png');
   background-size: 50px 50px;
   background-position: left center;
   background-repeat: no-repeat;
@@ -116,16 +125,14 @@ nav {
   line-height: 120%;
 }
 
+#lab-name a { color: #0a2540; }
+
 nav ul {
-  float: right;
   display: inline-block;
   padding: 0px;
-  margin: 0px 30px 0px 0px;
   height: 100%;
   list-style: none;
-  font-family: 'Open Sans', sans-serif;
   font-weight: normal;
-  font-size: 0.85em;
 }
 
 nav ul li {
@@ -134,7 +141,7 @@ nav ul li {
 
 nav a {
   text-decoration: none;
-  color: white;
+  color: #0a2540;
   outline: none;
 }
 
@@ -145,7 +152,7 @@ nav ul a {
 }
 
 nav ul a:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(94, 105, 212, 0.08);
 }
 
 
@@ -186,16 +193,17 @@ nav ul a:hover {
  * FOOTER
  */
 footer {
-  background-color: #444;
+  background-color: #f1f5f9;
+  border-top: 1px solid #e2e8f0;
+  color: #64748b;
   display: block;
-  height: 150px;
+  height: auto;
   width: 100%;
   margin: 0;
-  padding: 0;
-  color: #aaa;
+  padding: 30px 0;
   font-size: 12px;
   font-family: sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 135%;
   text-align: left;
   clear: both;
@@ -203,22 +211,22 @@ footer {
 
 .foot {
   max-width: 960px;
-  min-width: 600px;
-  height: 150px;
   margin: 0 auto;
-  padding: 20px 10px 50px 30px;
-  background-image: url('/static/images/nu-logo.png');
+  min-height: 150px;
+  padding: 20px 16px 50px 16px;
+  background-image: url('/static/images/nu-logo.svg');
   background-repeat: no-repeat;
+  background-size: 20%;
   background-position: 95% 50%;
 }
 
 footer a {
-  color: #fff;
+  color: #0a2540;
   text-decoration: none;
 }
 
 footer a:hover {
-  color: rgb(0, 174, 200);
+  color: #5469d4;
 }
 
 
@@ -248,22 +256,22 @@ footer a:hover {
  */
 
 #welcome {
-  background-color: #eee;
+  background-color: #f0f4ff;
+  color: #1e293b;
   padding: 20px 45px 20px 100px;
-  font-weight: 300;
-  font-size: 17px;
+  font-weight: 400;
+  font-size: 15px;
   line-height: 140%;
-  color: #666;
   text-align: left;
   border-radius: 12px;
-  background-image: url('/static/images/logo-grey-100x100.png');
+  background-image: url('/static/images/logo-grey-300x300.png');
   background-repeat: no-repeat;
   background-position: 10px center;
   background-size: 80px 80px;
 }
 
 .affiliated {
-  font-size: 0.82em;
+  font-size: 0.9em;
   color: #444;
   text-align: left;
   line-height: 140%;
@@ -327,7 +335,7 @@ img.project-thumb {
 
 .project-title {
   font-size: 1.2em;
-  font-weight: bold;
+  font-weight: 500;
   padding: 0px;
   margin: 2px 0;
 }
@@ -363,10 +371,23 @@ img.project-thumb {
  * RESPONSIVE MEDIA QUERIES
  */
 @media (max-width : 700px) {
+  table, tbody, tr, td {
+    display: block;
+    width: 100%;
+  }
+  img.project-thumb {
+    float: none;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 12px 0;
+  }
   .wide-only { display: none; }
   .column.two { width: 100%; }
   .column.three { width: 100%; }
   .column.four { width: 50%; }
   .column.five { width: 50%; }
+  nav ul { font-size: 0.75em; }
+  nav ul a { padding: 4px; }
+  #lab-name { display: none; }
 }
 
