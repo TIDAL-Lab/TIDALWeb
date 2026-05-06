@@ -1,4 +1,5 @@
 import os
+from django.templatetags.static import static
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -146,7 +147,19 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 UNFOLD = {
     "SITE_TITLE": "TIDAL Admin",
-    "SITE_HEADER": "Project Dashboard",
+    "SITE_HEADER": "Dashboard",
+    "SITE_ICON": {
+        "light": lambda request: static("images/logo.svg"),  # light mode
+        "dark": lambda request: static("images/logo-white.svg"),  # dark mode
+    },
+    "SITE_FAVICONS": [
+        {
+            "rel": "icon",
+            "sizes": "32x32",
+            "type": "image/svg+xml",
+            "href": lambda request: static("images/logo.svg"),
+        },
+    ],
     "SHOW_HISTORY": True, # Adds a history button to model pages
     "DARK_MODE": True,    # Enables theme toggling
 }
