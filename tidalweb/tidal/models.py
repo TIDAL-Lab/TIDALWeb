@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 from image_cropping import ImageRatioField
 
 # People
@@ -42,8 +43,8 @@ class Post(models.Model):
    description = models.CharField(max_length=255)
    content = models.TextField()
    published = models.BooleanField(default=True)
-   pubdate = models.DateField(auto_now_add=True)
-   created = models.DateTimeField(auto_now_add=True)
+   pubdate = models.DateField(default=timezone.now)
+   created = models.DateTimeField(default=timezone.now)
  
    class Meta:
       ordering = ['-pubdate']
