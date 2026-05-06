@@ -11,13 +11,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')xe4r7!h5!)uwvzy9gexqe$2g4pn5qqep2q%hfdah_l(!9$zgu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True 
+#DEBUG = True 
 
 ALLOWED_HOSTS = [ 
    'tidal-lab.online',
    'localhost',
    '129.105.254.100',
-   '127.0.0.1'
+   '127.0.0.1',
+   'tidal.northwestern.edu',
+   'tidal.sesp.northwestern.edu'
 ]
 
 # Application definition
